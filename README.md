@@ -1,4 +1,7 @@
 # SwiftLSPClient
+
+[![Build Status](https://travis-ci.org/mattmassicotte/SwiftLSPClient.svg?branch=master)](https://travis-ci.org/mattmassicotte/SwiftLSPClient)
+
 This is a Swift library for interacting with [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations.
 
 An LSP server provides rich information about source code. An LSP client consumes this information. This library is all about the client side.
