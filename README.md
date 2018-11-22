@@ -1,6 +1,7 @@
 # SwiftLSPClient
 
 [![Build Status](https://travis-ci.org/ChimeHQ/SwiftLSPClient.svg?branch=master)](https://travis-ci.org/ChimeHQ/SwiftLSPClient)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 This is a Swift library for interacting with [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations.
 
