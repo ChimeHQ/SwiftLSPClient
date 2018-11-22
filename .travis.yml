@@ -1,0 +1,13 @@
+language: swift
+os: osx
+osx_image: xcode10.1
+cache:
+    directories:
+        - Carthage
+
+before_script:
+    - carthage bootstrap --verbose --platform macOS --cache-builds --no-use-binaries
+
+xcode_destination: platform=macOS
+xcode_project: SwiftLSPClient.xcodeproj
+xcode_scheme: SwiftLSPClient 
