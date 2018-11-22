@@ -46,6 +46,15 @@ SwiftLSPClient uses [Carthage](https://github.com/Carthage/Carthage) for its dep
 github "ChimeHQ/SwiftLSPClient"
 ```
 
+### Building
+
+The project is builing developed with Xcode 10.1 running on macOS 10.14 Mojave. After a checkout, you can install the dependencies with carthage.
+
+```
+carthage bootstrap --platform macOS
+```
+
+
 ### Suggestions or Feedback
 
 We'd love to hear from you! Get in touch via [twitter](https://twitter.com/chimehq), an issue, or a pull request.
