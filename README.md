@@ -1,6 +1,6 @@
 # SwiftLSPClient
 
-[![Build Status](https://travis-ci.org/mattmassicotte/SwiftLSPClient.svg?branch=master)](https://travis-ci.org/mattmassicotte/SwiftLSPClient)
+[![Build Status](https://travis-ci.org/ChimeHQ/SwiftLSPClient.svg?branch=master)](https://travis-ci.org/ChimeHQ/SwiftLSPClient)
 
 This is a Swift library for interacting with [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations.
 
