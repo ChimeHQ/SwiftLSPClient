@@ -61,6 +61,10 @@ public struct TextDocumentClientCapabilityCompletionItemKind: Codable {
     public init(valueSet: [CompletionItemKind]?) {
         self.valueSet = valueSet
     }
+
+    public static var all: TextDocumentClientCapabilityCompletionItemKind {
+        return TextDocumentClientCapabilityCompletionItemKind(valueSet: CompletionItemKind.allCases)
+    }
 }
 
 public struct TextDocumentClientCapabilityCompletion: Codable {

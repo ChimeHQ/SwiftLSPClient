@@ -15,7 +15,7 @@ public class JSONRPCLanguageServer {
     
     public init(dataTransport: DataTransport) {
         self.messageId = 0
-        
+
         self.protocolTransport = ProtocolTransport(dataTransport: dataTransport)
     }
 }

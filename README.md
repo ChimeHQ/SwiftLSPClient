@@ -12,28 +12,35 @@ An LSP server provides rich information about source code. An LSP client consume
 ```swift
 import SwiftLSPClient
 
-let transport = StdioDataTransport()
+let executablePath = "path/to/your/executable-lsp-server"
+let host = LanguageServerProcessHost(path: executablePath, arguments: [])
 
-let server = JSONRPCLanguageServer(dataTransport: transport)
-
-let processId = Int(ProcessInfo.processInfo.processIdentifier)
-let capabilities = clientCapabilities
-
-let params = InitalizeParams(processId: processId,
-                             rootPath: nil,
-                             rootURI: nil,
-                             initializationOptions: nil,
-                             capabilities: capabilities,
-                             trace: Tracing.off,
-                             workspaceFolders: nil)
-server.initialize(params: params, block: { (result) in
-    switch result {
-    case .failure(let error):
-        Swift.print("unable to initialize \(error)")
-    case .success(let value):
-        Swift.print("initialized \(value)")
+host.start { (server) in
+    guard let server = server else {
+        Swift.print("unable to launch server")
+        return
     }
-})
+
+    let processId = Int(ProcessInfo.processInfo.processIdentifier)
+    let capabilities = ClientCapabilities(workspace: nil, textDocument: nil, experimental: nil)
+
+    let params = InitalizeParams(processId: processId,
+                                 rootPath: nil,
+                                 rootURI: nil,
+                                 initializationOptions: nil,
+                                 capabilities: capabilities,
+                                 trace: Tracing.off,
+                                 workspaceFolders: nil)
+
+    server.initialize(params: params, block: { (result) in
+        switch result {
+        case .failure(let error):
+            Swift.print("unable to initialize \(error)")
+        case .success(let value):
+            Swift.print("initialized \(value)")
+        }
+    })
+}
 ```
 
 ## Supported Features
@@ -57,7 +64,6 @@ The project is builing developed with Xcode 10.1 running on macOS 10.14 Mojave. 
 ```
 carthage bootstrap --platform macOS
 ```
-
 
 ### Suggestions or Feedback
 
