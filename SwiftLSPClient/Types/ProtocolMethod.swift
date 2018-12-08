@@ -25,6 +25,7 @@ public struct ProtocolMethod {
         public static let WillSaveWaitUntil = "textDocument/willSaveWaitUntil"
         public static let DidSave = "textDocument/didSave"
         public static let DidClose = "textDocument/didClose"
+        public static let SignatureHelp = "textDocument/signatureHelp"
     }
     
     public struct CompletionItem {

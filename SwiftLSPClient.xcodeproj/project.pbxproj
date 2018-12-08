@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C90F9BB421773CB800EC3854 /* LanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F9BB321773CB800EC3854 /* LanguageServer.swift */; };
 		C986779C21B45A3D00C1BE5A /* LanguageServerProcessHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C986779B21B45A3D00C1BE5A /* LanguageServerProcessHost.swift */; };
+		C986779E21BB53E700C1BE5A /* SignatureHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C986779D21BB53E700C1BE5A /* SignatureHelp.swift */; };
 		C992998921755D0900C5F8A5 /* SwiftLSPClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C992997F21755D0900C5F8A5 /* SwiftLSPClient.framework */; };
 		C992998E21755D0900C5F8A5 /* MessageTransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C992998D21755D0900C5F8A5 /* MessageTransportTests.swift */; };
 		C992999021755D0900C5F8A5 /* LanguageServerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C992998221755D0900C5F8A5 /* LanguageServerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		C90F9BB321773CB800EC3854 /* LanguageServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageServer.swift; sourceTree = "<group>"; };
 		C986779B21B45A3D00C1BE5A /* LanguageServerProcessHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageServerProcessHost.swift; sourceTree = "<group>"; };
+		C986779D21BB53E700C1BE5A /* SignatureHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureHelp.swift; sourceTree = "<group>"; };
 		C992997F21755D0900C5F8A5 /* SwiftLSPClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLSPClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C992998221755D0900C5F8A5 /* LanguageServerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageServerProtocol.h; sourceTree = "<group>"; };
 		C992998321755D0900C5F8A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				C99299AD21755D8A00C5F8A5 /* LanguageFeatures.swift */,
 				C99299AF21755D8A00C5F8A5 /* Client.swift */,
 				C99299B121755D8A00C5F8A5 /* Basic.swift */,
+				C986779D21BB53E700C1BE5A /* SignatureHelp.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			files = (
 				C986779C21B45A3D00C1BE5A /* LanguageServerProcessHost.swift in Sources */,
 				C99299A421755D6900C5F8A5 /* ProtocolTransport.swift in Sources */,
+				C986779E21BB53E700C1BE5A /* SignatureHelp.swift in Sources */,
 				C99299A021755D6900C5F8A5 /* JSONRPCLanguageServer.swift in Sources */,
 				C99299B321755D8A00C5F8A5 /* ProtocolMethod.swift in Sources */,
 				C99299A321755D6900C5F8A5 /* StdioDataTransport.swift in Sources */,
