@@ -59,10 +59,10 @@ github "ChimeHQ/SwiftLSPClient"
 
 ### Building
 
-The project is builing developed with Xcode 10.1 running on macOS 10.14 Mojave. After a checkout, you can install the dependencies with carthage.
+The project is being developed with Xcode 10.1 running on macOS 10.14 Mojave. After a checkout, you can install the dependencies with carthage.
 
 ```
-carthage bootstrap --platform macOS
+carthage update --platform macOS
 ```
 
 ### Suggestions or Feedback
