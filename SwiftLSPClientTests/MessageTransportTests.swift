@@ -25,6 +25,9 @@ class MockDataTransport: DataTransport {
     func setReaderHandler(_ handler: @escaping ReadHandler) {
         readHandler = handler
     }
+
+    func close() {
+    }
     
     func mockRead(_ data: Data) {
         self.readHandler?(data)
