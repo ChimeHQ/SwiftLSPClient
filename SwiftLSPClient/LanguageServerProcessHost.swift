@@ -24,6 +24,10 @@ public class LanguageServerProcessHost {
 
         process.launchPath = path
         process.arguments = arguments
+
+        process.terminationHandler = { [unowned self] (task) in
+            self.transport.close()
+        }
     }
 
     public func start(block: @escaping (LanguageServer?) -> Void) {

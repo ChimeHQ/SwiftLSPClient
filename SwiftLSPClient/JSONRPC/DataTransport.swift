@@ -13,4 +13,6 @@ public protocol DataTransport {
     
     func write(_ data: Data)
     func setReaderHandler(_ handler: @escaping ReadHandler)
+
+    func close()
 }

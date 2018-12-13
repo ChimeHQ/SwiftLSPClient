@@ -22,7 +22,7 @@ public class StdioDataTransport: DataTransport {
         
         stdoutPipe.fileHandleForReading.readabilityHandler = { [unowned self] handle in
             let data = handle.availableData
-            
+
             guard data.count > 0 else {
                 return
             }
@@ -49,5 +49,12 @@ public class StdioDataTransport: DataTransport {
     
     public func setReaderHandler(_ handler: @escaping (Data) -> Void) {
         self.readHandler = handler
+    }
+
+    public func close() {
+        [stdoutPipe, stderrPipe, stdinPipe].forEach { (pipe) in
+            pipe.fileHandleForWriting.closeFile()
+            pipe.fileHandleForReading.closeFile()
+        }
     }
 }
