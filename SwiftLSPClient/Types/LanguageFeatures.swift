@@ -103,6 +103,24 @@ public enum CompletionResponse: Codable {
             try container.encode(value)
         }
     }
+
+    public var items: [CompletionItem] {
+        switch self {
+        case .full(let v):
+            return v
+        case .partial(let list):
+            return list.items
+        }
+    }
+
+    public var isIncomplete: Bool {
+        switch self {
+        case .full:
+            return false
+        case .partial(let value):
+            return value.isIncomplete
+        }
+    }
 }
 
 public struct CompletionRegistrationOptions: Codable {
