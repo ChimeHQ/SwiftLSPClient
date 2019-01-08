@@ -10,10 +10,12 @@ import Foundation
 import Result
 
 public enum LanguageServerError: Error {
+    case serverUnavailable
     case protocolError(Error)
     case invalidDocumentURI(URL)
     case unableToEncodeRequest
     case missingExpectedResult
+    case unimplemented
     
     case serverError(ProtocolErrorCode, String, [String: AnyObject]?)
 }
