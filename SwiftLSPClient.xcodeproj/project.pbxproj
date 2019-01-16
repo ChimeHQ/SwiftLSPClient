@@ -25,6 +25,8 @@
 		C99299B821755D8A00C5F8A5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AF21755D8A00C5F8A5 /* Client.swift */; };
 		C99299B921755D8A00C5F8A5 /* JSONRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299B021755D8A00C5F8A5 /* JSONRPC.swift */; };
 		C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299B121755D8A00C5F8A5 /* Basic.swift */; };
+		C9D85CC721EF836C00B33336 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC621EF836C00B33336 /* Position.swift */; };
+		C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC821EF837F00B33336 /* LSPRange.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		C99299B021755D8A00C5F8A5 /* JSONRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRPC.swift; sourceTree = "<group>"; };
 		C99299B121755D8A00C5F8A5 /* Basic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basic.swift; sourceTree = "<group>"; };
 		C99299BD21755EF300C5F8A5 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		C9D85CC621EF836C00B33336 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		C9D85CC821EF837F00B33336 /* LSPRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPRange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,8 @@
 				C99299AF21755D8A00C5F8A5 /* Client.swift */,
 				C99299B121755D8A00C5F8A5 /* Basic.swift */,
 				C986779D21BB53E700C1BE5A /* SignatureHelp.swift */,
+				C9D85CC621EF836C00B33336 /* Position.swift */,
+				C9D85CC821EF837F00B33336 /* LSPRange.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -274,12 +280,14 @@
 				C99299A321755D6900C5F8A5 /* StdioDataTransport.swift in Sources */,
 				C90F9BB421773CB800EC3854 /* LanguageServer.swift in Sources */,
 				C99299B521755D8A00C5F8A5 /* General.swift in Sources */,
+				C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */,
 				C99299B921755D8A00C5F8A5 /* JSONRPC.swift in Sources */,
 				C99299B421755D8A00C5F8A5 /* TextSynchronization.swift in Sources */,
 				C99299B821755D8A00C5F8A5 /* Client.swift in Sources */,
 				C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */,
 				C99299A521755D6900C5F8A5 /* MessageTransport.swift in Sources */,
 				C99299B621755D8A00C5F8A5 /* LanguageFeatures.swift in Sources */,
+				C9D85CC721EF836C00B33336 /* Position.swift in Sources */,
 				C99299A221755D6900C5F8A5 /* DataTransport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,7 +441,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 3;
+				DYLIB_CURRENT_VERSION = 4;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SwiftLSPClient/Info.plist;
@@ -460,7 +468,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 3;
+				DYLIB_CURRENT_VERSION = 4;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = SwiftLSPClient/Info.plist;
