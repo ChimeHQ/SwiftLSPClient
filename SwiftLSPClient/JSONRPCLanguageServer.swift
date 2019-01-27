@@ -12,11 +12,65 @@ import Result
 public class JSONRPCLanguageServer {
     private var messageId: Int
     private let protocolTransport: ProtocolTransport
+    public weak var notificationResponder: NotificationResponder?
     
     public init(dataTransport: DataTransport) {
         self.messageId = 0
 
         self.protocolTransport = ProtocolTransport(dataTransport: dataTransport)
+
+        self.protocolTransport.delegate = self
+    }
+}
+
+extension JSONRPCLanguageServer: ProtocolTransportDelegate {
+    func transportReceived(_ transport: ProtocolTransport, undecodableData data: Data) {
+    }
+
+    func transportReceived(_ transport: ProtocolTransport, notificationMethod: String, data: Data) {
+        guard let responder = notificationResponder else {
+            return
+        }
+
+        switch notificationMethod {
+        case ProtocolMethod.Initialized:
+            responder.languageServerInitialized(self)
+        case ProtocolMethod.Window.LogMessage:
+            decodeNotification(named: notificationMethod, data: data) { (value: LogMessageParams) in
+                responder.languageServer(self, logMessage: value)
+            }
+        case ProtocolMethod.Window.ShowMessage:
+            decodeNotification(named: notificationMethod, data: data) { (value: ShowMessageParams) in
+                responder.languageServer(self, showMessage: value)
+            }
+        case ProtocolMethod.TextDocument.PublishDiagnostics:
+            decodeNotification(named: notificationMethod, data: data) { (value: PublishDiagnosticsParams) in
+                responder.languageServer(self, publishDiagnostics: value)
+            }
+        default:
+            break
+        }
+    }
+
+    private func decodeNotification<T: Codable>(named name: String, data: Data, onSuccess: (T) -> Void) {
+        let responder = notificationResponder
+
+        do {
+            let resultType = JSONRPCNotificationParams<T>.self
+            let result = try JSONDecoder().decode(resultType, from: data)
+
+            guard let params = result.params else {
+                responder?.languageServer(self, failedToDecodeNotification: name, with: LanguageServerError.missingExpectedResult)
+
+                return
+            }
+
+            return onSuccess(params)
+        } catch {
+            let newError = LanguageServerError.unableToDecodeResponse(error)
+
+            responder?.languageServer(self, failedToDecodeNotification: name, with: newError)
+        }
     }
 }
 

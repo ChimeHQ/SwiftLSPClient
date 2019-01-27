@@ -14,6 +14,7 @@ public struct ProtocolMethod {
     
     public struct Window {
         public static let LogMessage = "window/logMessage"
+        public static let ShowMessage = "window/showMessage"
     }
     
     public struct TextDocument {
@@ -26,6 +27,7 @@ public struct ProtocolMethod {
         public static let DidSave = "textDocument/didSave"
         public static let DidClose = "textDocument/didClose"
         public static let SignatureHelp = "textDocument/signatureHelp"
+        public static let PublishDiagnostics = "textDocument/publishDiagnostics"
     }
     
     public struct CompletionItem {

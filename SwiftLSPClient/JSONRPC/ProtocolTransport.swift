@@ -25,7 +25,6 @@ class ProtocolTransport {
     public typealias ResponseResult<T: Codable> = Result<JSONRPCResultResponse<T>, ProtocolTransportError>
     public typealias DataResult = Result<Data, ProtocolTransportError>
     public typealias MessageResponder = (DataResult) -> Void
-    public typealias NotificationHandler = (Result<(String, Data), ProtocolTransportError>) -> Void
     
     private var id = 1
     private var messageTransport: MessageTransport
@@ -33,8 +32,6 @@ class ProtocolTransport {
     private let encoder: JSONEncoder
     private let decoder: JSONDecoder
     public weak var delegate: ProtocolTransportDelegate?
-
-    var notificationHandler: NotificationHandler?
     
     init(messageTransport: MessageTransport) {
         self.messageTransport = messageTransport
