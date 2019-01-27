@@ -23,7 +23,7 @@ public enum LanguageServerError: Error {
 public typealias LanguageServerResult<T> = Result<T, LanguageServerError>
 
 public protocol LanguageServer {
-    func initialize(params: InitalizeParams, block: @escaping (LanguageServerResult<InitializationResponse>) -> Void)
+    func initialize(params: InitializeParams, block: @escaping (LanguageServerResult<InitializationResponse>) -> Void)
     
     func didOpenTextDocument(params: DidOpenTextDocumentParams, block: @escaping (LanguageServerError?) -> Void)
     func didChangeTextDocument(params: DidChangeTextDocumentParams, block: @escaping (LanguageServerError?) -> Void)
