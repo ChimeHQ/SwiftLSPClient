@@ -20,12 +20,14 @@
 		C99299A521755D6900C5F8A5 /* MessageTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C992999E21755D6900C5F8A5 /* MessageTransport.swift */; };
 		C99299B321755D8A00C5F8A5 /* ProtocolMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AA21755D8A00C5F8A5 /* ProtocolMethod.swift */; };
 		C99299B421755D8A00C5F8A5 /* TextSynchronization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AB21755D8A00C5F8A5 /* TextSynchronization.swift */; };
-		C99299B521755D8A00C5F8A5 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AC21755D8A00C5F8A5 /* General.swift */; };
+		C99299B521755D8A00C5F8A5 /* Initialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AC21755D8A00C5F8A5 /* Initialization.swift */; };
 		C99299B621755D8A00C5F8A5 /* LanguageFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AD21755D8A00C5F8A5 /* LanguageFeatures.swift */; };
 		C99299B821755D8A00C5F8A5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AF21755D8A00C5F8A5 /* Client.swift */; };
 		C99299B921755D8A00C5F8A5 /* JSONRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299B021755D8A00C5F8A5 /* JSONRPC.swift */; };
 		C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299B121755D8A00C5F8A5 /* Basic.swift */; };
 		C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */; };
+		C99DBF3C21FE1D69005AC5C5 /* ServerCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3B21FE1D69005AC5C5 /* ServerCapabilities.swift */; };
+		C99DBF3E21FE1DC2005AC5C5 /* ClientCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3D21FE1DC2005AC5C5 /* ClientCapabilities.swift */; };
 		C9D85CC721EF836C00B33336 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC621EF836C00B33336 /* Position.swift */; };
 		C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC821EF837F00B33336 /* LSPRange.swift */; };
 /* End PBXBuildFile section */
@@ -57,13 +59,15 @@
 		C992999E21755D6900C5F8A5 /* MessageTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTransport.swift; sourceTree = "<group>"; };
 		C99299AA21755D8A00C5F8A5 /* ProtocolMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtocolMethod.swift; sourceTree = "<group>"; };
 		C99299AB21755D8A00C5F8A5 /* TextSynchronization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSynchronization.swift; sourceTree = "<group>"; };
-		C99299AC21755D8A00C5F8A5 /* General.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		C99299AC21755D8A00C5F8A5 /* Initialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initialization.swift; sourceTree = "<group>"; };
 		C99299AD21755D8A00C5F8A5 /* LanguageFeatures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageFeatures.swift; sourceTree = "<group>"; };
 		C99299AF21755D8A00C5F8A5 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		C99299B021755D8A00C5F8A5 /* JSONRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRPC.swift; sourceTree = "<group>"; };
 		C99299B121755D8A00C5F8A5 /* Basic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basic.swift; sourceTree = "<group>"; };
 		C99299BD21755EF300C5F8A5 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
+		C99DBF3B21FE1D69005AC5C5 /* ServerCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCapabilities.swift; sourceTree = "<group>"; };
+		C99DBF3D21FE1DC2005AC5C5 /* ClientCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCapabilities.swift; sourceTree = "<group>"; };
 		C9D85CC621EF836C00B33336 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		C9D85CC821EF837F00B33336 /* LSPRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPRange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,13 +138,15 @@
 			children = (
 				C99299AA21755D8A00C5F8A5 /* ProtocolMethod.swift */,
 				C99299AB21755D8A00C5F8A5 /* TextSynchronization.swift */,
-				C99299AC21755D8A00C5F8A5 /* General.swift */,
+				C99299AC21755D8A00C5F8A5 /* Initialization.swift */,
 				C99299AD21755D8A00C5F8A5 /* LanguageFeatures.swift */,
 				C99299AF21755D8A00C5F8A5 /* Client.swift */,
 				C99299B121755D8A00C5F8A5 /* Basic.swift */,
 				C986779D21BB53E700C1BE5A /* SignatureHelp.swift */,
 				C9D85CC621EF836C00B33336 /* Position.swift */,
 				C9D85CC821EF837F00B33336 /* LSPRange.swift */,
+				C99DBF3B21FE1D69005AC5C5 /* ServerCapabilities.swift */,
+				C99DBF3D21FE1DC2005AC5C5 /* ClientCapabilities.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -282,14 +288,16 @@
 				C99299B321755D8A00C5F8A5 /* ProtocolMethod.swift in Sources */,
 				C99299A321755D6900C5F8A5 /* StdioDataTransport.swift in Sources */,
 				C90F9BB421773CB800EC3854 /* LanguageServer.swift in Sources */,
-				C99299B521755D8A00C5F8A5 /* General.swift in Sources */,
+				C99299B521755D8A00C5F8A5 /* Initialization.swift in Sources */,
 				C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */,
 				C99299B921755D8A00C5F8A5 /* JSONRPC.swift in Sources */,
 				C99299B421755D8A00C5F8A5 /* TextSynchronization.swift in Sources */,
 				C99299B821755D8A00C5F8A5 /* Client.swift in Sources */,
 				C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */,
 				C99299A521755D6900C5F8A5 /* MessageTransport.swift in Sources */,
+				C99DBF3C21FE1D69005AC5C5 /* ServerCapabilities.swift in Sources */,
 				C99299B621755D8A00C5F8A5 /* LanguageFeatures.swift in Sources */,
+				C99DBF3E21FE1DC2005AC5C5 /* ClientCapabilities.swift in Sources */,
 				C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */,
 				C9D85CC721EF836C00B33336 /* Position.swift in Sources */,
 				C99299A221755D6900C5F8A5 /* DataTransport.swift in Sources */,

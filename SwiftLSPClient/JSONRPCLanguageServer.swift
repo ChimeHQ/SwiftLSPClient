@@ -36,7 +36,7 @@ private func relayResult<T>(result: JSONRPCLanguageServer.ProtocolResponse<T>, b
 extension JSONRPCLanguageServer: LanguageServer {
     typealias ProtocolResponse<T: Codable> = ProtocolTransport.ResponseResult<T>
     
-    public func initialize(params: InitalizeParams, block: @escaping (LanguageServerResult<InitializationResponse>) -> Void) {
+    public func initialize(params: InitializeParams, block: @escaping (LanguageServerResult<InitializationResponse>) -> Void) {
         let method = ProtocolMethod.Initialize
         
         protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<InitializationResponse>) in
