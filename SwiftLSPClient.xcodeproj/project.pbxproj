@@ -25,6 +25,7 @@
 		C99299B821755D8A00C5F8A5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AF21755D8A00C5F8A5 /* Client.swift */; };
 		C99299B921755D8A00C5F8A5 /* JSONRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299B021755D8A00C5F8A5 /* JSONRPC.swift */; };
 		C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299B121755D8A00C5F8A5 /* Basic.swift */; };
+		C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */; };
 		C9D85CC721EF836C00B33336 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC621EF836C00B33336 /* Position.swift */; };
 		C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC821EF837F00B33336 /* LSPRange.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		C99299B021755D8A00C5F8A5 /* JSONRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRPC.swift; sourceTree = "<group>"; };
 		C99299B121755D8A00C5F8A5 /* Basic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basic.swift; sourceTree = "<group>"; };
 		C99299BD21755EF300C5F8A5 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
 		C9D85CC621EF836C00B33336 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		C9D85CC821EF837F00B33336 /* LSPRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPRange.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +153,7 @@
 				C992999E21755D6900C5F8A5 /* MessageTransport.swift */,
 				C992999D21755D6900C5F8A5 /* ProtocolTransport.swift */,
 				C992999C21755D6900C5F8A5 /* StdioDataTransport.swift */,
+				C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */,
 			);
 			path = JSONRPC;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */,
 				C99299A521755D6900C5F8A5 /* MessageTransport.swift in Sources */,
 				C99299B621755D8A00C5F8A5 /* LanguageFeatures.swift in Sources */,
+				C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */,
 				C9D85CC721EF836C00B33336 /* Position.swift in Sources */,
 				C99299A221755D6900C5F8A5 /* DataTransport.swift in Sources */,
 			);
