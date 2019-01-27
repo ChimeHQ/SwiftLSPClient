@@ -14,7 +14,9 @@ public enum LanguageServerError: Error {
     case protocolError(Error)
     case invalidDocumentURI(URL)
     case unableToEncodeRequest
+    case unableToDecodeResponse(Error)
     case missingExpectedResult
+    case operationTimedOut
     case unimplemented
     
     case serverError(ProtocolErrorCode, String, [String: AnyObject]?)
@@ -22,7 +24,9 @@ public enum LanguageServerError: Error {
 
 public typealias LanguageServerResult<T> = Result<T, LanguageServerError>
 
-public protocol LanguageServer {
+public protocol LanguageServer: class {
+    var notificationResponder: NotificationResponder? { get set }
+
     func initialize(params: InitializeParams, block: @escaping (LanguageServerResult<InitializationResponse>) -> Void)
     
     func didOpenTextDocument(params: DidOpenTextDocumentParams, block: @escaping (LanguageServerError?) -> Void)
@@ -33,4 +37,14 @@ public protocol LanguageServer {
     func completion(params: CompletionParams, block: @escaping (LanguageServerResult<CompletionResponse>) -> Void)
     func hover(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<Hover>) -> Void)
     func signatureHelp(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<SignatureHelp>) -> Void)
+}
+
+public protocol NotificationResponder: class {
+    func languageServerInitialized(_ server: LanguageServer)
+
+    func languageServer(_ server: LanguageServer, logMessage message: LogMessageParams)
+    func languageServer(_ server: LanguageServer, showMessage message: ShowMessageParams)
+    func languageServer(_ server: LanguageServer, publishDiagnostics diagnosticsParams: PublishDiagnosticsParams)
+
+    func languageServer(_ server: LanguageServer, failedToDecodeNotification notificationName: String, with error: Error)
 }
