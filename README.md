@@ -24,13 +24,13 @@ host.start { (server) in
     let processId = Int(ProcessInfo.processInfo.processIdentifier)
     let capabilities = ClientCapabilities(workspace: nil, textDocument: nil, experimental: nil)
 
-    let params = InitalizeParams(processId: processId,
-                                 rootPath: nil,
-                                 rootURI: nil,
-                                 initializationOptions: nil,
-                                 capabilities: capabilities,
-                                 trace: Tracing.off,
-                                 workspaceFolders: nil)
+    let params = InitializeParams(processId: processId,
+                                  rootPath: nil,
+                                  rootURI: nil,
+                                  initializationOptions: nil,
+                                  capabilities: capabilities,
+                                  trace: Tracing.off,
+                                  workspaceFolders: nil)
 
     server.initialize(params: params, block: { (result) in
         switch result {
