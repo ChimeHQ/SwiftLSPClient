@@ -14,7 +14,7 @@ public class LanguageServerProcessHost {
     private let server: LanguageServer
     private var launched: Bool
 
-    public init(path: String, arguments: [String]) {
+    public init(path: String, arguments: [String], environment: [String : String] = [:]) {
         self.process = Process()
         self.transport = StdioDataTransport()
         self.server = JSONRPCLanguageServer(dataTransport: transport)
@@ -26,6 +26,7 @@ public class LanguageServerProcessHost {
 
         process.launchPath = path
         process.arguments = arguments
+        process.environment = environment
 
         process.terminationHandler = { [unowned self] (task) in
             self.transport.close()
