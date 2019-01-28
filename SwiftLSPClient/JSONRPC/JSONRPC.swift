@@ -60,9 +60,13 @@ public struct JSONRPCRequest<T>: Codable where T: Codable {
 }
 
 public struct ResponseError: Codable {
-    let code: ProtocolErrorCode
-    let message: String
-    let data: JSONValue
+    public let code: Int
+    public let message: String
+    public let data: JSONValue
+
+    public var languageServerError: LanguageServerError {
+        return LanguageServerError.serverError(code: code, message: message, data: nil)
+    }
 }
 
 public struct JSONRPCResponse: Codable {

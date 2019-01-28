@@ -47,22 +47,33 @@ class MessageTransport {
     private func dataReceived(_ data: Data) {
         buffer.append(data)
         
+        checkBuffer()
+    }
+
+    private func checkBuffer() {
         guard let contentRange = readContentRange(in: buffer) else {
             return
         }
-        
+
         if buffer.endIndex < contentRange.upperBound {
             return
         }
-        
+
         let content = buffer.subdata(in: contentRange)
         let messageRange = buffer.startIndex..<contentRange.upperBound
+
+        precondition(messageRange.count > 0)
         
         buffer.removeSubrange(messageRange)
-        
+
         self.dataHandler?(content)
+
+        // call recursively *only* if we have removed some data
+        if !buffer.isEmpty {
+            checkBuffer()
+        }
     }
-    
+
     private func readContentRange(in data: Data) -> Range<Data.Index>? {
         let seperator = "\r\n\r\n".data(using: .utf8)!
         

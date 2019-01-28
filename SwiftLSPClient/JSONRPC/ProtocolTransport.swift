@@ -133,9 +133,15 @@ class ProtocolTransport {
     }
     
     private func dispatchMessage(_ message: JSONRPCResponse, originalData data: Data) {
-        let responder = responders[message.id]
+        guard let responder = responders[message.id] else {
+            // hrm, got a message without a matching responder
+            print("not matching responder for \(message.id), dropping message")
+            return
+        }
             
-        responder?(.success(data))
+        responder(.success(data))
+
+        responders.removeValue(forKey: message.id)
     }
     
     private func dispatchNotification(_ notification: JSONRPCNotification, originalData data: Data) {

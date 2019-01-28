@@ -152,4 +152,20 @@ class MessageTransportTests: XCTestCase {
         
         XCTAssert(receiveCount >= 1000)
     }
+
+    func testTwoFullMessagesInOneRead() {
+        let messages = [
+            "Content-Length: 6\r\n\r\nabcdefContent-Length: 10\r\n\r\nabcdefghij"
+        ]
+
+        let results = writeMessagesAndReadResult(messages)
+
+        if results.count != 2 {
+            XCTFail()
+            return
+        }
+
+        XCTAssertEqual(results[0], "abcdef".data(using: .utf8)!)
+        XCTAssertEqual(results[1], "abcdefghij".data(using: .utf8)!)
+    }
 }
