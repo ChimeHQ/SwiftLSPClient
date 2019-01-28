@@ -25,6 +25,11 @@ public class JSONRPCLanguageServer {
 
 extension JSONRPCLanguageServer: ProtocolTransportDelegate {
     func transportReceived(_ transport: ProtocolTransport, undecodableData data: Data) {
+        if let string = String(data: data, encoding: .utf8) {
+            print("undecodable data received: \(string)")
+        } else {
+            print("undecodable data received: \(data)")
+        }
     }
 
     func transportReceived(_ transport: ProtocolTransport, notificationMethod: String, data: Data) {
@@ -81,6 +86,8 @@ private func relayResult<T>(result: JSONRPCLanguageServer.ProtocolResponse<T>, b
     case .success(let responseMessage):
         if let responseParam = responseMessage.result {
             block(.success(responseParam))
+        } else if let errorParam = responseMessage.error {
+            block(.failure(errorParam.languageServerError))
         } else {
             block(.failure(.missingExpectedResult))
         }

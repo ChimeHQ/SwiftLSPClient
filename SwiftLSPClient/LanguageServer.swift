@@ -19,7 +19,7 @@ public enum LanguageServerError: Error {
     case operationTimedOut
     case unimplemented
     
-    case serverError(ProtocolErrorCode, String, [String: AnyObject]?)
+    case serverError(code: Int, message: String, data: [String : AnyObject]?)
 }
 
 public typealias LanguageServerResult<T> = Result<T, LanguageServerError>
