@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ChimeHQ/SwiftLSPClient.svg?branch=master)](https://travis-ci.org/ChimeHQ/SwiftLSPClient)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods](https://img.shields.io/cocoapods/v/SwiftLSPClient.svg)](https://cocoapods.org/)
 
 This is a Swift library for interacting with [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations.
 
@@ -49,12 +50,16 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 
 ## Installation
 
-SwiftLSPClient uses [Carthage](https://github.com/Carthage/Carthage) for its dependencies, so it's a perfect fit for projects that also use that system.
-
 ### Carthage
 
 ```
 github "ChimeHQ/SwiftLSPClient"
+```
+
+### CocoaPods
+
+```
+  pod 'SwiftLSPClient'
 ```
 
 ### Building
