@@ -6,7 +6,7 @@ cache:
     - Carthage
 
 install:
-  - gem update cocoapods
+  - gem update cocoapods --pre
   - carthage bootstrap --verbose --platform macOS --cache-builds --no-use-binaries
 
 before_script:
