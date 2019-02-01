@@ -8,6 +8,9 @@ cache:
 before_script:
     - carthage bootstrap --verbose --platform macOS --cache-builds --no-use-binaries
 
+after_success:
+    - pod lib lint --skip-tests
+
 xcode_destination: platform=macOS
 xcode_project: SwiftLSPClient.xcodeproj
 xcode_scheme: SwiftLSPClient 

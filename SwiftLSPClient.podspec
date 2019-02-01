@@ -10,7 +10,10 @@ Pod::Spec.new do |s|
   
   s.source        = { :git => 'https://github.com/ChimeHQ/SwiftLSPClient.git', :tag => s.version }
   s.source_files  = 'SwiftLSPClient/**/*.swift'
-  s.requires_arc  = true
+  
+  s.test_spec do |ts|
+    ts.source_files = 'SwiftLSPClientTests/**/*.swift'
+  end
   
   s.dependency 'Result', '~> 4.0'
   
