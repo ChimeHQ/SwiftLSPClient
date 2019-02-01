@@ -2,14 +2,15 @@ language: swift
 os: osx
 osx_image: xcode10.1
 cache:
-    directories:
-        - Carthage
+  directories:
+    - Carthage
+
+install:
+  - gem update cocoapods
+  - carthage bootstrap --verbose --platform macOS --cache-builds --no-use-binaries
 
 before_script:
-    - carthage bootstrap --verbose --platform macOS --cache-builds --no-use-binaries
-
-after_success:
-    - pod lib lint --skip-tests
+  - pod lib lint --skip-tests --verbose
 
 xcode_destination: platform=macOS
 xcode_project: SwiftLSPClient.xcodeproj
