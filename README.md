@@ -1,8 +1,8 @@
-# SwiftLSPClient
-
 [![Build Status](https://travis-ci.org/ChimeHQ/SwiftLSPClient.svg?branch=master)](https://travis-ci.org/ChimeHQ/SwiftLSPClient)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/cocoapods/v/SwiftLSPClient.svg)](https://cocoapods.org/)
+
+# SwiftLSPClient
 
 This is a Swift library for interacting with [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations.
 
@@ -46,9 +46,9 @@ host.start { (server) in
 
 ## Supported Features
 
-The LSP [specification](https://microsoft.github.io/language-server-protocol/specification_) is large, and this library currently does not implement it all. Initialization, text synchronization, hover, and completions are supported. Additionally, the types defined should work correctly for servers that are written to a spec older than the current version (3.0).
+The LSP [specification](https://microsoft.github.io/language-server-protocol/specification) is large, and this library currently does not implement it all. Initialization, text synchronization, hover, and completions are supported. Additionally, the types defined should work correctly for servers that are written to a spec older than the current version (3.0).
 
-## Installation
+## Integration
 
 ### Carthage
 
@@ -59,12 +59,12 @@ github "ChimeHQ/SwiftLSPClient"
 ### CocoaPods
 
 ```
-  pod 'SwiftLSPClient'
+pod 'SwiftLSPClient'
 ```
 
 ### Building
 
-The project is being developed with Xcode 10.1 running on macOS 10.14 Mojave. After a checkout, you can install the dependencies with carthage.
+The project is being developed with Xcode 10.1 running on macOS 10.14 Mojave. After a checkout, you can install the dependencies with Carthage.
 
 ```
 carthage update --platform macOS
