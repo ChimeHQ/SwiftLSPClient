@@ -46,7 +46,54 @@ host.start { (server) in
 
 ## Supported Features
 
-The LSP [specification](https://microsoft.github.io/language-server-protocol/specification) is large, and this library currently does not implement it all. Initialization, text synchronization, hover, and completions are supported. Additionally, the types defined should work correctly for servers that are written to a spec older than the current version (3.0).
+The LSP [specification](https://microsoft.github.io/language-server-protocol/specification) is large, and this library currently does not implement it all. The intention is to support the 3.x specification, but be as backwards-compatible as possible with pre-3.0 servers. 
+
+| Feature            | Supported |
+| -------------------|:---------:|
+| window/showMessage | ✅ |
+| window/showMessageRequest | - |
+| window/logMessage | ✅ |
+| telemetry/event | - |
+| client/registerCapability | - |
+| client/unregisterCapability | - |
+| workspace/workspaceFolders | - |
+| workspace/didChangeWorkspaceFolders | - |
+| workspace/didChangeConfiguration | - |
+| workspace/configuration | - |
+| workspace/didChangeWatchedFiles | - |
+| workspace/symbol | - |
+| workspace/executeCommand | - |
+| workspace/applyEdit | - |
+| textDocument/didOpen | ✅ |
+| textDocument/didChange | ✅ |
+| textDocument/willSave | - |
+| textDocument/willSaveWaitUntil | - |
+| textDocument/didSave | ✅ |
+| textDocument/didClose | ✅ |
+| textDocument/publishDiagnostics | ✅ |
+| textDocument/completion | ✅ |
+| completionItem/resolve | - |
+| textDocument/hover | ✅ |
+| textDocument/signatureHelp | ✅ |
+| textDocument/declaration | - |
+| textDocument/typeDefinition | - |
+| textDocument/implementation | - |
+| textDocument/references | - |
+| textDocument/documentHighlight | - |
+| textDocument/documentSymbol | - |
+| textDocument/codeAction | - |
+| textDocument/codeLens | - |
+| codeLens/resolve | - |
+| textDocument/documentLink | - |
+| documentLink/resolve | - |
+| textDocument/documentColor | - |
+| textDocument/colorPresentation | - |
+| textDocument/formatting | - |
+| textDocument/rangeFormatting | - |
+| textDocument/onTypeFormatting | - |
+| textDocument/rename | - |
+| textDocument/prepareRename | - |
+| textDocument/foldingRange | - |
 
 ## Integration
 
