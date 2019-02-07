@@ -8,18 +8,66 @@
 
 import Foundation
 
+public struct GenericDynamicRegistration: Codable {
+    public let dynamicRegistration: Bool?
+
+    public init(dynamicRegistration: Bool) {
+        self.dynamicRegistration = dynamicRegistration
+    }
+}
+
+public enum ResourceOperationKind: String, Codable {
+    case create
+    case rename
+    case delete
+}
+
+public enum FailureHandlingKind: String, Codable {
+    case abort
+    case transactional
+    case textOnlyTransactional
+    case undo
+}
+
+public struct WorkspaceClientCapabilityEdit: Codable {
+    public let documentChanges: Bool?
+    public let resourceOperations: [ResourceOperationKind]
+    public let failureHandling: FailureHandlingKind?
+
+    public init(documentChanges: Bool?, resourceOperations: [ResourceOperationKind], failureHandling: FailureHandlingKind?) {
+        self.documentChanges = documentChanges
+        self.resourceOperations = resourceOperations
+        self.failureHandling = failureHandling
+    }
+}
+
+public struct WorkspaceClientCapabilitySymbol: Codable {
+    public let documentChanges: Bool?
+    public let symbolKind: [SymbolKind]?
+
+    public init(documentChanges: Bool?, symbolKind: [SymbolKind]?) {
+        self.documentChanges = documentChanges
+        self.symbolKind = symbolKind
+    }
+}
+
 public struct WorkspaceClientCapabilities: Codable {
     public let applyEdit: Bool?
-    //    public let workspaceEdit: JSONValue?
-    //    public let didChangeConfiguration: JSONValue?
-    //    public let didChangeWatchedFiles: JSONValue?
-    //    public let symbol: JSONValue?
-    //    public let executeCommand: JSONValue?
+    public let workspaceEdit: WorkspaceClientCapabilityEdit?
+    public let didChangeConfiguration: GenericDynamicRegistration?
+    public let didChangeWatchedFiles: GenericDynamicRegistration?
+    public let symbol: WorkspaceClientCapabilitySymbol?
+    public let executeCommand: GenericDynamicRegistration?
     public let workspaceFolders: Bool?
     public let configuration: Bool?
 
-    public init(applyEdit: Bool, workspaceFolders: Bool, configuration: Bool) {
+    public init(applyEdit: Bool, workspaceEdit: WorkspaceClientCapabilityEdit?, didChangeConfiguration: GenericDynamicRegistration?, didChangeWatchedFiles: GenericDynamicRegistration?, symbol: WorkspaceClientCapabilitySymbol?, executeCommand: GenericDynamicRegistration?, workspaceFolders: Bool?, configuration: Bool?) {
         self.applyEdit = applyEdit
+        self.workspaceEdit = workspaceEdit
+        self.didChangeConfiguration = didChangeConfiguration
+        self.didChangeWatchedFiles = didChangeWatchedFiles
+        self.symbol = symbol
+        self.executeCommand = executeCommand
         self.workspaceFolders = workspaceFolders
         self.configuration = configuration
     }
