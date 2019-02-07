@@ -49,11 +49,6 @@ public enum TextDocumentSyncKind: Int, Codable {
     case incremental = 2
 }
 
-public struct WorkspaceFolder: Codable {
-    public let uri: String
-    public let name: String
-}
-
 public enum LanguageIdentifier: String, Codable, CaseIterable {
     case go = "go"
     case json = "json"

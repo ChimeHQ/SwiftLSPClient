@@ -33,4 +33,8 @@ public struct ProtocolMethod {
     public struct CompletionItem {
         public static let Resolve = "completionItem/resolve"
     }
+
+    public struct Workspace {
+        public static let WorkspaceFolders = "workspace/workspaceFolders"
+    }
 }
