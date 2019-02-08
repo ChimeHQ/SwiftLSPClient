@@ -9,19 +9,19 @@
 import Foundation
 import Result
 
-enum ProtocolTransportError: Error {
+public enum ProtocolTransportError: Error {
     case encodingFailure(Error)
     case decodingFailure(Error)
     case transportSendFailure(Error)
     case responderRelayFailure(Error)
 }
 
-protocol ProtocolTransportDelegate: class {
+public protocol ProtocolTransportDelegate: class {
     func transportReceived(_ transport: ProtocolTransport, undecodableData data: Data)
     func transportReceived(_ transport: ProtocolTransport, notificationMethod: String, data: Data)
 }
 
-class ProtocolTransport {
+public class ProtocolTransport {
     public typealias ResponseResult<T: Codable> = Result<JSONRPCResultResponse<T>, ProtocolTransportError>
     public typealias DataResult = Result<Data, ProtocolTransportError>
     public typealias MessageResponder = (DataResult) -> Void
@@ -33,7 +33,7 @@ class ProtocolTransport {
     private let decoder: JSONDecoder
     public weak var delegate: ProtocolTransportDelegate?
     
-    init(messageTransport: MessageTransport) {
+    public init(messageTransport: MessageTransport) {
         self.messageTransport = messageTransport
         self.responders = [:]
         self.encoder = JSONEncoder()
@@ -44,7 +44,7 @@ class ProtocolTransport {
         }
     }
 
-    convenience init(dataTransport: DataTransport) {
+    public convenience init(dataTransport: DataTransport) {
         let messageTransport = MessageTransport(dataTransport: dataTransport)
         
         self.init(messageTransport: messageTransport)
@@ -58,7 +58,7 @@ class ProtocolTransport {
         handler(issuedId)
     }
     
-    func sendRequest<T, U>(_ request: T, method: String, responseHandler: @escaping (ResponseResult<U>) -> Void) where T: Codable, U: Decodable {
+    public func sendRequest<T, U>(_ request: T, method: String, responseHandler: @escaping (ResponseResult<U>) -> Void) where T: Codable, U: Decodable {
         generateID { (issuedId) in
             let rpcRequest = JSONRPCRequest(id: issuedId, method: method, params: request)
             
@@ -71,14 +71,10 @@ class ProtocolTransport {
                 return
             }
             
-            do {
-                try self.messageTransport.sendMessage(jsonData)
+            self.messageTransport.write(jsonData)
                 
-                responders[issuedId] = { [unowned self] (result) in
-                    self.relayResponse(result: result, responseHandler: responseHandler)
-                }
-            } catch {
-                responseHandler(.failure(.transportSendFailure(error)))
+            responders[issuedId] = { [unowned self] (result) in
+                self.relayResponse(result: result, responseHandler: responseHandler)
             }
         }
     }
@@ -98,7 +94,7 @@ class ProtocolTransport {
         }
     }
     
-    func sendNotification<T>(_ params: T, method: String, block: @escaping (ProtocolTransportError?) -> Void) where T: Codable {
+    public func sendNotification<T>(_ params: T, method: String, block: @escaping (ProtocolTransportError?) -> Void) where T: Codable {
         let notification = JSONRPCNotificationParams(method: method, params: params)
         
         let jsonData: Data
@@ -110,12 +106,7 @@ class ProtocolTransport {
             return
         }
         
-        do {
-            try self.messageTransport.sendMessage(jsonData)
-            block(nil)
-        } catch {
-            block(.transportSendFailure(error))
-        }
+        messageTransport.write(jsonData)
     }
     
     private func dataAvailable(_ data: Data) {

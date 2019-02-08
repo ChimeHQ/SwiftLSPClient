@@ -8,17 +8,15 @@
 
 import Foundation
 
-class MessageTransport {
-    typealias ReadHandler = (Data) -> Void
-    
+public class MessageTransport {
     private let dataTransport: DataTransport
-    var dataHandler: ReadHandler?
+    var dataHandler: DataTransport.ReadHandler?
     private var buffer: Data
     
     private static var partSeperator = "\r\n".data(using: .utf8)!
     private static var headerSeperator = ": ".data(using: .utf8)!
 
-    init(dataTransport: DataTransport) {
+    public init(dataTransport: DataTransport) {
         self.dataTransport = dataTransport
         self.buffer = Data()
         
@@ -30,20 +28,7 @@ class MessageTransport {
             self.dataReceived(data)
         })
     }
-    
-    func sendMessage(_ data: Data) throws {
-        let length = data.count
-        
-        let header = "Content-Length: \(length)\r\n\r\n"
-        guard let headerData = header.data(using: .utf8) else {
-            fatalError()
-        }
-        
-        let messageData = headerData + data
-        
-        dataTransport.write(messageData)
-    }
-    
+
     private func dataReceived(_ data: Data) {
         buffer.append(data)
         
@@ -149,5 +134,28 @@ class MessageTransport {
         let endOfHeader = terminatorRange?.upperBound ?? range.upperBound
         
         return (key, value, endOfHeader)
+    }
+}
+
+extension MessageTransport: DataTransport {
+    public func write(_ data: Data) {
+        let length = data.count
+
+        let header = "Content-Length: \(length)\r\n\r\n"
+        guard let headerData = header.data(using: .utf8) else {
+            fatalError()
+        }
+
+        let messageData = headerData + data
+
+        dataTransport.write(messageData)
+    }
+
+    public func setReaderHandler(_ handler: @escaping DataTransport.ReadHandler) {
+        self.dataHandler = handler
+    }
+
+    public func close() {
+        dataTransport.close()
     }
 }

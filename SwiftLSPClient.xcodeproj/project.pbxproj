@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		C90F9BB421773CB800EC3854 /* LanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F9BB321773CB800EC3854 /* LanguageServer.swift */; };
+		C9361B5E220DD9F600254280 /* MockProtocolTransportMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */; };
 		C96CB61E220C8C2F00F13A36 /* SymbolKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */; };
 		C96CB620220C917B00F13A36 /* WorkspaceFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */; };
+		C96CB62A220D11D700F13A36 /* ProtocolTransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */; };
+		C96CB62E220D120900F13A36 /* MockDataTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB62D220D120900F13A36 /* MockDataTransport.swift */; };
+		C96CB630220D168800F13A36 /* TextDocumentIndentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB62F220D168800F13A36 /* TextDocumentIndentifier.swift */; };
 		C986779C21B45A3D00C1BE5A /* LanguageServerProcessHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C986779B21B45A3D00C1BE5A /* LanguageServerProcessHost.swift */; };
 		C986779E21BB53E700C1BE5A /* SignatureHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C986779D21BB53E700C1BE5A /* SignatureHelp.swift */; };
 		C992998921755D0900C5F8A5 /* SwiftLSPClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C992997F21755D0900C5F8A5 /* SwiftLSPClient.framework */; };
@@ -49,8 +53,12 @@
 
 /* Begin PBXFileReference section */
 		C90F9BB321773CB800EC3854 /* LanguageServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageServer.swift; sourceTree = "<group>"; };
+		C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocolTransportMessage.swift; sourceTree = "<group>"; };
 		C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolKind.swift; sourceTree = "<group>"; };
 		C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceFolder.swift; sourceTree = "<group>"; };
+		C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolTransportTests.swift; sourceTree = "<group>"; };
+		C96CB62D220D120900F13A36 /* MockDataTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataTransport.swift; sourceTree = "<group>"; };
+		C96CB62F220D168800F13A36 /* TextDocumentIndentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDocumentIndentifier.swift; sourceTree = "<group>"; };
 		C986779B21B45A3D00C1BE5A /* LanguageServerProcessHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageServerProcessHost.swift; sourceTree = "<group>"; };
 		C986779D21BB53E700C1BE5A /* SignatureHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureHelp.swift; sourceTree = "<group>"; };
 		C992997F21755D0900C5F8A5 /* SwiftLSPClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLSPClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +147,9 @@
 			children = (
 				C992998D21755D0900C5F8A5 /* MessageTransportTests.swift */,
 				C992998F21755D0900C5F8A5 /* Info.plist */,
+				C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */,
+				C96CB62D220D120900F13A36 /* MockDataTransport.swift */,
+				C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */,
 			);
 			path = SwiftLSPClientTests;
 			sourceTree = "<group>";
@@ -162,6 +173,7 @@
 				C99DBF3D21FE1DC2005AC5C5 /* ClientCapabilities.swift */,
 				C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */,
 				C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */,
+				C96CB62F220D168800F13A36 /* TextDocumentIndentifier.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -317,6 +329,7 @@
 				C99299A521755D6900C5F8A5 /* MessageTransport.swift in Sources */,
 				C99DBF3C21FE1D69005AC5C5 /* ServerCapabilities.swift in Sources */,
 				C99299B621755D8A00C5F8A5 /* LanguageFeatures.swift in Sources */,
+				C96CB630220D168800F13A36 /* TextDocumentIndentifier.swift in Sources */,
 				C99DBF3E21FE1DC2005AC5C5 /* ClientCapabilities.swift in Sources */,
 				C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */,
 				C9D85CC721EF836C00B33336 /* Position.swift in Sources */,
@@ -328,7 +341,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96CB62E220D120900F13A36 /* MockDataTransport.swift in Sources */,
 				C992998E21755D0900C5F8A5 /* MessageTransportTests.swift in Sources */,
+				C96CB62A220D11D700F13A36 /* ProtocolTransportTests.swift in Sources */,
+				C9361B5E220DD9F600254280 /* MockProtocolTransportMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
