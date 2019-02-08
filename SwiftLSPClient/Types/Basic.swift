@@ -68,14 +68,6 @@ public struct TextDocumentItem: Codable {
     }
 }
 
-public struct TextDocumentIdentifier: Codable {
-    public let uri: DocumentUri
-    
-    public init(uri: DocumentUri) {
-        self.uri = uri
-    }
-}
-
 public struct VersionedTextDocumentIdentifier: Codable {
     public let uri: DocumentUri
     public let version: Int?

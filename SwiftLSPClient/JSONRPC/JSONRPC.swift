@@ -80,6 +80,27 @@ public struct JSONRPCResultResponse<T>: Codable where T: Codable {
     public let id: JSONId?
     public let result: T?
     public let error: ResponseError?
+
+    public init(id: JSONId, result: T) {
+        self.jsonrpc = "2.0"
+        self.id = id
+        self.result = result
+        self.error = nil
+    }
+
+    public init(id: Int, result: T) {
+        self.jsonrpc = "2.0"
+        self.id = JSONId.numericId(id)
+        self.result = result
+        self.error = nil
+    }
+
+    public init(id: JSONId, error: ResponseError) {
+        self.jsonrpc = "2.0"
+        self.id = id
+        self.result = nil
+        self.error = error
+    }
 }
 
 public struct JSONRPCNotification: Codable {

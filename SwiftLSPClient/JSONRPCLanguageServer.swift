@@ -24,7 +24,7 @@ public class JSONRPCLanguageServer {
 }
 
 extension JSONRPCLanguageServer: ProtocolTransportDelegate {
-    func transportReceived(_ transport: ProtocolTransport, undecodableData data: Data) {
+    public func transportReceived(_ transport: ProtocolTransport, undecodableData data: Data) {
         if let string = String(data: data, encoding: .utf8) {
             print("undecodable data received: \(string)")
         } else {
@@ -32,7 +32,7 @@ extension JSONRPCLanguageServer: ProtocolTransportDelegate {
         }
     }
 
-    func transportReceived(_ transport: ProtocolTransport, notificationMethod: String, data: Data) {
+    public func transportReceived(_ transport: ProtocolTransport, notificationMethod: String, data: Data) {
         guard let responder = notificationResponder else {
             return
         }
