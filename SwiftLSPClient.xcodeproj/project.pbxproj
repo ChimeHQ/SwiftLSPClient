@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C90F9BB421773CB800EC3854 /* LanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F9BB321773CB800EC3854 /* LanguageServer.swift */; };
 		C9361B5E220DD9F600254280 /* MockProtocolTransportMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */; };
+		C9361B60220E58EB00254280 /* DocumentSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B5F220E58EB00254280 /* DocumentSymbol.swift */; };
+		C9361B64220E671400254280 /* TypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B63220E671400254280 /* TypeTests.swift */; };
 		C96CB61E220C8C2F00F13A36 /* SymbolKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */; };
 		C96CB620220C917B00F13A36 /* WorkspaceFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */; };
 		C96CB62A220D11D700F13A36 /* ProtocolTransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */; };
@@ -54,6 +56,8 @@
 /* Begin PBXFileReference section */
 		C90F9BB321773CB800EC3854 /* LanguageServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageServer.swift; sourceTree = "<group>"; };
 		C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocolTransportMessage.swift; sourceTree = "<group>"; };
+		C9361B5F220E58EB00254280 /* DocumentSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSymbol.swift; sourceTree = "<group>"; };
+		C9361B63220E671400254280 /* TypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTests.swift; sourceTree = "<group>"; };
 		C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolKind.swift; sourceTree = "<group>"; };
 		C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceFolder.swift; sourceTree = "<group>"; };
 		C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolTransportTests.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */,
 				C96CB62D220D120900F13A36 /* MockDataTransport.swift */,
 				C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */,
+				C9361B63220E671400254280 /* TypeTests.swift */,
 			);
 			path = SwiftLSPClientTests;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */,
 				C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */,
 				C96CB62F220D168800F13A36 /* TextDocumentIndentifier.swift */,
+				C9361B5F220E58EB00254280 /* DocumentSymbol.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -326,6 +332,7 @@
 				C99299B821755D8A00C5F8A5 /* Client.swift in Sources */,
 				C99DBF4421FE3D42005AC5C5 /* Location.swift in Sources */,
 				C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */,
+				C9361B60220E58EB00254280 /* DocumentSymbol.swift in Sources */,
 				C99299A521755D6900C5F8A5 /* MessageTransport.swift in Sources */,
 				C99DBF3C21FE1D69005AC5C5 /* ServerCapabilities.swift in Sources */,
 				C99299B621755D8A00C5F8A5 /* LanguageFeatures.swift in Sources */,
@@ -341,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9361B64220E671400254280 /* TypeTests.swift in Sources */,
 				C96CB62E220D120900F13A36 /* MockDataTransport.swift in Sources */,
 				C992998E21755D0900C5F8A5 /* MessageTransportTests.swift in Sources */,
 				C96CB62A220D11D700F13A36 /* ProtocolTransportTests.swift in Sources */,
