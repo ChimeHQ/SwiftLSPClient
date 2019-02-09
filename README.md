@@ -80,7 +80,7 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | textDocument/implementation | - |
 | textDocument/references | - |
 | textDocument/documentHighlight | - |
-| textDocument/documentSymbol | - |
+| textDocument/documentSymbol | ✅ |
 | textDocument/codeAction | - |
 | textDocument/codeLens | - |
 | codeLens/resolve | - |

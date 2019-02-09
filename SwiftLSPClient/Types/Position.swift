@@ -16,6 +16,11 @@ public struct Position {
         self.line = line
         self.character = character
     }
+
+    public init(_ pair: (Int, Int)) {
+        self.line = pair.0
+        self.character = pair.1
+    }
 }
 
 extension Position: CustomStringConvertible {

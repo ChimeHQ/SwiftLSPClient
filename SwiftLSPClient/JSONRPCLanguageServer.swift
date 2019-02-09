@@ -173,4 +173,12 @@ extension JSONRPCLanguageServer: LanguageServer {
             relayResult(result: result, block: block)
         }
     }
+
+    public func documentSymbol(params: DocumentSymbolParams, block: @escaping (LanguageServerResult<DocumentSymbolResponse>) -> Void) {
+        let method = ProtocolMethod.TextDocument.DocumentSymbol
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<DocumentSymbolResponse>) in
+            relayResult(result: result, block: block)
+        }
+    }
 }

@@ -16,6 +16,11 @@ public struct LSPRange {
         self.start = start
         self.end = end
     }
+
+    public init(startPair: (Int, Int), endPair: (Int, Int)) {
+        self.start = Position(startPair)
+        self.end = Position(endPair)
+    }
 }
 
 extension LSPRange: CustomStringConvertible {
