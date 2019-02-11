@@ -41,13 +41,26 @@ public struct WorkspaceClientCapabilityEdit: Codable {
     }
 }
 
-public struct WorkspaceClientCapabilitySymbol: Codable {
-    public let documentChanges: Bool?
-    public let symbolKind: [SymbolKind]?
+public struct WorkspaceClientCapabilitySymbolValueSet: Codable {
+    let valueSet: [SymbolKind]?
 
-    public init(documentChanges: Bool?, symbolKind: [SymbolKind]?) {
-        self.documentChanges = documentChanges
+    public init(valueSet: [SymbolKind]?) {
+        self.valueSet = valueSet
+    }
+}
+
+public struct WorkspaceClientCapabilitySymbol: Codable {
+    public let dynamicRegistration: Bool?
+    public let symbolKind: WorkspaceClientCapabilitySymbolValueSet?
+
+    public init(dynamicRegistration: Bool?, symbolKind: WorkspaceClientCapabilitySymbolValueSet?) {
+        self.dynamicRegistration = dynamicRegistration
         self.symbolKind = symbolKind
+    }
+
+    public init(dynamicRegistration: Bool?, symbolKind: [SymbolKind]?) {
+        self.dynamicRegistration = dynamicRegistration
+        self.symbolKind = WorkspaceClientCapabilitySymbolValueSet(valueSet: symbolKind)
     }
 }
 
