@@ -53,17 +53,6 @@ public struct TextDocumentChangeRegistrationOptions: Codable {
     public let syncKind: TextDocumentSyncKind
 }
 
-public enum TextDocumentSaveReason: Int, Codable {
-    case manual = 1
-    case afterDelay = 2
-    case focusOut = 3
-}
-
-public struct WillSaveTextDocumentParams: Codable {
-    public let textDocument: TextDocumentIdentifier
-    public let reason: TextDocumentSaveReason
-}
-
 public struct DidSaveTextDocumentParams: Codable {
     public let textDocument: TextDocumentIdentifier
     public let text: String?

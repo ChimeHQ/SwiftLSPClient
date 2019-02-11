@@ -148,7 +148,24 @@ extension JSONRPCLanguageServer: LanguageServer {
             block(upstreamError)
         }
     }
-    
+
+    public func willSaveTextDocument(params: WillSaveTextDocumentParams, block: @escaping (LanguageServerError?) -> Void) {
+        let method = ProtocolMethod.TextDocument.WillSave
+
+        protocolTransport.sendNotification(params, method: method)  { (error) in
+            let upstreamError = error.map { LanguageServerError.protocolError($0) }
+            block(upstreamError)
+        }
+    }
+
+    public func willSaveWaitUntilTextDocument(params: WillSaveTextDocumentParams, block: @escaping (LanguageServerResult<WillSaveWaitUntilResponse>) -> Void) {
+        let method = ProtocolMethod.TextDocument.WillSaveWaitUntil
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<WillSaveWaitUntilResponse>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
     public func didSaveTextDocument(params: DidSaveTextDocumentParams, block: @escaping (LanguageServerError?) -> Void) {
         let method = ProtocolMethod.TextDocument.DidSave
         
