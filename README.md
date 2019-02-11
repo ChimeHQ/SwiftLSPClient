@@ -66,8 +66,8 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | workspace/applyEdit | - |
 | textDocument/didOpen | ✅ |
 | textDocument/didChange | ✅ |
-| textDocument/willSave | - |
-| textDocument/willSaveWaitUntil | - |
+| textDocument/willSave | ✅ |
+| textDocument/willSaveWaitUntil | ✅ |
 | textDocument/didSave | ✅ |
 | textDocument/didClose | ✅ |
 | textDocument/publishDiagnostics | ✅ |
