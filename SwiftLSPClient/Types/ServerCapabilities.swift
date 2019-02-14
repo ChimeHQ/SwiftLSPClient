@@ -74,13 +74,41 @@ public struct ExecuteCommandOptions: Codable {
     public let commands: [String]
 }
 
+public enum ServerCapabilityTypeDefinitionProvider: Codable {
+    case boolean(Bool)
+    case registrationOptions(TextDocumentAndStaticRegistrationOptions)
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+
+        do {
+            let value = try container.decode(Bool.self)
+            self = .boolean(value)
+        } catch DecodingError.typeMismatch {
+            let value = try container.decode(TextDocumentAndStaticRegistrationOptions.self)
+            self = .registrationOptions(value)
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+
+        switch self {
+        case .boolean(let value):
+            try container.encode(value)
+        case .registrationOptions(let value):
+            try container.encode(value)
+        }
+    }
+}
+
 public struct ServerCapabilities: Codable {
     public let textDocumentSync: ServerCapabilitiesTextDocumentSync
     public let hoverProvider: Bool?
     public let completionProvider: CompletionOptions?
     public let signatureHelpProvider: SignatureHelpOptions?
     public let definitionProvider: Bool?
-    public let typeDefinitionProvider: JSONValue?
+    public let typeDefinitionProvider: ServerCapabilityTypeDefinitionProvider?
     public let implementationProvider: JSONValue?
     public let referencesProvider: Bool?
     public let documentHighlightProvider: Bool?
