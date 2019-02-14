@@ -191,6 +191,14 @@ extension JSONRPCLanguageServer: LanguageServer {
         }
     }
 
+    public func typeDefinition(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<TypeDefinitionResponse?>) -> Void) {
+        let method = ProtocolMethod.TextDocument.TypeDefinition
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<TypeDefinitionResponse?>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
     public func documentSymbol(params: DocumentSymbolParams, block: @escaping (LanguageServerResult<DocumentSymbolResponse>) -> Void) {
         let method = ProtocolMethod.TextDocument.DocumentSymbol
 

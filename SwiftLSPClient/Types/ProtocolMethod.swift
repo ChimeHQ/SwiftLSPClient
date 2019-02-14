@@ -27,6 +27,7 @@ public struct ProtocolMethod {
         public static let DidSave = "textDocument/didSave"
         public static let DidClose = "textDocument/didClose"
         public static let SignatureHelp = "textDocument/signatureHelp"
+        public static let TypeDefinition = "textDocument/typeDefinition"
         public static let DocumentSymbol = "textDocument/documentSymbol"
         public static let PublishDiagnostics = "textDocument/publishDiagnostics"
     }

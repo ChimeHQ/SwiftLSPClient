@@ -150,6 +150,16 @@ public struct TextDocumentClientCapabilityHover: Codable {
     }
 }
 
+public struct TextDocumentClientCapabilityTypeDefinition: Codable {
+    public let dynamicRegistration: Bool?
+    public let linkSupport: Bool?
+
+    public init(dynamicRegistration: Bool?, linkSupport: Bool?) {
+        self.dynamicRegistration = dynamicRegistration
+        self.linkSupport = linkSupport
+    }
+}
+
 public struct TextDocumentClientCapabilityPublicDiagnostics: Codable {
     public let relatedInformation: Bool?
 
@@ -170,7 +180,7 @@ public struct TextDocumentClientCapabilities: Codable {
     public let rangeFormatting: JSONValue?
     public let onTypeFormatting: JSONValue?
     public let definition: JSONValue?
-    public let typeDefinition: JSONValue?
+    public let typeDefinition: TextDocumentClientCapabilityTypeDefinition?
     public let implementation: JSONValue?
     public let codeAction: JSONValue?
     public let codeLens: JSONValue?
@@ -180,7 +190,7 @@ public struct TextDocumentClientCapabilities: Codable {
     public let publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?
     public let foldingRange: JSONValue?
 
-    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics? = nil) {
+    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, typeDefinition: TextDocumentClientCapabilityTypeDefinition? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics? = nil) {
         self.synchronization = synchronization
         self.completion = completion
         self.hover = hover
@@ -192,7 +202,7 @@ public struct TextDocumentClientCapabilities: Codable {
         self.rangeFormatting = nil
         self.onTypeFormatting = nil
         self.definition = nil
-        self.typeDefinition = nil
+        self.typeDefinition = typeDefinition
         self.implementation = nil
         self.codeAction = nil
         self.codeLens = nil
