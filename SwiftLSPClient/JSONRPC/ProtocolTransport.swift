@@ -107,6 +107,7 @@ public class ProtocolTransport {
         }
         
         messageTransport.write(jsonData)
+        block(nil)
     }
     
     private func dataAvailable(_ data: Data) {

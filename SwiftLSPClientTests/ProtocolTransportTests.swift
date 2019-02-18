@@ -36,7 +36,30 @@ class ProtocolTransportTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
 
-    func testNotification() {
+    func testSendNotification() {
+        let dataTransport = MockDataTransport()
+        let messageTransport = MessageTransport(dataTransport: dataTransport)
+        let transport = ProtocolTransport(messageTransport: messageTransport)
+
+        let expectation = XCTestExpectation(description: "Notification Message")
+
+        let request = TextDocumentIdentifier(uri: "hello")
+
+        transport.sendNotification(request, method: "mynotification") { (error) in
+            XCTAssertNil(error)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 1.0)
+
+        let result = "Content-Length: 68\r\n\r\n{\"jsonrpc\":\"2.0\",\"method\":\"mynotification\",\"params\":{\"uri\":\"hello\"}}"
+
+        let writtenStrings = dataTransport.writtenData.compactMap({ String(data: $0, encoding: .utf8) })
+
+        XCTAssertEqual(writtenStrings, [result])
+    }
+
+    func testServerToClientNotification() {
         let dataTransport = MockDataTransport()
         let messageTransport = MessageTransport(dataTransport: dataTransport)
         let transport = ProtocolTransport(messageTransport: messageTransport)
