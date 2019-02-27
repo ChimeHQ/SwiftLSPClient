@@ -29,6 +29,9 @@ public struct ProtocolMethod {
         public static let SignatureHelp = "textDocument/signatureHelp"
         public static let TypeDefinition = "textDocument/typeDefinition"
         public static let DocumentSymbol = "textDocument/documentSymbol"
+        public static let Formatting = "textDocument/formatting"
+        public static let RangeFormatting = "textDocument/rangeFormatting"
+        public static let OnTypeFormatting = "textDocument/onTypeFormatting"
         public static let PublishDiagnostics = "textDocument/publishDiagnostics"
     }
     
