@@ -102,6 +102,11 @@ public enum ServerCapabilityTypeDefinitionProvider: Codable {
     }
 }
 
+public struct DocumentOnTypeFormattingOptions: Codable {
+    public let firstTriggerCharacter: String
+    public let moreTriggerCharacter: [String]?
+}
+
 public struct ServerCapabilities: Codable {
     public let textDocumentSync: ServerCapabilitiesTextDocumentSync
     public let hoverProvider: Bool?
@@ -118,7 +123,7 @@ public struct ServerCapabilities: Codable {
     public let codeLensProvider: JSONValue?
     public let documentFormattingProvider: Bool?
     public let documentRangeFormattingProvider: Bool?
-    public let documentOnTypeFormattingProvider: JSONValue?
+    public let documentOnTypeFormattingProvider: DocumentOnTypeFormattingOptions?
     public let renameProvider: JSONValue?
     public let documentLinkProvider: JSONValue?
     public let colorProvider: JSONValue?

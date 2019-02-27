@@ -88,9 +88,9 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | documentLink/resolve | - |
 | textDocument/documentColor | - |
 | textDocument/colorPresentation | - |
-| textDocument/formatting | - |
-| textDocument/rangeFormatting | - |
-| textDocument/onTypeFormatting | - |
+| textDocument/formatting | ✅ |
+| textDocument/rangeFormatting | ✅ |
+| textDocument/onTypeFormatting | ✅ |
 | textDocument/rename | - |
 | textDocument/prepareRename | - |
 | textDocument/foldingRange | - |

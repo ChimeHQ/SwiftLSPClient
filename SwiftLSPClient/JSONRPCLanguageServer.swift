@@ -206,4 +206,29 @@ extension JSONRPCLanguageServer: LanguageServer {
             relayResult(result: result, block: block)
         }
     }
+
+    public func formatting(params: DocumentFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void) {
+        let method = ProtocolMethod.TextDocument.Formatting
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<FormattingResult>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
+    public func rangeFormatting(params: DocumentRangeFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void) {
+        let method = ProtocolMethod.TextDocument.RangeFormatting
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<FormattingResult>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
+    public func onTypeFormatting(params: DocumentOnTypeFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void) {
+        let method = ProtocolMethod.TextDocument.OnTypeFormatting
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<FormattingResult>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
 }

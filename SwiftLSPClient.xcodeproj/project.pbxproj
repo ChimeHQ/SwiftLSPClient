@@ -14,6 +14,7 @@
 		C9361B5E220DD9F600254280 /* MockProtocolTransportMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */; };
 		C9361B60220E58EB00254280 /* DocumentSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B5F220E58EB00254280 /* DocumentSymbol.swift */; };
 		C9361B64220E671400254280 /* TypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B63220E671400254280 /* TypeTests.swift */; };
+		C945420A2226138B000CEFB2 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94542092226138B000CEFB2 /* Formatting.swift */; };
 		C96CB61E220C8C2F00F13A36 /* SymbolKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */; };
 		C96CB620220C917B00F13A36 /* WorkspaceFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */; };
 		C96CB62A220D11D700F13A36 /* ProtocolTransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */; };
@@ -64,6 +65,7 @@
 		C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocolTransportMessage.swift; sourceTree = "<group>"; };
 		C9361B5F220E58EB00254280 /* DocumentSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSymbol.swift; sourceTree = "<group>"; };
 		C9361B63220E671400254280 /* TypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTests.swift; sourceTree = "<group>"; };
+		C94542092226138B000CEFB2 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolKind.swift; sourceTree = "<group>"; };
 		C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceFolder.swift; sourceTree = "<group>"; };
 		C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolTransportTests.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				C91160E4221106FF00B4F3AB /* WillSaveTextDocument.swift */,
 				C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */,
 				C91160EF2214F86B00B4F3AB /* LocationLink.swift */,
+				C94542092226138B000CEFB2 /* Formatting.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				C99299A021755D6900C5F8A5 /* JSONRPCLanguageServer.swift in Sources */,
 				C91160E5221106FF00B4F3AB /* WillSaveTextDocument.swift in Sources */,
 				C99DBF4321FE3D42005AC5C5 /* Diagnostics.swift in Sources */,
+				C945420A2226138B000CEFB2 /* Formatting.swift in Sources */,
 				C99299B321755D8A00C5F8A5 /* ProtocolMethod.swift in Sources */,
 				C99299A321755D6900C5F8A5 /* StdioDataTransport.swift in Sources */,
 				C96CB620220C917B00F13A36 /* WorkspaceFolder.swift in Sources */,

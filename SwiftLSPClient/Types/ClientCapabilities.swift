@@ -176,9 +176,9 @@ public struct TextDocumentClientCapabilities: Codable {
     public let references: JSONValue?
     public let documentHighlight: JSONValue?
     public let documentSymbol: JSONValue?
-    public let formatting: JSONValue?
-    public let rangeFormatting: JSONValue?
-    public let onTypeFormatting: JSONValue?
+    public let formatting: GenericDynamicRegistration?
+    public let rangeFormatting: GenericDynamicRegistration?
+    public let onTypeFormatting: GenericDynamicRegistration?
     public let definition: JSONValue?
     public let typeDefinition: TextDocumentClientCapabilityTypeDefinition?
     public let implementation: JSONValue?
@@ -190,7 +190,7 @@ public struct TextDocumentClientCapabilities: Codable {
     public let publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?
     public let foldingRange: JSONValue?
 
-    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, typeDefinition: TextDocumentClientCapabilityTypeDefinition? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics? = nil) {
+    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, typeDefinition: TextDocumentClientCapabilityTypeDefinition?, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?) {
         self.synchronization = synchronization
         self.completion = completion
         self.hover = hover
@@ -198,9 +198,9 @@ public struct TextDocumentClientCapabilities: Codable {
         self.references = nil
         self.documentHighlight = nil
         self.documentSymbol = nil
-        self.formatting = nil
-        self.rangeFormatting = nil
-        self.onTypeFormatting = nil
+        self.formatting = formatting
+        self.rangeFormatting = rangeFormatting
+        self.onTypeFormatting = onTypeFormatting
         self.definition = nil
         self.typeDefinition = typeDefinition
         self.implementation = nil
