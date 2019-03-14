@@ -13,12 +13,14 @@ public class StdioDataTransport: DataTransport {
     public let stdoutPipe: Pipe
     public let stderrPipe: Pipe
     var readHandler: ReadHandler?
+    private var closed: Bool
     
     public init() {
         self.stdinPipe = Pipe()
         self.stdoutPipe = Pipe()
         self.stderrPipe = Pipe()
         self.readHandler = nil
+        self.closed = false
         
         stdoutPipe.fileHandleForReading.readabilityHandler = { [unowned self] handle in
             let data = handle.availableData
@@ -44,6 +46,10 @@ public class StdioDataTransport: DataTransport {
     }
     
     public func write(_ data: Data) {
+        if closed {
+            return
+        }
+
         stdinPipe.fileHandleForWriting.write(data)
     }
     
@@ -52,6 +58,12 @@ public class StdioDataTransport: DataTransport {
     }
 
     public func close() {
+        if closed {
+            return
+        }
+        
+        closed = true
+
         [stdoutPipe, stderrPipe, stdinPipe].forEach { (pipe) in
             pipe.fileHandleForWriting.closeFile()
             pipe.fileHandleForReading.closeFile()
