@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 public class JSONRPCLanguageServer {
     private var messageId: Int

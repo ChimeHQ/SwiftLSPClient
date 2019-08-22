@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 public enum LanguageServerError: Error {
     case serverUnavailable

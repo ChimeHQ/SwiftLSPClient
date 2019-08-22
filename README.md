@@ -97,6 +97,14 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 
 ## Integration
 
+### Swift Package Manager
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/ChimeHQ/SwiftLSPClient.git")
+]
+```
+
 ### Carthage
 
 ```

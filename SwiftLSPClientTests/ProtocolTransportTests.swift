@@ -7,7 +7,6 @@
 //
 
 import XCTest
-import Result
 @testable import SwiftLSPClient
 
 class ProtocolTransportTests: XCTestCase {
@@ -22,8 +21,8 @@ class ProtocolTransportTests: XCTestCase {
 
         let request = TextDocumentIdentifier(uri: "hello")
         transport.sendRequest(request, method: "mymethod") { (result: TestResult) in
-            XCTAssertNil(result.error)
-            XCTAssertEqual(result.value?.result, TextDocumentIdentifier(uri: "goodbye"))
+            let value = try? result.get()
+            XCTAssertEqual(value?.result, TextDocumentIdentifier(uri: "goodbye"))
 
             expectation.fulfill()
         }

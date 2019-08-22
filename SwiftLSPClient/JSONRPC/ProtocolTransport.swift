@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 public enum ProtocolTransportError: Error {
     case encodingFailure(Error)
