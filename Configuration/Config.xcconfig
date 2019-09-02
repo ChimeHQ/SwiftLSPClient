@@ -9,6 +9,8 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-FRAMEWORK_SEARCH_PATHS = $(PROJECT_DIR)/Carthage/Build/Mac
+CURRENT_PROJECT_VERSION = 10
+MARKETING_VERSION = 0.7.0
+DYLIB_CURRENT_VERSION = $(CURRENT_PROJECT_VERSION)
 
 MACOSX_DEPLOYMENT_TARGET = 10.10
