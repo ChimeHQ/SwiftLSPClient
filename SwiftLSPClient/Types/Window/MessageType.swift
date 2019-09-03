@@ -1,8 +1,8 @@
 //
-//  Message.swift
+//  MessageType.swift
 //  SwiftLSPClient
 //
-//  Created by Matt Massicotte on 2019-01-27.
+//  Created by Matt Massicotte on 2019-09-02.
 //  Copyright © 2019 Chime Systems. All rights reserved.
 //
 
@@ -29,16 +29,3 @@ extension MessageType: CustomStringConvertible {
         }
     }
 }
-
-public struct LogMessageParams: Codable {
-    public let type: MessageType
-    public let message: String
-}
-
-extension LogMessageParams: CustomStringConvertible {
-    public var description: String {
-        return "\(type): \(message)"
-    }
-}
-
-public typealias ShowMessageParams = LogMessageParams

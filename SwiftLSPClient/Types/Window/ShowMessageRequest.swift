@@ -22,10 +22,3 @@ extension ShowMessageRequestParams: CustomStringConvertible {
         return "\(type): \(message)"
     }
 }
-
-public struct MessageActionItem {
-    public let title: String
-}
-
-extension MessageActionItem: Codable {
-}

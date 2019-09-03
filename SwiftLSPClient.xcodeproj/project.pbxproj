@@ -11,6 +11,9 @@
 		C91160E5221106FF00B4F3AB /* WillSaveTextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160E4221106FF00B4F3AB /* WillSaveTextDocument.swift */; };
 		C91160EE2214F7A700B4F3AB /* TypeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */; };
 		C91160F02214F86B00B4F3AB /* LocationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160EF2214F86B00B4F3AB /* LocationLink.swift */; };
+		C9233179231DF3CC000207E7 /* MessageActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9233178231DF3CB000207E7 /* MessageActionItem.swift */; };
+		C923317B231DF43A000207E7 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923317A231DF43A000207E7 /* MessageType.swift */; };
+		C923317D231DF4AA000207E7 /* ShowMessageParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923317C231DF4AA000207E7 /* ShowMessageParams.swift */; };
 		C9361B5E220DD9F600254280 /* MockProtocolTransportMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */; };
 		C9361B60220E58EB00254280 /* DocumentSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B5F220E58EB00254280 /* DocumentSymbol.swift */; };
 		C9361B64220E671400254280 /* TypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B63220E671400254280 /* TypeTests.swift */; };
@@ -40,7 +43,7 @@
 		C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */; };
 		C99DBF3C21FE1D69005AC5C5 /* ServerCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3B21FE1D69005AC5C5 /* ServerCapabilities.swift */; };
 		C99DBF3E21FE1DC2005AC5C5 /* ClientCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3D21FE1DC2005AC5C5 /* ClientCapabilities.swift */; };
-		C99DBF4221FE3D42005AC5C5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3F21FE3D42005AC5C5 /* Message.swift */; };
+		C99DBF4221FE3D42005AC5C5 /* LogMessageParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3F21FE3D42005AC5C5 /* LogMessageParams.swift */; };
 		C99DBF4321FE3D42005AC5C5 /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF4021FE3D42005AC5C5 /* Diagnostics.swift */; };
 		C99DBF4421FE3D42005AC5C5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF4121FE3D42005AC5C5 /* Location.swift */; };
 		C9D85CC721EF836C00B33336 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC621EF836C00B33336 /* Position.swift */; };
@@ -63,6 +66,9 @@
 		C91160E4221106FF00B4F3AB /* WillSaveTextDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WillSaveTextDocument.swift; sourceTree = "<group>"; };
 		C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDefinition.swift; sourceTree = "<group>"; };
 		C91160EF2214F86B00B4F3AB /* LocationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLink.swift; sourceTree = "<group>"; };
+		C9233178231DF3CB000207E7 /* MessageActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageActionItem.swift; sourceTree = "<group>"; };
+		C923317A231DF43A000207E7 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
+		C923317C231DF4AA000207E7 /* ShowMessageParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMessageParams.swift; sourceTree = "<group>"; };
 		C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocolTransportMessage.swift; sourceTree = "<group>"; };
 		C9361B5F220E58EB00254280 /* DocumentSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSymbol.swift; sourceTree = "<group>"; };
 		C9361B63220E671400254280 /* TypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTests.swift; sourceTree = "<group>"; };
@@ -96,7 +102,7 @@
 		C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
 		C99DBF3B21FE1D69005AC5C5 /* ServerCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCapabilities.swift; sourceTree = "<group>"; };
 		C99DBF3D21FE1DC2005AC5C5 /* ClientCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCapabilities.swift; sourceTree = "<group>"; };
-		C99DBF3F21FE3D42005AC5C5 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		C99DBF3F21FE3D42005AC5C5 /* LogMessageParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogMessageParams.swift; sourceTree = "<group>"; };
 		C99DBF4021FE3D42005AC5C5 /* Diagnostics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagnostics.swift; sourceTree = "<group>"; };
 		C99DBF4121FE3D42005AC5C5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C9D85CC621EF836C00B33336 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
@@ -123,6 +129,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C9233177231DF392000207E7 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				C99DBF3F21FE3D42005AC5C5 /* LogMessageParams.swift */,
+				C9F582F5231CADF5007FE72E /* ShowMessageRequest.swift */,
+				C9233178231DF3CB000207E7 /* MessageActionItem.swift */,
+				C923317A231DF43A000207E7 /* MessageType.swift */,
+				C923317C231DF4AA000207E7 /* ShowMessageParams.swift */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
 		C992997521755D0900C5F8A5 = {
 			isa = PBXGroup;
 			children = (
@@ -172,9 +190,9 @@
 		C99299A921755D8A00C5F8A5 /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				C9233177231DF392000207E7 /* Window */,
 				C99DBF4021FE3D42005AC5C5 /* Diagnostics.swift */,
 				C99DBF4121FE3D42005AC5C5 /* Location.swift */,
-				C99DBF3F21FE3D42005AC5C5 /* Message.swift */,
 				C99299AA21755D8A00C5F8A5 /* ProtocolMethod.swift */,
 				C99299AB21755D8A00C5F8A5 /* TextSynchronization.swift */,
 				C99299AC21755D8A00C5F8A5 /* Initialization.swift */,
@@ -194,7 +212,6 @@
 				C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */,
 				C91160EF2214F86B00B4F3AB /* LocationLink.swift */,
 				C94542092226138B000CEFB2 /* Formatting.swift */,
-				C9F582F5231CADF5007FE72E /* ShowMessageRequest.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -337,15 +354,17 @@
 				C91160E5221106FF00B4F3AB /* WillSaveTextDocument.swift in Sources */,
 				C99DBF4321FE3D42005AC5C5 /* Diagnostics.swift in Sources */,
 				C945420A2226138B000CEFB2 /* Formatting.swift in Sources */,
+				C923317D231DF4AA000207E7 /* ShowMessageParams.swift in Sources */,
 				C99299B321755D8A00C5F8A5 /* ProtocolMethod.swift in Sources */,
 				C99299A321755D6900C5F8A5 /* StdioDataTransport.swift in Sources */,
 				C96CB620220C917B00F13A36 /* WorkspaceFolder.swift in Sources */,
 				C96CB61E220C8C2F00F13A36 /* SymbolKind.swift in Sources */,
-				C99DBF4221FE3D42005AC5C5 /* Message.swift in Sources */,
+				C99DBF4221FE3D42005AC5C5 /* LogMessageParams.swift in Sources */,
 				C90F9BB421773CB800EC3854 /* LanguageServer.swift in Sources */,
 				C99299B521755D8A00C5F8A5 /* Initialization.swift in Sources */,
 				C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */,
 				C99299B921755D8A00C5F8A5 /* JSONRPC.swift in Sources */,
+				C9233179231DF3CC000207E7 /* MessageActionItem.swift in Sources */,
 				C99299B421755D8A00C5F8A5 /* TextSynchronization.swift in Sources */,
 				C91160F02214F86B00B4F3AB /* LocationLink.swift in Sources */,
 				C99299B821755D8A00C5F8A5 /* Client.swift in Sources */,
@@ -359,6 +378,7 @@
 				C96CB630220D168800F13A36 /* TextDocumentIndentifier.swift in Sources */,
 				C99DBF3E21FE1DC2005AC5C5 /* ClientCapabilities.swift in Sources */,
 				C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */,
+				C923317B231DF43A000207E7 /* MessageType.swift in Sources */,
 				C9D85CC721EF836C00B33336 /* Position.swift in Sources */,
 				C99299A221755D6900C5F8A5 /* DataTransport.swift in Sources */,
 			);
