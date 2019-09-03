@@ -51,7 +51,7 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | Feature            | Supported |
 | -------------------|:---------:|
 | window/showMessage | ✅ |
-| window/showMessageRequest | - |
+| window/showMessageRequest | ✅ |
 | window/logMessage | ✅ |
 | telemetry/event | - |
 | client/registerCapability | - |

@@ -51,6 +51,7 @@ public protocol NotificationResponder: class {
 
     func languageServer(_ server: LanguageServer, logMessage message: LogMessageParams)
     func languageServer(_ server: LanguageServer, showMessage message: ShowMessageParams)
+    func languageServer(_ server: LanguageServer, showMessageRequest messageRequest: ShowMessageRequestParams)
     func languageServer(_ server: LanguageServer, publishDiagnostics diagnosticsParams: PublishDiagnosticsParams)
 
     func languageServer(_ server: LanguageServer, failedToDecodeNotification notificationName: String, with error: Error)

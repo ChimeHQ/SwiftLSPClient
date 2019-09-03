@@ -45,6 +45,7 @@
 		C99DBF4421FE3D42005AC5C5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF4121FE3D42005AC5C5 /* Location.swift */; };
 		C9D85CC721EF836C00B33336 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC621EF836C00B33336 /* Position.swift */; };
 		C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC821EF837F00B33336 /* LSPRange.swift */; };
+		C9F582F6231CADF5007FE72E /* ShowMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F582F5231CADF5007FE72E /* ShowMessageRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		C99DBF4121FE3D42005AC5C5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		C9D85CC621EF836C00B33336 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		C9D85CC821EF837F00B33336 /* LSPRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPRange.swift; sourceTree = "<group>"; };
+		C9F582F5231CADF5007FE72E /* ShowMessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMessageRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 				C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */,
 				C91160EF2214F86B00B4F3AB /* LocationLink.swift */,
 				C94542092226138B000CEFB2 /* Formatting.swift */,
+				C9F582F5231CADF5007FE72E /* ShowMessageRequest.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			files = (
 				C986779C21B45A3D00C1BE5A /* LanguageServerProcessHost.swift in Sources */,
 				C99299A421755D6900C5F8A5 /* ProtocolTransport.swift in Sources */,
+				C9F582F6231CADF5007FE72E /* ShowMessageRequest.swift in Sources */,
 				C986779E21BB53E700C1BE5A /* SignatureHelp.swift in Sources */,
 				C99299A021755D6900C5F8A5 /* JSONRPCLanguageServer.swift in Sources */,
 				C91160E5221106FF00B4F3AB /* WillSaveTextDocument.swift in Sources */,

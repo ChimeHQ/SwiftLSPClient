@@ -15,6 +15,7 @@ public struct ProtocolMethod {
     public struct Window {
         public static let LogMessage = "window/logMessage"
         public static let ShowMessage = "window/showMessage"
+        public static let ShowMessageRequest = "window/showMessageRequest"
     }
     
     public struct TextDocument {

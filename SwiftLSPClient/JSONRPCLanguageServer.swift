@@ -47,6 +47,10 @@ extension JSONRPCLanguageServer: ProtocolTransportDelegate {
             decodeNotification(named: notificationMethod, data: data) { (value: ShowMessageParams) in
                 responder.languageServer(self, showMessage: value)
             }
+        case ProtocolMethod.Window.ShowMessageRequest:
+            decodeNotification(named: notificationMethod, data: data) { (value: ShowMessageRequestParams) in
+                responder.languageServer(self, showMessageRequest: value)
+            }
         case ProtocolMethod.TextDocument.PublishDiagnostics:
             decodeNotification(named: notificationMethod, data: data) { (value: PublishDiagnosticsParams) in
                 responder.languageServer(self, publishDiagnostics: value)
