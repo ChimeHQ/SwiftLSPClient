@@ -1,13 +1,9 @@
 language: swift
 os: osx
 osx_image: xcode10.1
-cache:
-  directories:
-    - Carthage
 
 install:
   - gem update cocoapods --pre
-  - carthage bootstrap --verbose --platform macOS --cache-builds --no-use-binaries
 
 before_script:
   - pod lib lint --skip-tests --verbose
