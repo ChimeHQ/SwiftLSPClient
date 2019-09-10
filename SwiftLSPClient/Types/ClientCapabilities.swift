@@ -150,16 +150,6 @@ public struct TextDocumentClientCapabilityHover: Codable {
     }
 }
 
-public struct TextDocumentClientCapabilityTypeDefinition: Codable {
-    public let dynamicRegistration: Bool?
-    public let linkSupport: Bool?
-
-    public init(dynamicRegistration: Bool?, linkSupport: Bool?) {
-        self.dynamicRegistration = dynamicRegistration
-        self.linkSupport = linkSupport
-    }
-}
-
 public struct TextDocumentClientCapabilityPublicDiagnostics: Codable {
     public let relatedInformation: Bool?
 
@@ -179,9 +169,10 @@ public struct TextDocumentClientCapabilities: Codable {
     public let formatting: GenericDynamicRegistration?
     public let rangeFormatting: GenericDynamicRegistration?
     public let onTypeFormatting: GenericDynamicRegistration?
-    public let definition: JSONValue?
-    public let typeDefinition: TextDocumentClientCapabilityTypeDefinition?
-    public let implementation: JSONValue?
+    public let declaration: TextDocumentClientCapabilitiesGenericGoTo?
+    public let definition: TextDocumentClientCapabilitiesGenericGoTo?
+    public let typeDefinition: TextDocumentClientCapabilitiesGenericGoTo?
+    public let implementation: TextDocumentClientCapabilitiesGenericGoTo?
     public let codeAction: JSONValue?
     public let codeLens: JSONValue?
     public let documentLink: JSONValue?
@@ -190,7 +181,7 @@ public struct TextDocumentClientCapabilities: Codable {
     public let publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?
     public let foldingRange: JSONValue?
 
-    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, typeDefinition: TextDocumentClientCapabilityTypeDefinition?, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?) {
+    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil, definition: TextDocumentClientCapabilitiesGenericGoTo? = nil, typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil, implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?) {
         self.synchronization = synchronization
         self.completion = completion
         self.hover = hover
@@ -201,9 +192,10 @@ public struct TextDocumentClientCapabilities: Codable {
         self.formatting = formatting
         self.rangeFormatting = rangeFormatting
         self.onTypeFormatting = onTypeFormatting
-        self.definition = nil
+        self.declaration = declaration
+        self.definition = definition
         self.typeDefinition = typeDefinition
-        self.implementation = nil
+        self.implementation = implemenation
         self.codeAction = nil
         self.codeLens = nil
         self.documentLink = nil

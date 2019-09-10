@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum LanguageServerError: Error {
+public enum LanguageServerError: LocalizedError {
     case serverUnavailable
     case protocolError(Error)
     case invalidDocumentURI(URL)
@@ -19,6 +19,29 @@ public enum LanguageServerError: Error {
     case unimplemented
     
     case serverError(code: Int, message: String, data: [String : AnyObject]?)
+
+    public var errorDescription: String? {
+        switch self {
+        case .serverUnavailable:
+            return "Server unavailable"
+        case .protocolError(let e):
+            return "Protocol error: (\(e.localizedDescription))"
+        case .invalidDocumentURI(let uri):
+            return "Invalid URI '\(uri)'"
+        case .unableToEncodeRequest:
+            return "Unable to encode request"
+        case .unableToDecodeResponse(let e):
+            return "Unable to decode response: \(e.localizedDescription)"
+        case .missingExpectedResult:
+            return "Missing expected result"
+        case .operationTimedOut:
+            return "Operation timed out"
+        case .unimplemented:
+            return "Unimplemented"
+        case .serverError(code: let code, message: let message, data: let userInfo):
+            return "Server error \(code), '\(message)', \(String(describing: userInfo))"
+        }
+    }
 }
 
 public typealias LanguageServerResult<T> = Result<T, LanguageServerError>
@@ -38,7 +61,10 @@ public protocol LanguageServer: class {
     func completion(params: CompletionParams, block: @escaping (LanguageServerResult<CompletionResponse>) -> Void)
     func hover(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<Hover>) -> Void)
     func signatureHelp(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<SignatureHelp>) -> Void)
+    func declaration(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<DeclarationResponse?>) -> Void)
+    func definition(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<DefinitionResponse?>) -> Void)
     func typeDefinition(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<TypeDefinitionResponse?>) -> Void)
+    func implementation(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<ImplementationResponse?>) -> Void)
     func documentSymbol(params: DocumentSymbolParams, block: @escaping (LanguageServerResult<DocumentSymbolResponse>) -> Void)
 
     func formatting(params: DocumentFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)

@@ -194,10 +194,34 @@ extension JSONRPCLanguageServer: LanguageServer {
         }
     }
 
+    public func declaration(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<DeclarationResponse?>) -> Void) {
+        let method = ProtocolMethod.TextDocument.Declaration
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<DeclarationResponse?>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
+    public func definition(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<DefinitionResponse?>) -> Void) {
+        let method = ProtocolMethod.TextDocument.Definition
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<DefinitionResponse?>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
     public func typeDefinition(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<TypeDefinitionResponse?>) -> Void) {
         let method = ProtocolMethod.TextDocument.TypeDefinition
 
         protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<TypeDefinitionResponse?>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
+    public func implementation(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<ImplementationResponse?>) -> Void) {
+        let method = ProtocolMethod.TextDocument.Implementation
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<ImplementationResponse?>) in
             relayResult(result: result, block: block)
         }
     }

@@ -75,9 +75,10 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | completionItem/resolve | - |
 | textDocument/hover | ✅ |
 | textDocument/signatureHelp | ✅ |
-| textDocument/declaration | - |
+| textDocument/declaration | ✅ |
+| textDocument/definition | ✅ |
 | textDocument/typeDefinition | ✅ |
-| textDocument/implementation | - |
+| textDocument/implementation | ✅ |
 | textDocument/references | - |
 | textDocument/documentHighlight | - |
 | textDocument/documentSymbol | ✅ |

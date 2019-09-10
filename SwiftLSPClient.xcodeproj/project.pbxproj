@@ -18,6 +18,10 @@
 		C9361B60220E58EB00254280 /* DocumentSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B5F220E58EB00254280 /* DocumentSymbol.swift */; };
 		C9361B64220E671400254280 /* TypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B63220E671400254280 /* TypeTests.swift */; };
 		C945420A2226138B000CEFB2 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94542092226138B000CEFB2 /* Formatting.swift */; };
+		C94941D823272BF200BCFC88 /* Declaration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94941D723272BF200BCFC88 /* Declaration.swift */; };
+		C94941DA23272C0600BCFC88 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94941D923272C0600BCFC88 /* Definition.swift */; };
+		C94941DE23272C1B00BCFC88 /* Implementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94941DD23272C1B00BCFC88 /* Implementation.swift */; };
+		C94941E323272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94941E223272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift */; };
 		C96CB61E220C8C2F00F13A36 /* SymbolKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */; };
 		C96CB620220C917B00F13A36 /* WorkspaceFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */; };
 		C96CB62A220D11D700F13A36 /* ProtocolTransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */; };
@@ -73,6 +77,10 @@
 		C9361B5F220E58EB00254280 /* DocumentSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSymbol.swift; sourceTree = "<group>"; };
 		C9361B63220E671400254280 /* TypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTests.swift; sourceTree = "<group>"; };
 		C94542092226138B000CEFB2 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
+		C94941D723272BF200BCFC88 /* Declaration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Declaration.swift; sourceTree = "<group>"; };
+		C94941D923272C0600BCFC88 /* Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Definition.swift; sourceTree = "<group>"; };
+		C94941DD23272C1B00BCFC88 /* Implementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementation.swift; sourceTree = "<group>"; };
+		C94941E223272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDocumentClientCapabilitiesGenericGoTo.swift; sourceTree = "<group>"; };
 		C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolKind.swift; sourceTree = "<group>"; };
 		C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceFolder.swift; sourceTree = "<group>"; };
 		C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolTransportTests.swift; sourceTree = "<group>"; };
@@ -141,6 +149,25 @@
 			path = Window;
 			sourceTree = "<group>";
 		};
+		C94941D623272B2500BCFC88 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */,
+				C94941D723272BF200BCFC88 /* Declaration.swift */,
+				C94941D923272C0600BCFC88 /* Definition.swift */,
+				C94941DD23272C1B00BCFC88 /* Implementation.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		C94941DF23272D4C00BCFC88 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				C94941E223272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
 		C992997521755D0900C5F8A5 = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +217,8 @@
 		C99299A921755D8A00C5F8A5 /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				C94941DF23272D4C00BCFC88 /* Client */,
+				C94941D623272B2500BCFC88 /* Features */,
 				C9233177231DF392000207E7 /* Window */,
 				C99DBF4021FE3D42005AC5C5 /* Diagnostics.swift */,
 				C99DBF4121FE3D42005AC5C5 /* Location.swift */,
@@ -209,7 +238,6 @@
 				C96CB62F220D168800F13A36 /* TextDocumentIndentifier.swift */,
 				C9361B5F220E58EB00254280 /* DocumentSymbol.swift */,
 				C91160E4221106FF00B4F3AB /* WillSaveTextDocument.swift */,
-				C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */,
 				C91160EF2214F86B00B4F3AB /* LocationLink.swift */,
 				C94542092226138B000CEFB2 /* Formatting.swift */,
 			);
@@ -347,7 +375,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C986779C21B45A3D00C1BE5A /* LanguageServerProcessHost.swift in Sources */,
+				C94941E323272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift in Sources */,
 				C99299A421755D6900C5F8A5 /* ProtocolTransport.swift in Sources */,
+				C94941D823272BF200BCFC88 /* Declaration.swift in Sources */,
 				C9F582F6231CADF5007FE72E /* ShowMessageRequest.swift in Sources */,
 				C986779E21BB53E700C1BE5A /* SignatureHelp.swift in Sources */,
 				C99299A021755D6900C5F8A5 /* JSONRPCLanguageServer.swift in Sources */,
@@ -370,11 +400,13 @@
 				C99299B821755D8A00C5F8A5 /* Client.swift in Sources */,
 				C99DBF4421FE3D42005AC5C5 /* Location.swift in Sources */,
 				C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */,
+				C94941DA23272C0600BCFC88 /* Definition.swift in Sources */,
 				C9361B60220E58EB00254280 /* DocumentSymbol.swift in Sources */,
 				C99299A521755D6900C5F8A5 /* MessageTransport.swift in Sources */,
 				C99DBF3C21FE1D69005AC5C5 /* ServerCapabilities.swift in Sources */,
 				C99299B621755D8A00C5F8A5 /* LanguageFeatures.swift in Sources */,
 				C91160EE2214F7A700B4F3AB /* TypeDefinition.swift in Sources */,
+				C94941DE23272C1B00BCFC88 /* Implementation.swift in Sources */,
 				C96CB630220D168800F13A36 /* TextDocumentIndentifier.swift in Sources */,
 				C99DBF3E21FE1DC2005AC5C5 /* ClientCapabilities.swift in Sources */,
 				C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */,
