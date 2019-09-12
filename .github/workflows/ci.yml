@@ -1,0 +1,12 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    name: Test
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: xcodebuild test
+        run: xcodebuild test -scheme SwiftLSPClient -destination "platform=macOS"
