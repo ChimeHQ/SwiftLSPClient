@@ -52,6 +52,7 @@ public enum TextDocumentSyncKind: Int, Codable {
 public enum LanguageIdentifier: String, Codable, CaseIterable {
     case go = "go"
     case json = "json"
+    case swift = "swift"
 }
 
 public struct TextDocumentItem: Codable {
