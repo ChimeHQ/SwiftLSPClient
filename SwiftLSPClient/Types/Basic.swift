@@ -53,6 +53,22 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
     case go = "go"
     case json = "json"
     case swift = "swift"
+    case c = "c"
+    case cpp = "cpp"
+    case objc = "objective-c"
+    case objcpp = "objective-cpp"
+
+    static let extensions = [
+        "go": .go,
+        "json": .json,
+        "swift": .swift,
+        "c": c,
+        "C": .cpp,
+        "cpp": .cpp,
+        "m": .objc,
+        "mm": .objcpp,
+        "h": .objcpp
+    ]
 }
 
 public struct TextDocumentItem: Codable {
