@@ -132,6 +132,7 @@ public class ProtocolTransport {
             
         responder(.success(data))
 
+        // TODO: This doesn't seem to be threadsafe
         responders.removeValue(forKey: message.id)
     }
     

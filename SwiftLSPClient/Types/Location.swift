@@ -16,5 +16,5 @@ public struct Location {
 extension Location: Codable {
 }
 
-extension Location: Equatable {
+extension Location: Hashable {
 }

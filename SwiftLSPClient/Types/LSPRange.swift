@@ -32,5 +32,5 @@ extension LSPRange: CustomStringConvertible {
 extension LSPRange: Codable {
 }
 
-extension LSPRange: Equatable {
+extension LSPRange: Hashable {
 }

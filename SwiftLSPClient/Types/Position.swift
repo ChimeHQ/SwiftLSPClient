@@ -32,5 +32,5 @@ extension Position: CustomStringConvertible {
 extension Position: Codable {
 }
 
-extension Position: Equatable {
+extension Position: Hashable {
 }

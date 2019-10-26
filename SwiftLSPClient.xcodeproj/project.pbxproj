@@ -66,6 +66,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BBEF4C862364516900109F9A /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		BBEF4C872364516900109F9A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		BBEF4C882364516900109F9A /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
+		BBEF4C892364516900109F9A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BBEF4C8A2364516A00109F9A /* SwiftLSPClient.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftLSPClient.podspec; sourceTree = "<group>"; };
 		C90F9BB321773CB800EC3854 /* LanguageServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageServer.swift; sourceTree = "<group>"; };
 		C91160E4221106FF00B4F3AB /* WillSaveTextDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WillSaveTextDocument.swift; sourceTree = "<group>"; };
 		C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDefinition.swift; sourceTree = "<group>"; };
@@ -171,6 +176,11 @@
 		C992997521755D0900C5F8A5 = {
 			isa = PBXGroup;
 			children = (
+				BBEF4C892364516900109F9A /* README.md */,
+				BBEF4C882364516900109F9A /* CODE_OF_CONDUCT.md */,
+				BBEF4C862364516900109F9A /* LICENSE */,
+				BBEF4C872364516900109F9A /* Package.swift */,
+				BBEF4C8A2364516A00109F9A /* SwiftLSPClient.podspec */,
 				C992998121755D0900C5F8A5 /* SwiftLSPClient */,
 				C992998C21755D0900C5F8A5 /* SwiftLSPClientTests */,
 				C99299BE21755F3900C5F8A5 /* Configuration */,
