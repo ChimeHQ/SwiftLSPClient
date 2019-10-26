@@ -13,8 +13,9 @@ An LSP server provides rich information about source code. An LSP client consume
 ```swift
 import SwiftLSPClient
 
-let executablePath = "path/to/your/executable-lsp-server"
-let host = LanguageServerProcessHost(path: executablePath, arguments: [])
+let executablePath = "path/to/your/lsp-server-executable"
+let host = LanguageServerProcessHost(path: executablePath, arguments: [],
+    environemnt: [/* the environment your lsp server requires e.g. PATH */])
 
 host.start { (server) in
     guard let server = server else {
@@ -79,7 +80,7 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | textDocument/definition | ✅ |
 | textDocument/typeDefinition | ✅ |
 | textDocument/implementation | ✅ |
-| textDocument/references | - |
+| textDocument/references | ✅  |
 | textDocument/documentHighlight | - |
 | textDocument/documentSymbol | ✅ |
 | textDocument/codeAction | - |

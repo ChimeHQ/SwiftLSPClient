@@ -37,6 +37,7 @@ public struct ProtocolMethod {
         public static let RangeFormatting = "textDocument/rangeFormatting"
         public static let OnTypeFormatting = "textDocument/onTypeFormatting"
         public static let PublishDiagnostics = "textDocument/publishDiagnostics"
+        public static let References = "textDocument/references"
     }
     
     public struct CompletionItem {

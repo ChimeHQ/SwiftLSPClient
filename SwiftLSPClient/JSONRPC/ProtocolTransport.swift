@@ -132,7 +132,8 @@ public class ProtocolTransport {
             
         responder(.success(data))
 
-        responders.removeValue(forKey: message.id)
+        // This doesn't seem to be threadsafe
+        // responders.removeValue(forKey: message.id)
     }
     
     private func dispatchNotification(_ notification: JSONRPCNotification, originalData data: Data) {

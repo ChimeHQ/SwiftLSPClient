@@ -70,6 +70,7 @@ public protocol LanguageServer: class {
     func formatting(params: DocumentFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)
     func rangeFormatting(params: DocumentRangeFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)
     func onTypeFormatting(params: DocumentOnTypeFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)
+    func references(params: ReferencesParams, block: @escaping (LanguageServerResult<ReferencesResponse>) -> Void)
 }
 
 public protocol NotificationResponder: class {

@@ -258,4 +258,11 @@ extension JSONRPCLanguageServer: LanguageServer {
         }
     }
 
+    public func references(params: ReferencesParams, block: @escaping (LanguageServerResult<ReferencesResponse>) -> Void) {
+        let method = ProtocolMethod.TextDocument.References
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<ReferencesResponse>) in
+            relayResult(result: result, block: block)
+        }
+    }
 }
