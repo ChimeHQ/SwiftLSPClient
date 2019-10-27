@@ -88,18 +88,3 @@ public struct DidCloseTextDocumentParams: Codable {
         self.init(textDocument: docId)
     }
 }
-
-public struct ReferencesParams: Codable {
-
-    public var textDocument: TextDocumentIdentifier
-    public var position: Position
-    public var includeDeclaration: Bool?
-
-    public init(textDocument: TextDocumentIdentifier, position: Position, includeDeclaration: Bool? = nil) {
-      self.textDocument = textDocument
-      self.position = position
-      self.includeDeclaration = includeDeclaration
-    }
-}
-
-public typealias ReferencesResponse = [Location]
