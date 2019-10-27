@@ -163,7 +163,7 @@ public struct TextDocumentClientCapabilities: Codable {
     public let completion: TextDocumentClientCapabilityCompletion?
     public let hover: TextDocumentClientCapabilityHover?
     public let signatureHelp: JSONValue?
-    public let references: JSONValue?
+    public let references: GenericDynamicRegistration?
     public let documentHighlight: JSONValue?
     public let documentSymbol: JSONValue?
     public let formatting: GenericDynamicRegistration?
@@ -181,12 +181,12 @@ public struct TextDocumentClientCapabilities: Codable {
     public let publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?
     public let foldingRange: JSONValue?
 
-    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil, definition: TextDocumentClientCapabilitiesGenericGoTo? = nil, typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil, implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?) {
+    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, references: GenericDynamicRegistration? = nil, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil, definition: TextDocumentClientCapabilitiesGenericGoTo? = nil, typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil, implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?) {
         self.synchronization = synchronization
         self.completion = completion
         self.hover = hover
         self.signatureHelp = nil
-        self.references = nil
+        self.references = references
         self.documentHighlight = nil
         self.documentSymbol = nil
         self.formatting = formatting
