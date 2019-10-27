@@ -21,7 +21,8 @@ public struct ReferenceParams: Codable {
     public let position: Position
     public let context: ReferenceContext
 
-    public init(textDocument: TextDocumentIdentifier, position: Position, context: ReferenceContext) {
+    public init(textDocument: TextDocumentIdentifier, position: Position,
+                context: ReferenceContext = ReferenceContext(includeDeclaration: false)) {
         self.textDocument = textDocument
         self.position = position
         self.context = context

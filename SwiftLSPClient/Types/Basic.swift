@@ -58,7 +58,7 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
     case objc = "objective-c"
     case objcpp = "objective-cpp"
 
-    static let extensions = [
+    static let fileExtensions = [
         "go": .go,
         "json": .json,
         "swift": .swift,
@@ -82,6 +82,20 @@ public struct TextDocumentItem: Codable {
         self.languageId = languageId
         self.version = version
         self.text = text
+    }
+
+    public init(path: String) throws {
+        let url = URL(fileURLWithPath: path)
+        self.uri = url.absoluteString
+        let ext = url.pathExtension
+        guard let languageID = LanguageIdentifier
+            .fileExtensions[ext] else {
+                throw NSError(domain: "SwiftLSPClient", code: -1,
+                              userInfo: ["Invalid source type \(ext)": path])
+        }
+        self.languageId = languageID
+        self.version = 1
+        self.text = try String(contentsOf: url)
     }
 }
 
