@@ -74,12 +74,13 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
         let msg: String
     }
 
-    public static func langaugeId(for url: URL) throws -> LanguageIdentifier {
+    public init(for url: URL) throws {
         let ext = url.pathExtension
-        guard let languageID = fileExtensions[ext] else {
+        guard let languageID =
+            LanguageIdentifier.fileExtensions[ext] else {
             throw UnsupportedFileType(msg: "Unsupported file extension \(ext)")
         }
-        return languageID
+        self = languageID
     }
 }
 
@@ -99,7 +100,7 @@ public struct TextDocumentItem: Codable {
     public init(contentsAt path: String, version: Int = 1) throws {
         let url = URL(fileURLWithPath: path)
         self.uri = url.absoluteString
-        self.languageId = try LanguageIdentifier.langaugeId(for: url)
+        self.languageId = try LanguageIdentifier(for: url)
         self.version = version
         self.text = try String(contentsOf: url)
     }
