@@ -58,7 +58,7 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
     case objc = "objective-c"
     case objcpp = "objective-cpp"
 
-    static let extensions = [
+    static let fileExtensions = [
         "go": .go,
         "json": .json,
         "swift": .swift,
@@ -67,8 +67,20 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
         "cpp": .cpp,
         "m": .objc,
         "mm": .objcpp,
-        "h": .objcpp
     ]
+
+    public struct UnsupportedFileType: Error {
+        let msg: String
+    }
+
+    public init(for url: URL) throws {
+        let ext = url.pathExtension
+        guard let languageID =
+            LanguageIdentifier.fileExtensions[ext] else {
+            throw UnsupportedFileType(msg: "Unsupported file extension \(ext)")
+        }
+        self = languageID
+    }
 }
 
 public struct TextDocumentItem: Codable {
@@ -82,6 +94,14 @@ public struct TextDocumentItem: Codable {
         self.languageId = languageId
         self.version = version
         self.text = text
+    }
+
+    public init(contentsAt path: String, version: Int = 1) throws {
+        let url = URL(fileURLWithPath: path)
+        self.uri = url.absoluteString
+        self.languageId = try LanguageIdentifier(for: url)
+        self.version = version
+        self.text = try String(contentsOf: url)
     }
 }
 

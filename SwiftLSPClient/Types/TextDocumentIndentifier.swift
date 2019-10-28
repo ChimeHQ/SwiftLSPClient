@@ -14,6 +14,10 @@ public struct TextDocumentIdentifier {
     public init(uri: DocumentUri) {
         self.uri = uri
     }
+
+    public init(path: String) {
+        self.uri = URL(fileURLWithPath: path).absoluteString
+    }
 }
 
 extension TextDocumentIdentifier: Codable {
