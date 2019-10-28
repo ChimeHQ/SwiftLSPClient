@@ -69,6 +69,18 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
         "mm": .objcpp,
         "h": .objcpp
     ]
+
+    public struct UnsupportedFileType: Error {
+        let msg: String
+    }
+
+    public static func langaugeId(for url: URL) throws -> LanguageIdentifier {
+        let ext = url.pathExtension
+        guard let languageID = fileExtensions[ext] else {
+            throw UnsupportedFileType(msg: "Unsupported file extension \(ext)")
+        }
+        return languageID
+    }
 }
 
 public struct TextDocumentItem: Codable {
@@ -84,17 +96,11 @@ public struct TextDocumentItem: Codable {
         self.text = text
     }
 
-    public init(path: String) throws {
+    public init(contentsAt path: String, version: Int = 1) throws {
         let url = URL(fileURLWithPath: path)
         self.uri = url.absoluteString
-        let ext = url.pathExtension
-        guard let languageID = LanguageIdentifier
-            .fileExtensions[ext] else {
-                throw NSError(domain: "SwiftLSPClient", code: -1,
-                              userInfo: ["Invalid source type \(ext)": path])
-        }
-        self.languageId = languageID
-        self.version = 1
+        self.languageId = try LanguageIdentifier.langaugeId(for: url)
+        self.version = version
         self.text = try String(contentsOf: url)
     }
 }

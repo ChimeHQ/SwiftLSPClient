@@ -11,7 +11,7 @@ import Foundation
 public struct ReferenceContext: Codable {
     public let includeDeclaration: Bool
 
-    public init(includeDeclaration: Bool) {
+    public init(includeDeclaration: Bool = false) {
         self.includeDeclaration = includeDeclaration
     }
 }
@@ -22,7 +22,7 @@ public struct ReferenceParams: Codable {
     public let context: ReferenceContext
 
     public init(textDocument: TextDocumentIdentifier, position: Position,
-                context: ReferenceContext = ReferenceContext(includeDeclaration: false)) {
+                context: ReferenceContext = ReferenceContext()) {
         self.textDocument = textDocument
         self.position = position
         self.context = context
