@@ -67,7 +67,6 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
         "cpp": .cpp,
         "m": .objc,
         "mm": .objcpp,
-        "h": .objcpp
     ]
 
     public struct UnsupportedFileType: Error {
