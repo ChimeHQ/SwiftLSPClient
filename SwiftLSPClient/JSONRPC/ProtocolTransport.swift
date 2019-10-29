@@ -133,9 +133,6 @@ public class ProtocolTransport {
         guard let responder = responders[message.id] else {
             // hrm, got a message without a matching responder
             print("not matching responder for \(message.id) in \(responders), dropping message")
-            DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 2.0) {
-                self.dispatchMessage(message, originalData: data)
-            }
             return
         }
         respondersLock.unlock()
