@@ -30,9 +30,16 @@ public class ProtocolTransport {
     private var responders: [JSONId: MessageResponder]
     private let encoder: JSONEncoder
     private let decoder: JSONDecoder
-    private var respondersLock = NSLock()
     public weak var delegate: ProtocolTransportDelegate?
-    
+    private var respondersLock = NSLock()
+
+    func synchronized<RET>(block: () -> RET) -> RET {
+        respondersLock.lock()
+        let value = block()
+        respondersLock.unlock()
+        return value
+    }
+
     public init(messageTransport: MessageTransport) {
         self.messageTransport = messageTransport
         self.responders = [:]
@@ -51,11 +58,11 @@ public class ProtocolTransport {
     }
     
     private func generateID(_ handler: (JSONId) -> Void) {
-        respondersLock.lock()
-        let issuedId = JSONId.numericId(id)
-        
-        id += 1
-        respondersLock.unlock()
+        let issuedId = synchronized { () -> JSONId in
+            let issuedId = JSONId.numericId(id)
+            id += 1
+            return issuedId
+        }
 
         handler(issuedId)
     }
@@ -75,11 +82,11 @@ public class ProtocolTransport {
             
             self.messageTransport.write(jsonData)
                 
-            respondersLock.lock()
-            responders[issuedId] = { [unowned self] (result) in
-                self.relayResponse(result: result, responseHandler: responseHandler)
+            synchronized {
+                responders[issuedId] = { [unowned self] (result) in
+                    self.relayResponse(result: result, responseHandler: responseHandler)
+                }
             }
-            respondersLock.unlock()
         }
     }
     
@@ -129,22 +136,17 @@ public class ProtocolTransport {
     }
     
     private func dispatchMessage(_ message: JSONRPCResponse, originalData data: Data) {
-        respondersLock.lock()
-        guard let responder = responders[message.id] else {
+        guard let responder = synchronized(block: { responders[message.id] }) else {
             // hrm, got a message without a matching responder
             print("not matching responder for \(message.id) in \(responders), dropping message")
-            DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 2.0) {
-                self.dispatchMessage(message, originalData: data)
-            }
             return
         }
-        respondersLock.unlock()
 
         responder(.success(data))
 
-        respondersLock.lock()
-        responders.removeValue(forKey: message.id)
-        respondersLock.unlock()
+        synchronized {
+            responders.removeValue(forKey: message.id)
+        }
     }
     
     private func dispatchNotification(_ notification: JSONRPCNotification, originalData data: Data) {
