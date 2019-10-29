@@ -11,7 +11,7 @@ import Foundation
 public struct ReferenceContext: Codable {
     public let includeDeclaration: Bool
 
-    public init(includeDeclaration: Bool = false) {
+    public init(includeDeclaration: Bool) {
         self.includeDeclaration = includeDeclaration
     }
 }

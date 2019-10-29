@@ -96,7 +96,7 @@ public struct TextDocumentItem: Codable {
         self.text = text
     }
 
-    public init(contentsAt path: String, version: Int = 1) throws {
+    public init(contentsOfFile path: String, version: Int = 1) throws {
         let url = URL(fileURLWithPath: path)
         self.uri = url.absoluteString
         self.languageId = try LanguageIdentifier(for: url)
