@@ -30,6 +30,7 @@ public class ProtocolTransport {
     private var responders: [JSONId: MessageResponder]
     private let encoder: JSONEncoder
     private let decoder: JSONDecoder
+    private var respondersLock = NSLock()
     public weak var delegate: ProtocolTransportDelegate?
     
     public init(messageTransport: MessageTransport) {
@@ -50,10 +51,12 @@ public class ProtocolTransport {
     }
     
     private func generateID(_ handler: (JSONId) -> Void) {
+        respondersLock.lock()
         let issuedId = JSONId.numericId(id)
         
         id += 1
-        
+        respondersLock.unlock()
+
         handler(issuedId)
     }
     
@@ -72,9 +75,11 @@ public class ProtocolTransport {
             
             self.messageTransport.write(jsonData)
                 
+            respondersLock.lock()
             responders[issuedId] = { [unowned self] (result) in
                 self.relayResponse(result: result, responseHandler: responseHandler)
             }
+            respondersLock.unlock()
         }
     }
     
@@ -124,16 +129,22 @@ public class ProtocolTransport {
     }
     
     private func dispatchMessage(_ message: JSONRPCResponse, originalData data: Data) {
+        respondersLock.lock()
         guard let responder = responders[message.id] else {
             // hrm, got a message without a matching responder
-            print("not matching responder for \(message.id), dropping message")
+            print("not matching responder for \(message.id) in \(responders), dropping message")
+            DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 2.0) {
+                self.dispatchMessage(message, originalData: data)
+            }
             return
         }
-            
+        respondersLock.unlock()
+
         responder(.success(data))
 
-        // TODO: This doesn't seem to be threadsafe
+        respondersLock.lock()
         responders.removeValue(forKey: message.id)
+        respondersLock.unlock()
     }
     
     private func dispatchNotification(_ notification: JSONRPCNotification, originalData data: Data) {
