@@ -69,15 +69,16 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
         "mm": .objcpp,
     ]
 
-    public struct UnsupportedFileType: Error {
-        let msg: String
+    public enum LanguageServerParameterError: Error {
+        case unsupportedFileExtension(String)
     }
 
     public init(for url: URL) throws {
         let ext = url.pathExtension
         guard let languageID =
             LanguageIdentifier.fileExtensions[ext] else {
-            throw UnsupportedFileType(msg: "Unsupported file extension \(ext)")
+            throw LanguageServerParameterError
+                .unsupportedFileExtension("Unsupported file extension \(ext)")
         }
         self = languageID
     }
