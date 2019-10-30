@@ -12,6 +12,7 @@
 		C91160EE2214F7A700B4F3AB /* TypeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */; };
 		C91160F02214F86B00B4F3AB /* LocationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160EF2214F86B00B4F3AB /* LocationLink.swift */; };
 		C91AE5B52365E99D00F3B364 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AE5B42365E99D00F3B364 /* Reference.swift */; };
+		C91AE5BC2369D85000F3B364 /* JSONRPCLanguageServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AE5BB2369D85000F3B364 /* JSONRPCLanguageServerTests.swift */; };
 		C9233179231DF3CC000207E7 /* MessageActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9233178231DF3CB000207E7 /* MessageActionItem.swift */; };
 		C923317B231DF43A000207E7 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923317A231DF43A000207E7 /* MessageType.swift */; };
 		C923317D231DF4AA000207E7 /* ShowMessageParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923317C231DF4AA000207E7 /* ShowMessageParams.swift */; };
@@ -77,6 +78,7 @@
 		C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDefinition.swift; sourceTree = "<group>"; };
 		C91160EF2214F86B00B4F3AB /* LocationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLink.swift; sourceTree = "<group>"; };
 		C91AE5B42365E99D00F3B364 /* Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
+		C91AE5BB2369D85000F3B364 /* JSONRPCLanguageServerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPCLanguageServerTests.swift; sourceTree = "<group>"; };
 		C9233178231DF3CB000207E7 /* MessageActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageActionItem.swift; sourceTree = "<group>"; };
 		C923317A231DF43A000207E7 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
 		C923317C231DF4AA000207E7 /* ShowMessageParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMessageParams.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				C96CB62D220D120900F13A36 /* MockDataTransport.swift */,
 				C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */,
 				C9361B63220E671400254280 /* TypeTests.swift */,
+				C91AE5BB2369D85000F3B364 /* JSONRPCLanguageServerTests.swift */,
 			);
 			path = SwiftLSPClientTests;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 			files = (
 				C9361B64220E671400254280 /* TypeTests.swift in Sources */,
 				C96CB62E220D120900F13A36 /* MockDataTransport.swift in Sources */,
+				C91AE5BC2369D85000F3B364 /* JSONRPCLanguageServerTests.swift in Sources */,
 				C992998E21755D0900C5F8A5 /* MessageTransportTests.swift in Sources */,
 				C96CB62A220D11D700F13A36 /* ProtocolTransportTests.swift in Sources */,
 				C9361B5E220DD9F600254280 /* MockProtocolTransportMessage.swift in Sources */,

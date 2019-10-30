@@ -10,7 +10,7 @@ import XCTest
 @testable import SwiftLSPClient
 
 class TypeTests: XCTestCase {
-    func testSomething() {
+    func testSymbolInformation() {
         let json = """
 {"id":2,"result":[{"name":"something","kind":12,"location":{"uri":"file:///hello.go","range":{"start":{"line":19,"character":5},"end":{"line":19,"character":13}}}}],"jsonrpc":"2.0"}
 """

@@ -35,6 +35,43 @@ class ProtocolTransportTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
 
+    func testManySendRequestsWithResponsesDeliveredOnABackgroundQueueTest() {
+        let dataTransport = MockDataTransport()
+        let messageTransport = MessageTransport(dataTransport: dataTransport)
+        let transport = ProtocolTransport(messageTransport: messageTransport)
+
+        let iterations = 1000
+        let expectation = XCTestExpectation(description: "Response Message")
+        expectation.expectedFulfillmentCount = iterations
+
+        let request = TextDocumentIdentifier(uri: "hello")
+        let encoder = JSONEncoder()
+        let queue = DispatchQueue(label: "SimluatedFileHandleQueue")
+
+        // be sure to start at 1, to match ProtocolTransport's id generation
+        for i in 1...iterations {
+            let responseDocIdentifier = TextDocumentIdentifier(uri: "goodbye-\(i)")
+
+            transport.sendRequest(request, method: "mymethod") { (result: TestResult) in
+                let value = try? result.get()
+                XCTAssertEqual(value?.result, responseDocIdentifier)
+
+                expectation.fulfill()
+            }
+
+            let response = JSONRPCResultResponse<TextDocumentIdentifier>(id: i, result: responseDocIdentifier)
+            let responseData = try! encoder.encode(response)
+            let responseMessage = MessageTransport.createMessage(with: responseData)
+
+            // this must happen asynchronously to match the behavior of NSFileHandle
+            queue.async {
+                dataTransport.mockRead(responseMessage)
+            }
+        }
+
+        wait(for: [expectation], timeout: 2.0)
+    }
+
     func testSendNotification() {
         let dataTransport = MockDataTransport()
         let messageTransport = MessageTransport(dataTransport: dataTransport)

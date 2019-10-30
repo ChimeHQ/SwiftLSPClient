@@ -19,12 +19,16 @@ public class MessageTransport {
     public init(dataTransport: DataTransport) {
         self.dataTransport = dataTransport
         self.buffer = Data()
-        
-        self.dataTransport.setReaderHandler({ [unowned self] (data) in
+
+        setupReadHandler()
+    }
+
+    private func setupReadHandler() {
+        dataTransport.setReaderHandler({ [unowned self] (data) in
             guard data.count > 0 else {
                 return
             }
-            
+
             self.dataReceived(data)
         })
     }
@@ -135,10 +139,8 @@ public class MessageTransport {
         
         return (key, value, endOfHeader)
     }
-}
-
-extension MessageTransport: DataTransport {
-    public func write(_ data: Data) {
+    
+    public static func createMessage(with data: Data) -> Data {
         let length = data.count
 
         let header = "Content-Length: \(length)\r\n\r\n"
@@ -146,7 +148,13 @@ extension MessageTransport: DataTransport {
             fatalError()
         }
 
-        let messageData = headerData + data
+        return headerData + data
+    }
+}
+
+extension MessageTransport: DataTransport {
+    public func write(_ data: Data) {
+        let messageData = MessageTransport.createMessage(with: data)
 
         dataTransport.write(messageData)
     }
