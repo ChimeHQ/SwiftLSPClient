@@ -80,14 +80,14 @@ public class ProtocolTransport {
                 responseHandler(.failure(.encodingFailure(error)))
                 return
             }
-            
-            self.messageTransport.write(jsonData)
-                
+
             synchronized {
                 responders[issuedId] = { [unowned self] (result) in
                     self.relayResponse(result: result, responseHandler: responseHandler)
                 }
             }
+
+            self.messageTransport.write(jsonData)
         }
     }
     
