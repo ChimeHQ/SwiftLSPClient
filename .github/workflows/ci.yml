@@ -18,4 +18,4 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: xcodebuild test
-        run: xcodebuild test -scheme SwiftLSPClient -destination "platform=macOS"
+        run: set -o pipefail && xcodebuild test -scheme SwiftLSPClient -destination "platform=macOS" | xcpretty
