@@ -27,10 +27,10 @@ class ProtocolTransportTests: XCTestCase {
             expectation.fulfill()
         }
 
-        dataTransport.mockRead("Content-Length: 51\r\n\r\n")
-        dataTransport.mockRead("""
-{"jsonrpc":"2.0","id":1,"result":{"uri":"goodbye"}}
-""")
+        let response = JSONRPCResultResponse(id: 1, result: TextDocumentIdentifier(uri: "goodbye"))
+        let responseData = try! response.encodeToProtocolData()
+
+        dataTransport.mockRead(responseData)
 
         wait(for: [expectation], timeout: 1.0)
     }
@@ -45,7 +45,6 @@ class ProtocolTransportTests: XCTestCase {
         expectation.expectedFulfillmentCount = iterations
 
         let request = TextDocumentIdentifier(uri: "hello")
-        let encoder = JSONEncoder()
         let queue = DispatchQueue(label: "SimluatedFileHandleQueue")
 
         // be sure to start at 1, to match ProtocolTransport's id generation
@@ -60,12 +59,11 @@ class ProtocolTransportTests: XCTestCase {
             }
 
             let response = JSONRPCResultResponse<TextDocumentIdentifier>(id: i, result: responseDocIdentifier)
-            let responseData = try! encoder.encode(response)
-            let responseMessage = MessageTransport.createMessage(with: responseData)
+            let responseData = try! response.encodeToProtocolData()
 
             // this must happen asynchronously to match the behavior of NSFileHandle
             queue.async {
-                dataTransport.mockRead(responseMessage)
+                dataTransport.mockRead(responseData)
             }
         }
 
@@ -88,11 +86,10 @@ class ProtocolTransportTests: XCTestCase {
 
         wait(for: [expectation], timeout: 1.0)
 
-        let result = "Content-Length: 68\r\n\r\n{\"jsonrpc\":\"2.0\",\"method\":\"mynotification\",\"params\":{\"uri\":\"hello\"}}"
+        let result = JSONRPCNotificationParams(method: "mynotification", params: request)
+        let resultData = try! result.encodeToProtocolData()
 
-        let writtenStrings = dataTransport.writtenData.compactMap({ String(data: $0, encoding: .utf8) })
-
-        XCTAssertEqual(writtenStrings, [result])
+        XCTAssertEqual(dataTransport.writtenData, [resultData])
     }
 
     func testServerToClientNotification() {
@@ -114,10 +111,10 @@ class ProtocolTransportTests: XCTestCase {
             expectation.fulfill()
         }
 
-        dataTransport.mockRead("Content-Length: 65\r\n\r\n")
-        dataTransport.mockRead("""
-{"jsonrpc":"2.0","method":"iamnotification","params":"iamstring"}
-""")
+        let response = JSONRPCNotificationParams<String>(method: "iamnotification", params: "iamstring")
+        let responseData = try! response.encodeToProtocolData()
+
+        dataTransport.mockRead(responseData)
 
         wait(for: [expectation], timeout: 1.0)
     }

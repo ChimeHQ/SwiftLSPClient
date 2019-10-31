@@ -57,6 +57,18 @@ public struct JSONRPCRequest<T>: Codable where T: Codable {
     public let id: JSONId
     public let method: String
     public let params: T?
+
+    public init(id: JSONId, method: String, params: T? = nil) {
+        self.id = id
+        self.method = method
+        self.params = params
+    }
+
+    public init(id: Int, method: String, params: T? = nil) {
+        let numericId = JSONId.numericId(id)
+
+        self.init(id: numericId, method: method, params: params)
+    }
 }
 
 public struct ResponseError: Codable {

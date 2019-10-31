@@ -15,9 +15,8 @@ class JSONRPCLanguageServerTests: XCTestCase {
 
         let server = JSONRPCLanguageServer(dataTransport: dataTransport)
 
-        let textDocId = TextDocumentIdentifier(uri: "file://somefile.txt")
         let position = Position(line: 5, character: 5)
-        let params = TextDocumentPositionParams(textDocument: textDocId, position: position)
+        let params = TextDocumentPositionParams(uri: "file://somefile.txt", position: position)
 
         var result: LanguageServerResult<Hover>? = nil
 
@@ -30,17 +29,19 @@ class JSONRPCLanguageServerTests: XCTestCase {
         }
 
         // now write the response
-        let serverResponse = "Content-Length: 130\r\n\r\n{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":{\"contents\":\"foo\",\"range\":{\"start\":{\"line\":10,\"character\":10},\"end\":{\"line\":20,\"character\":20}}}}"
-        dataTransport.mockRead(serverResponse)
+        let hoverResult = Hover(contents: HoverContents.markedString(MarkedString.string("foo")),
+                                    range: LSPRange(startPair: (10, 10), endPair: (20, 20)))
+        let serverResponse = JSONRPCResultResponse(id: 1, result: hoverResult)
+        let serverResponseData = try! serverResponse.encodeToProtocolData()
+        dataTransport.mockRead(serverResponseData)
 
         wait(for: [exp], timeout: 1.0)
 
         // verify the request
-        let clientRequest = "Content-Length: 149\r\n\r\n{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"textDocument\\/hover\",\"params\":{\"textDocument\":{\"uri\":\"file:\\/\\/somefile.txt\"},\"position\":{\"line\":5,\"character\":5}}}"
+        let clientRequest = JSONRPCRequest(id: 1, method: ProtocolMethod.TextDocument.Hover, params: params)
+        let clientRequestData = try! clientRequest.encodeToProtocolData()
 
-        let writtenStrings = dataTransport.writtenData.compactMap({ String(data: $0, encoding: .utf8) })
-
-        XCTAssertEqual(writtenStrings, [clientRequest])
+        XCTAssertEqual(dataTransport.writtenData, [clientRequestData])
 
         // and verify the response
         guard let hover = try result?.get() else {

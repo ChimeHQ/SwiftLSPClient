@@ -140,7 +140,7 @@ public class MessageTransport {
         return (key, value, endOfHeader)
     }
     
-    public static func createMessage(with data: Data) -> Data {
+    public static func prependHeaders(to data: Data) -> Data {
         let length = data.count
 
         let header = "Content-Length: \(length)\r\n\r\n"
@@ -154,7 +154,7 @@ public class MessageTransport {
 
 extension MessageTransport: DataTransport {
     public func write(_ data: Data) {
-        let messageData = MessageTransport.createMessage(with: data)
+        let messageData = MessageTransport.prependHeaders(to: data)
 
         dataTransport.write(messageData)
     }
