@@ -124,6 +124,12 @@ public struct TextDocumentPositionParams: Codable {
         self.textDocument = textDocument
         self.position = position
     }
+
+    public init(uri: DocumentUri, position: Position) {
+        let textDocId = TextDocumentIdentifier(uri: uri)
+
+        self.init(textDocument: textDocId, position: position)
+    }
 }
 
 public struct DocumentFilter: Codable {

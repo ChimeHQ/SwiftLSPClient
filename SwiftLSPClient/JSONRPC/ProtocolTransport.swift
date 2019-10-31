@@ -157,4 +157,3 @@ public class ProtocolTransport {
         self.delegate?.transportReceived(self, notificationMethod: method, data: data)
     }
 }
-

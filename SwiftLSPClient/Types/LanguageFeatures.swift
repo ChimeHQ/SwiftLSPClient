@@ -225,6 +225,11 @@ extension HoverContents: Equatable {
 public struct Hover: Codable {
     public let contents: HoverContents
     public let range: LSPRange?
+
+    public init(contents: HoverContents, range: LSPRange? = nil) {
+        self.contents = contents
+        self.range = range
+    }
 }
 
 extension Hover: Equatable {
