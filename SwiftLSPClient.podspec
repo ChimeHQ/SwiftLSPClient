@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'SwiftLSPClient'
-  s.version      = '0.8.0'
+  s.version      = '0.8.1'
   s.summary      = 'Swift client library for interacting with Language Server Protocol-compatible servers'
 
   s.homepage     = 'https://github.com/ChimeHQ/SwiftLSPClient'
