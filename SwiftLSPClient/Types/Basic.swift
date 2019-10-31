@@ -139,6 +139,9 @@ public struct MarkupContent: Codable {
     public let value: String
 }
 
+extension MarkupContent: Equatable {
+}
+
 public struct TextEdit: Codable {
     public let range: LSPRange
     public let newText: String

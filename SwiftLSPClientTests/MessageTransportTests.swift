@@ -20,21 +20,28 @@ class MessageTransportTests: XCTestCase {
         return results[0]
     }
     
-    func writeMessagesAndReadResult(_ messages: [String]) -> [Data] {
+    func writeMessagesAndReadResult(_ messages: [String], resultCount: Int = 1) -> [Data] {
         let dataTransport = MockDataTransport()
         
         let transport = MessageTransport(dataTransport: dataTransport)
         
         var receivedData: [Data] = []
-        
+
+        let exp = XCTestExpectation(description: "Message Content")
+        exp.expectedFulfillmentCount = resultCount
+
         transport.dataHandler = { (data) in
             receivedData.append(data)
+
+            exp.fulfill()
         }
-        
+
         for message in messages {
             dataTransport.mockRead(message)
         }
-        
+
+        wait(for: [exp], timeout: 1.0)
+
         return receivedData
     }
     
@@ -73,12 +80,12 @@ class MessageTransportTests: XCTestCase {
         let content = "abcdefghijklmnopqurstuvwxyz123"
 
         let results = writeMessagesAndReadResult(messages)
-        
-        guard results.count == 1 else {
+
+        if results.count != 1 {
             XCTFail()
             return
         }
-        
+
         XCTAssertEqual(results[0], content.data(using: .utf8)!)
     }
     
@@ -90,13 +97,13 @@ class MessageTransportTests: XCTestCase {
             "\r\nabcdefghij",
         ]
         
-        let results = writeMessagesAndReadResult(messages)
-        
+        let results = writeMessagesAndReadResult(messages, resultCount: 2)
+
         if results.count != 2 {
             XCTFail()
             return
         }
-        
+
         XCTAssertEqual(results[0], "abcdef".data(using: .utf8)!)
         XCTAssertEqual(results[1], "abcdefghij".data(using: .utf8)!)
     }
@@ -129,7 +136,7 @@ class MessageTransportTests: XCTestCase {
             "Content-Length: 6\r\n\r\nabcdefContent-Length: 10\r\n\r\nabcdefghij"
         ]
 
-        let results = writeMessagesAndReadResult(messages)
+        let results = writeMessagesAndReadResult(messages, resultCount: 2)
 
         if results.count != 2 {
             XCTFail()

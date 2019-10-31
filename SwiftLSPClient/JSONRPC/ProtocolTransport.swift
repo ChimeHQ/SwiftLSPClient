@@ -26,17 +26,19 @@ public class ProtocolTransport {
     public typealias MessageResponder = (DataResult) -> Void
     
     private var id = 1
-    private var messageTransport: MessageTransport
+    private let messageTransport: MessageTransport
     private var responders: [JSONId: MessageResponder]
     private let encoder: JSONEncoder
     private let decoder: JSONDecoder
     public weak var delegate: ProtocolTransportDelegate?
+    private let queue: DispatchQueue
     
     public init(messageTransport: MessageTransport) {
         self.messageTransport = messageTransport
         self.responders = [:]
         self.encoder = JSONEncoder()
         self.decoder = JSONDecoder()
+        self.queue = DispatchQueue(label: "com.chimehq.SwiftLSPClient.ProtocolTransport")
         
         self.messageTransport.dataHandler = { [unowned self] (data) in
             self.dataAvailable(data)
@@ -49,81 +51,94 @@ public class ProtocolTransport {
         self.init(messageTransport: messageTransport)
     }
     
-    private func generateID(_ handler: (JSONId) -> Void) {
+    private func generateID() -> JSONId {
         let issuedId = JSONId.numericId(id)
         
         id += 1
         
-        handler(issuedId)
+        return issuedId
     }
     
     public func sendRequest<T, U>(_ request: T, method: String, responseHandler: @escaping (ResponseResult<U>) -> Void) where T: Codable, U: Decodable {
-        generateID { (issuedId) in
+        queue.async {
+            let issuedId = self.generateID()
+
             let rpcRequest = JSONRPCRequest(id: issuedId, method: method, params: request)
-            
+
             let jsonData: Data
-            
+
             do {
                 jsonData = try self.encoder.encode(rpcRequest)
             } catch {
                 responseHandler(.failure(.encodingFailure(error)))
                 return
             }
-            
+
             self.messageTransport.write(jsonData)
-                
-            responders[issuedId] = { [unowned self] (result) in
+
+            self.responders[issuedId] = { [unowned self] (result) in
                 self.relayResponse(result: result, responseHandler: responseHandler)
             }
         }
     }
-    
+
     private func relayResponse<T>(result: DataResult, responseHandler: @escaping (ResponseResult<T>) -> Void) where T: Decodable {
         switch result {
         case .failure(let error):
             responseHandler(.failure(.responderRelayFailure(error)))
         case .success(let data):
-            do {
-                let jsonResult = try self.decoder.decode(JSONRPCResultResponse<T>.self, from: data)
+            queue.async {
+                do {
+                    let jsonResult = try self.decoder.decode(JSONRPCResultResponse<T>.self, from: data)
 
-                responseHandler(.success(jsonResult))
-            } catch {
-                responseHandler(.failure(.decodingFailure(error)))
+                    responseHandler(.success(jsonResult))
+                } catch {
+                    responseHandler(.failure(.decodingFailure(error)))
+                }
             }
         }
     }
     
     public func sendNotification<T>(_ params: T, method: String, block: @escaping (ProtocolTransportError?) -> Void) where T: Codable {
         let notification = JSONRPCNotificationParams(method: method, params: params)
-        
-        let jsonData: Data
-        
-        do {
-            jsonData = try self.encoder.encode(notification)
-        } catch {
-            block(.encodingFailure(error))
-            return
+
+        queue.async {
+            let jsonData: Data
+
+            do {
+                jsonData = try self.encoder.encode(notification)
+            } catch {
+                block(.encodingFailure(error))
+                return
+            }
+
+            self.messageTransport.write(jsonData)
+
+            block(nil)
         }
-        
-        messageTransport.write(jsonData)
-        block(nil)
     }
     
     private func dataAvailable(_ data: Data) {
-        if let message = try? self.decoder.decode(JSONRPCResponse.self, from: data) {
-            dispatchMessage(message, originalData: data)
-            return
-        }
-        
-        if let notification = try? self.decoder.decode(JSONRPCNotification.self, from: data) {
-            dispatchNotification(notification, originalData: data)
-            return
-        }
+        queue.async {
+            if let message = try? self.decoder.decode(JSONRPCResponse.self, from: data) {
+                self.dispatchMessage(message, originalData: data)
+                return
+            }
 
-        self.delegate?.transportReceived(self, undecodableData: data)
+            if let notification = try? self.decoder.decode(JSONRPCNotification.self, from: data) {
+                self.dispatchNotification(notification, originalData: data)
+                return
+            }
+
+            self.delegate?.transportReceived(self, undecodableData: data)
+        }
     }
     
     private func dispatchMessage(_ message: JSONRPCResponse, originalData data: Data) {
+        if #available(OSX 10.12, *) {
+            dispatchPrecondition(condition: .onQueue(queue))
+        }
+
         guard let responder = responders[message.id] else {
             // hrm, got a message without a matching responder
             print("not matching responder for \(message.id), dropping message")

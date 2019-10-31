@@ -135,6 +135,9 @@ public struct LanguageStringPair: Codable {
     public let value: String
 }
 
+extension LanguageStringPair: Equatable {
+}
+
 public enum MarkedString: Codable {
     case string(String)
     case languageString(LanguageStringPair)
@@ -181,6 +184,9 @@ public enum MarkedString: Codable {
     }
 }
 
+extension MarkedString: Equatable {
+}
+
 public enum HoverContents: Codable {
     case markedString(MarkedString)
     case markedStringArray([MarkedString])
@@ -213,7 +219,13 @@ public enum HoverContents: Codable {
     }
 }
 
+extension HoverContents: Equatable {
+}
+
 public struct Hover: Codable {
     public let contents: HoverContents
     public let range: LSPRange?
+}
+
+extension Hover: Equatable {
 }
