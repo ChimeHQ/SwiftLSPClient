@@ -158,6 +158,18 @@ public struct TextDocumentClientCapabilityPublicDiagnostics: Codable {
     }
 }
 
+public struct TextDocumentClientCapabilityFoldingRange: Codable {
+    public let dynamicRegistration: Bool?
+    public let rangeLimit: Int?
+    public let lineFoldingOnly: Bool?
+
+    public init(dynamicRegistration: Bool?, rangeLimit: Int?, lineFoldingOnly: Bool?) {
+        self.dynamicRegistration = dynamicRegistration
+        self.rangeLimit = rangeLimit
+        self.lineFoldingOnly = lineFoldingOnly
+    }
+}
+
 public struct TextDocumentClientCapabilities: Codable {
     public let synchronization: TextDocumentClientCapabilitySynchronization?
     public let completion: TextDocumentClientCapabilityCompletion?
@@ -179,9 +191,10 @@ public struct TextDocumentClientCapabilities: Codable {
     public let colorProvider: JSONValue?
     public let rename: JSONValue?
     public let publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?
-    public let foldingRange: JSONValue?
+    public let foldingRange: TextDocumentClientCapabilityFoldingRange?
 
-    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, references: GenericDynamicRegistration? = nil, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil, definition: TextDocumentClientCapabilitiesGenericGoTo? = nil, typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil, implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?) {
+    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, references: GenericDynamicRegistration? = nil, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil, definition: TextDocumentClientCapabilitiesGenericGoTo? = nil, typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil, implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?,
+                foldingRange: TextDocumentClientCapabilityFoldingRange? = nil) {
         self.synchronization = synchronization
         self.completion = completion
         self.hover = hover

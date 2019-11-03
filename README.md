@@ -95,7 +95,7 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | textDocument/onTypeFormatting | ✅ |
 | textDocument/rename | - |
 | textDocument/prepareRename | - |
-| textDocument/foldingRange | - |
+| textDocument/foldingRange | ✅ |
 
 ## Integration
 

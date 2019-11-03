@@ -71,6 +71,7 @@ public protocol LanguageServer: class {
     func rangeFormatting(params: DocumentRangeFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)
     func onTypeFormatting(params: DocumentOnTypeFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)
     func references(params: ReferenceParams, block: @escaping (LanguageServerResult<ReferenceResponse?>) -> Void)
+    func foldingRange(params: FoldingRangeParams, block: @escaping (LanguageServerResult<FoldingRangeResponse>) -> Void)
 }
 
 public protocol NotificationResponder: class {
