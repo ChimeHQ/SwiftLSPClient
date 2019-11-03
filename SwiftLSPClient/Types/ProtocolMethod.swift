@@ -38,6 +38,7 @@ public struct ProtocolMethod {
         public static let OnTypeFormatting = "textDocument/onTypeFormatting"
         public static let PublishDiagnostics = "textDocument/publishDiagnostics"
         public static let References = "textDocument/references"
+        public static let FoldingRange = "textDocument/foldingRange"
     }
     
     public struct CompletionItem {

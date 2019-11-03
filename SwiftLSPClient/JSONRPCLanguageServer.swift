@@ -265,4 +265,12 @@ extension JSONRPCLanguageServer: LanguageServer {
             relayResult(result: result, block: block)
         }
     }
+
+    public func foldingRange(params: FoldingRangeParams, block: @escaping (LanguageServerResult<FoldingRangeResponse>) -> Void) {
+        let method = ProtocolMethod.TextDocument.FoldingRange
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<FoldingRangeResponse>) in
+            relayResult(result: result, block: block)
+        }
+    }
 }
