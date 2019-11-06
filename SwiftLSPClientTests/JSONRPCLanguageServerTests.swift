@@ -18,7 +18,7 @@ class JSONRPCLanguageServerTests: XCTestCase {
         let position = Position(line: 5, character: 5)
         let params = TextDocumentPositionParams(uri: "file://somefile.txt", position: position)
 
-        var result: LanguageServerResult<Hover>? = nil
+        var result: LanguageServerResult<HoverResponse>? = nil
 
         let exp = XCTestExpectation(description: "Server Result Expectation")
 

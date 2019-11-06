@@ -59,7 +59,7 @@ public protocol LanguageServer: class {
     func didSaveTextDocument(params: DidSaveTextDocumentParams, block: @escaping (LanguageServerError?) -> Void)
     
     func completion(params: CompletionParams, block: @escaping (LanguageServerResult<CompletionResponse>) -> Void)
-    func hover(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<Hover>) -> Void)
+    func hover(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<HoverResponse>) -> Void)
     func signatureHelp(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<SignatureHelp>) -> Void)
     func declaration(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<DeclarationResponse?>) -> Void)
     func definition(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<DefinitionResponse?>) -> Void)

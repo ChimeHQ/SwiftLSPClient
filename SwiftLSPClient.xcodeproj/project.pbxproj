@@ -54,6 +54,7 @@
 		C99DBF4221FE3D42005AC5C5 /* LogMessageParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3F21FE3D42005AC5C5 /* LogMessageParams.swift */; };
 		C99DBF4321FE3D42005AC5C5 /* Diagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF4021FE3D42005AC5C5 /* Diagnostics.swift */; };
 		C99DBF4421FE3D42005AC5C5 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF4121FE3D42005AC5C5 /* Location.swift */; };
+		C9B13ED423725679004C6DB7 /* Hover.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B13ED323725679004C6DB7 /* Hover.swift */; };
 		C9D85CC721EF836C00B33336 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC621EF836C00B33336 /* Position.swift */; };
 		C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D85CC821EF837F00B33336 /* LSPRange.swift */; };
 		C9F582F6231CADF5007FE72E /* ShowMessageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F582F5231CADF5007FE72E /* ShowMessageRequest.swift */; };
@@ -126,6 +127,7 @@
 		C99DBF3F21FE3D42005AC5C5 /* LogMessageParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogMessageParams.swift; sourceTree = "<group>"; };
 		C99DBF4021FE3D42005AC5C5 /* Diagnostics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diagnostics.swift; sourceTree = "<group>"; };
 		C99DBF4121FE3D42005AC5C5 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		C9B13ED323725679004C6DB7 /* Hover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hover.swift; sourceTree = "<group>"; };
 		C9D85CC621EF836C00B33336 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		C9D85CC821EF837F00B33336 /* LSPRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LSPRange.swift; sourceTree = "<group>"; };
 		C9F582F5231CADF5007FE72E /* ShowMessageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMessageRequest.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				C94941DD23272C1B00BCFC88 /* Implementation.swift */,
 				C91AE5B42365E99D00F3B364 /* Reference.swift */,
 				C93C7B9B236E6160005DB4C5 /* FoldingRange.swift */,
+				C9B13ED323725679004C6DB7 /* Hover.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				C96CB61E220C8C2F00F13A36 /* SymbolKind.swift in Sources */,
 				C99DBF4221FE3D42005AC5C5 /* LogMessageParams.swift in Sources */,
 				C90F9BB421773CB800EC3854 /* LanguageServer.swift in Sources */,
+				C9B13ED423725679004C6DB7 /* Hover.swift in Sources */,
 				C99299B521755D8A00C5F8A5 /* Initialization.swift in Sources */,
 				C93C7B9C236E6160005DB4C5 /* FoldingRange.swift in Sources */,
 				C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */,
