@@ -108,10 +108,10 @@ extension JSONRPCLanguageServer: LanguageServer {
         }
     }
     
-    public func hover(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<Hover>) -> Void) {
+    public func hover(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<HoverResponse>) -> Void) {
         let method = ProtocolMethod.TextDocument.Hover
         
-        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<Hover>) in
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<HoverResponse>) in
             relayResult(result: result, block: block)
         }
     }
