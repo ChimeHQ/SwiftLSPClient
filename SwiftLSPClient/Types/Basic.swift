@@ -64,6 +64,7 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
         "swift": .swift,
         "c": c,
         "C": .cpp,
+        "cc": .cpp,
         "cpp": .cpp,
         "m": .objc,
         "mm": .objcpp,
