@@ -69,6 +69,7 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
         "m": .objc,
         "mm": .objcpp,
         "h": .objcpp,
+        "hpp": .objcpp,
     ]
 
     public enum LanguageServerParameterError: Error {
