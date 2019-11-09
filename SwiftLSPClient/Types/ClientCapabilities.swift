@@ -174,7 +174,7 @@ public struct TextDocumentClientCapabilities: Codable {
     public let synchronization: TextDocumentClientCapabilitySynchronization?
     public let completion: TextDocumentClientCapabilityCompletion?
     public let hover: TextDocumentClientCapabilityHover?
-    public let signatureHelp: JSONValue?
+    public let signatureHelp: TextDocumentClientCapabilities.SignatureHelp?
     public let references: GenericDynamicRegistration?
     public let documentHighlight: JSONValue?
     public let documentSymbol: JSONValue?
@@ -193,12 +193,12 @@ public struct TextDocumentClientCapabilities: Codable {
     public let publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?
     public let foldingRange: TextDocumentClientCapabilityFoldingRange?
 
-    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, references: GenericDynamicRegistration? = nil, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil, definition: TextDocumentClientCapabilitiesGenericGoTo? = nil, typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil, implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?,
+    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, signatureHelp: TextDocumentClientCapabilities.SignatureHelp? = nil, references: GenericDynamicRegistration? = nil, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil, definition: TextDocumentClientCapabilitiesGenericGoTo? = nil, typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil, implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?,
                 foldingRange: TextDocumentClientCapabilityFoldingRange? = nil) {
         self.synchronization = synchronization
         self.completion = completion
         self.hover = hover
-        self.signatureHelp = nil
+        self.signatureHelp = signatureHelp
         self.references = references
         self.documentHighlight = nil
         self.documentSymbol = nil

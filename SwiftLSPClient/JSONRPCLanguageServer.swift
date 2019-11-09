@@ -186,10 +186,10 @@ extension JSONRPCLanguageServer: LanguageServer {
         }
     }
 
-    public func signatureHelp(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<SignatureHelp>) -> Void) {
+    public func signatureHelp(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<SignatureHelpResponse>) -> Void) {
         let method = ProtocolMethod.TextDocument.SignatureHelp
 
-        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<SignatureHelp>) in
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<SignatureHelpResponse>) in
             relayResult(result: result, block: block)
         }
     }

@@ -174,6 +174,7 @@
 				C91AE5B42365E99D00F3B364 /* Reference.swift */,
 				C93C7B9B236E6160005DB4C5 /* FoldingRange.swift */,
 				C9B13ED323725679004C6DB7 /* Hover.swift */,
+				C986779D21BB53E700C1BE5A /* SignatureHelp.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -253,7 +254,6 @@
 				C99299AD21755D8A00C5F8A5 /* LanguageFeatures.swift */,
 				C99299AF21755D8A00C5F8A5 /* Client.swift */,
 				C99299B121755D8A00C5F8A5 /* Basic.swift */,
-				C986779D21BB53E700C1BE5A /* SignatureHelp.swift */,
 				C9D85CC621EF836C00B33336 /* Position.swift */,
 				C9D85CC821EF837F00B33336 /* LSPRange.swift */,
 				C99DBF3B21FE1D69005AC5C5 /* ServerCapabilities.swift */,
