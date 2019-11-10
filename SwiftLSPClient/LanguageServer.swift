@@ -61,10 +61,10 @@ public protocol LanguageServer: class {
     func completion(params: CompletionParams, block: @escaping (LanguageServerResult<CompletionResponse>) -> Void)
     func hover(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<HoverResponse>) -> Void)
     func signatureHelp(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<SignatureHelpResponse>) -> Void)
-    func declaration(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<DeclarationResponse?>) -> Void)
-    func definition(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<DefinitionResponse?>) -> Void)
+    func declaration(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<DeclarationResponse>) -> Void)
+    func definition(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<DefinitionResponse>) -> Void)
     func typeDefinition(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<TypeDefinitionResponse?>) -> Void)
-    func implementation(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<ImplementationResponse?>) -> Void)
+    func implementation(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<ImplementationResponse>) -> Void)
     func documentSymbol(params: DocumentSymbolParams, block: @escaping (LanguageServerResult<DocumentSymbolResponse>) -> Void)
 
     func formatting(params: DocumentFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)

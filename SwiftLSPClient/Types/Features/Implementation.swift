@@ -8,4 +8,4 @@
 
 import Foundation
 
-public typealias ImplementationResponse = TypeDefinitionResponse
+public typealias ImplementationResponse = TypeDefinitionResponse?
