@@ -22,6 +22,9 @@ host.start { (server) in
         Swift.print("unable to launch server")
         return
     }
+    
+    // Set-up notificationResponder to see log/error messages from LSP server
+    server.notificationResponder = <object conforming to NotificationResponder>
 
     let processId = Int(ProcessInfo.processInfo.processIdentifier)
     let capabilities = ClientCapabilities(workspace: nil, textDocument: nil, experimental: nil)
