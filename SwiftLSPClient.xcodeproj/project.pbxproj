@@ -48,6 +48,7 @@
 		C99299B821755D8A00C5F8A5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AF21755D8A00C5F8A5 /* Client.swift */; };
 		C99299B921755D8A00C5F8A5 /* JSONRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299B021755D8A00C5F8A5 /* JSONRPC.swift */; };
 		C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299B121755D8A00C5F8A5 /* Basic.swift */; };
+		C9949CD123807F9300A3C2E5 /* Initialized.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9949CD023807F9300A3C2E5 /* Initialized.swift */; };
 		C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */; };
 		C99DBF3C21FE1D69005AC5C5 /* ServerCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3B21FE1D69005AC5C5 /* ServerCapabilities.swift */; };
 		C99DBF3E21FE1DC2005AC5C5 /* ClientCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3D21FE1DC2005AC5C5 /* ClientCapabilities.swift */; };
@@ -121,6 +122,7 @@
 		C99299B021755D8A00C5F8A5 /* JSONRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRPC.swift; sourceTree = "<group>"; };
 		C99299B121755D8A00C5F8A5 /* Basic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basic.swift; sourceTree = "<group>"; };
 		C99299BD21755EF300C5F8A5 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		C9949CD023807F9300A3C2E5 /* Initialized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initialized.swift; sourceTree = "<group>"; };
 		C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
 		C99DBF3B21FE1D69005AC5C5 /* ServerCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCapabilities.swift; sourceTree = "<group>"; };
 		C99DBF3D21FE1DC2005AC5C5 /* ClientCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCapabilities.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 		C99299A921755D8A00C5F8A5 /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				C9949CCF23807F8100A3C2E5 /* General */,
 				C94941DF23272D4C00BCFC88 /* Client */,
 				C94941D623272B2500BCFC88 /* Features */,
 				C9233177231DF392000207E7 /* Window */,
@@ -288,6 +291,14 @@
 				C99299BD21755EF300C5F8A5 /* Config.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		C9949CCF23807F8100A3C2E5 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				C9949CD023807F9300A3C2E5 /* Initialized.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,6 +450,7 @@
 				C99DBF3E21FE1DC2005AC5C5 /* ClientCapabilities.swift in Sources */,
 				C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */,
 				C923317B231DF43A000207E7 /* MessageType.swift in Sources */,
+				C9949CD123807F9300A3C2E5 /* Initialized.swift in Sources */,
 				C9D85CC721EF836C00B33336 /* Position.swift in Sources */,
 				C99299A221755D6900C5F8A5 /* DataTransport.swift in Sources */,
 			);

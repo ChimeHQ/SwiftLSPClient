@@ -37,8 +37,6 @@ extension JSONRPCLanguageServer: ProtocolTransportDelegate {
         }
 
         switch notificationMethod {
-        case ProtocolMethod.Initialized:
-            responder.languageServerInitialized(self)
         case ProtocolMethod.Window.LogMessage:
             decodeNotification(named: notificationMethod, data: data) { (value: LogMessageParams) in
                 responder.languageServer(self, logMessage: value)
@@ -105,6 +103,15 @@ extension JSONRPCLanguageServer: LanguageServer {
         
         protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<InitializationResponse>) in
             relayResult(result: result, block: block)
+        }
+    }
+    
+    public func initialized(params: InitializedParams, block: @escaping (LanguageServerError?) -> Void) {
+        let method = ProtocolMethod.Initialized
+        
+        protocolTransport.sendNotification(params, method: method) { (error) in
+            let upstreamError = error.map { LanguageServerError.protocolError($0) }
+            block(upstreamError)
         }
     }
     

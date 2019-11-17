@@ -50,6 +50,7 @@ public protocol LanguageServer: class {
     var notificationResponder: NotificationResponder? { get set }
 
     func initialize(params: InitializeParams, block: @escaping (LanguageServerResult<InitializationResponse>) -> Void)
+    func initialized(params: InitializedParams, block: @escaping (LanguageServerError?) -> Void)
     
     func didOpenTextDocument(params: DidOpenTextDocumentParams, block: @escaping (LanguageServerError?) -> Void)
     func didChangeTextDocument(params: DidChangeTextDocumentParams, block: @escaping (LanguageServerError?) -> Void)
@@ -75,8 +76,6 @@ public protocol LanguageServer: class {
 }
 
 public protocol NotificationResponder: class {
-    func languageServerInitialized(_ server: LanguageServer)
-
     func languageServer(_ server: LanguageServer, logMessage message: LogMessageParams)
     func languageServer(_ server: LanguageServer, showMessage message: ShowMessageParams)
     func languageServer(_ server: LanguageServer, showMessageRequest messageRequest: ShowMessageRequestParams)
