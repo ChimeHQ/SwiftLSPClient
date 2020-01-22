@@ -22,6 +22,7 @@ public class LanguageServerProcessHost {
     private let transport: StdioDataTransport
     private let server: LanguageServer
     private var launched: Bool
+    public var terminationHandler: (() -> Void)?
 
     /// Initialize an object that represents a locally-running language server process.
     ///
@@ -50,6 +51,7 @@ public class LanguageServerProcessHost {
 
         process.terminationHandler = { [unowned self] (task) in
             self.transport.close()
+            self.terminationHandler?()
         }
     }
 
