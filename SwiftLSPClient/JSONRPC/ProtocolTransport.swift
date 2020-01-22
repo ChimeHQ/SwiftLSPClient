@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os.log
 
 public enum ProtocolTransportError: Error {
     case encodingFailure(Error)
@@ -32,6 +33,7 @@ public class ProtocolTransport {
     private let decoder: JSONDecoder
     public weak var delegate: ProtocolTransportDelegate?
     private let queue: DispatchQueue
+    private let log: OSLog?
     
     public init(messageTransport: MessageTransport) {
         self.messageTransport = messageTransport
@@ -39,6 +41,11 @@ public class ProtocolTransport {
         self.encoder = JSONEncoder()
         self.decoder = JSONDecoder()
         self.queue = DispatchQueue(label: "com.chimehq.SwiftLSPClient.ProtocolTransport")
+        if #available(OSX 10.12, *) {
+            self.log = OSLog(subsystem: "com.chimehq.SwiftLSPClient", category: "ProtocolTransport")
+        } else {
+            self.log = nil
+        }
         
         self.messageTransport.dataHandler = { [unowned self] (data) in
             self.dataAvailable(data)
@@ -141,19 +148,35 @@ public class ProtocolTransport {
 
         guard let responder = responders[message.id] else {
             // hrm, got a message without a matching responder
-            print("not matching responder for \(message.id), dropping message")
+
+            if #available(OSX 10.12, *), let log = self.log {
+                os_log("no matching responder for id %{public}@", log: log, type: .error, message.id.description)
+            } else {
+                print("no matching responder for \(message.id), dropping message")
+            }
             return
         }
             
         responder(.success(data))
 
-        // TODO: This doesn't seem to be threadsafe
         responders.removeValue(forKey: message.id)
     }
     
     private func dispatchNotification(_ notification: JSONRPCNotification, originalData data: Data) {
         let method = notification.method
 
-        self.delegate?.transportReceived(self, notificationMethod: method, data: data)
+        guard let delegate = delegate else {
+            let originalData = String(data: data, encoding: .utf8) ?? notification.description
+
+            if #available(OSX 10.12, *), let log = self.log {
+                os_log("received notification without delegate %{public}@", log: log, type: .error, originalData)
+            } else {
+                print("received notification without delegate \(originalData)")
+            }
+
+            return
+        }
+
+        delegate.transportReceived(self, notificationMethod: method, data: data)
     }
 }

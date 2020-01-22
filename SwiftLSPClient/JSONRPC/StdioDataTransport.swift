@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os.log
 
 public class StdioDataTransport: DataTransport {
     public let stdinPipe: Pipe
@@ -15,6 +16,7 @@ public class StdioDataTransport: DataTransport {
     var readHandler: ReadHandler?
     private var closed: Bool
     private var queue: DispatchQueue
+    private let log: OSLog?
     
     public init() {
         self.stdinPipe = Pipe()
@@ -23,6 +25,11 @@ public class StdioDataTransport: DataTransport {
         self.readHandler = nil
         self.closed = false
         self.queue = DispatchQueue(label: "com.chimehq.SwiftLSPClient.StdioDataTransport")
+        if #available(OSX 10.12, *) {
+            self.log = OSLog(subsystem: "com.chimehq.SwiftLSPClient", category: "StdioDataTransport")
+        } else {
+            self.log = nil
+        }
 
         setupFileHandleHandlers()
     }
@@ -101,7 +108,11 @@ public class StdioDataTransport: DataTransport {
             // Just print for now. Perhaps provide a way to hook
             // this up to a caller?
             if let string = String(bytes: data, encoding: .utf8) {
-                print("stderr: \(string)")
+                if #available(OSX 10.12, *), let log = self.log {
+                    os_log("stderr: %{public}@", log: log, type: .error, string)
+                } else {
+                    print("stderr: \(string)")
+                }
             }
         }
     }

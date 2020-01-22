@@ -37,6 +37,17 @@ public enum JSONId: Codable, Hashable {
     }
 }
 
+extension JSONId: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .stringId(let str):
+            return str
+        case .numericId(let num):
+            return String(num)
+        }
+    }
+}
+
 public enum ProtocolErrorCode: Int, Codable {
     case parseError = -32700
     case invalidRequest = -32600
@@ -118,6 +129,12 @@ public struct JSONRPCResultResponse<T>: Codable where T: Codable {
 public struct JSONRPCNotification: Codable {
     public let jsonrpc = "2.0"
     public let method: String
+}
+
+extension JSONRPCNotification: CustomStringConvertible {
+    public var description: String {
+        return "<JSONRPCNotification: \(method)>"
+    }
 }
 
 public struct JSONRPCNotificationParams<T>: Codable where T: Codable {
