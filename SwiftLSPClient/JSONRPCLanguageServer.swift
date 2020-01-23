@@ -10,7 +10,7 @@ import Foundation
 
 public class JSONRPCLanguageServer {
     private var messageId: Int
-    private let protocolTransport: ProtocolTransport
+    let protocolTransport: ProtocolTransport
     public weak var notificationResponder: NotificationResponder?
     
     public init(dataTransport: DataTransport) {

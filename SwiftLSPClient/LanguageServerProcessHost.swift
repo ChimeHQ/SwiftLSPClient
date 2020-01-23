@@ -20,7 +20,7 @@ import Foundation
 public class LanguageServerProcessHost {
     private let process: Process
     private let transport: StdioDataTransport
-    private let server: LanguageServer
+    private let server: JSONRPCLanguageServer
     private var launched: Bool
     public var terminationHandler: (() -> Void)?
 
@@ -52,6 +52,15 @@ public class LanguageServerProcessHost {
         process.terminationHandler = { [unowned self] (task) in
             self.transport.close()
             self.terminationHandler?()
+        }
+    }
+
+    public var logProtocolMessages: Bool {
+        get {
+            return server.protocolTransport.logMessages
+        }
+        set {
+            server.protocolTransport.logMessages = newValue
         }
     }
 

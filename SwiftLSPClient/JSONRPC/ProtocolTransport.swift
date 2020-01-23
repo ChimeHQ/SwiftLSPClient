@@ -34,6 +34,7 @@ public class ProtocolTransport {
     public weak var delegate: ProtocolTransportDelegate?
     private let queue: DispatchQueue
     private let log: OSLog?
+    public var logMessages = false
     
     public init(messageTransport: MessageTransport) {
         self.messageTransport = messageTransport
@@ -126,6 +127,12 @@ public class ProtocolTransport {
     }
     
     private func dataAvailable(_ data: Data) {
+        if logMessages, let string = String(data: data, encoding: .utf8) {
+            if #available(OSX 10.12, *), let log = self.log {
+                os_log("raw message data %{public}@", log: log, type: .debug, string)
+            }
+        }
+
         queue.async {
             if let message = try? self.decoder.decode(JSONRPCResponse.self, from: data) {
                 self.dispatchMessage(message, originalData: data)
