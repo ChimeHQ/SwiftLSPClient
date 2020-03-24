@@ -13,6 +13,9 @@ public struct DiagnosticRelatedInformation: Codable {
     public let message: String
 }
 
+extension DiagnosticRelatedInformation: Equatable {
+}
+
 public enum DiagnosticCode: Codable {
     case number(Int)
     case string(String)
@@ -40,6 +43,9 @@ public enum DiagnosticCode: Codable {
     }
 }
 
+extension DiagnosticCode: Equatable {
+}
+
 public struct Diagnostic: Codable {
     public let range: LSPRange
     public let severity: Int?
@@ -47,6 +53,9 @@ public struct Diagnostic: Codable {
     public let source: String?
     public let message: String
     public let relatedInformation: [DiagnosticRelatedInformation]?
+}
+
+extension Diagnostic: Equatable {
 }
 
 public struct PublishDiagnosticsParams: Codable {

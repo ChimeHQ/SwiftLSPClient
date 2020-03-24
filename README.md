@@ -57,6 +57,8 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | window/showMessage | ✅ |
 | window/showMessageRequest | ✅ |
 | window/logMessage | ✅ |
+| window/workDoneProgress/create | - |
+| window/workDoneProgress/cancel | - |
 | telemetry/event | - |
 | client/registerCapability | - |
 | client/unregisterCapability | - |
@@ -86,7 +88,7 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | textDocument/references | ✅  |
 | textDocument/documentHighlight | - |
 | textDocument/documentSymbol | ✅ |
-| textDocument/codeAction | - |
+| textDocument/codeAction | ✅ |
 | textDocument/codeLens | - |
 | codeLens/resolve | - |
 | textDocument/documentLink | - |
@@ -99,6 +101,7 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | textDocument/rename | - |
 | textDocument/prepareRename | - |
 | textDocument/foldingRange | ✅ |
+| textDocument/selectionRange | - |
 
 ## Integration
 

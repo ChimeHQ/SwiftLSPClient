@@ -185,7 +185,7 @@ public struct TextDocumentClientCapabilities: Codable {
     public let definition: TextDocumentClientCapabilitiesGenericGoTo?
     public let typeDefinition: TextDocumentClientCapabilitiesGenericGoTo?
     public let implementation: TextDocumentClientCapabilitiesGenericGoTo?
-    public let codeAction: JSONValue?
+    public let codeAction: CodeActionClientCapabilities?
     public let codeLens: JSONValue?
     public let documentLink: JSONValue?
     public let colorProvider: JSONValue?
@@ -193,7 +193,7 @@ public struct TextDocumentClientCapabilities: Codable {
     public let publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?
     public let foldingRange: TextDocumentClientCapabilityFoldingRange?
 
-    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, signatureHelp: TextDocumentClientCapabilities.SignatureHelp? = nil, references: GenericDynamicRegistration? = nil, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil, definition: TextDocumentClientCapabilitiesGenericGoTo? = nil, typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil, implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?,
+    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, signatureHelp: TextDocumentClientCapabilities.SignatureHelp? = nil, references: GenericDynamicRegistration? = nil, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil, definition: TextDocumentClientCapabilitiesGenericGoTo? = nil, typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil, implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil, codeAction: CodeActionClientCapabilities? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?,
                 foldingRange: TextDocumentClientCapabilityFoldingRange? = nil) {
         self.synchronization = synchronization
         self.completion = completion
@@ -209,7 +209,7 @@ public struct TextDocumentClientCapabilities: Codable {
         self.definition = definition
         self.typeDefinition = typeDefinition
         self.implementation = implemenation
-        self.codeAction = nil
+        self.codeAction = codeAction
         self.codeLens = nil
         self.documentLink = nil
         self.colorProvider = nil

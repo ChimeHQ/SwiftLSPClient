@@ -109,13 +109,21 @@ public struct TextDocumentItem: Codable {
     }
 }
 
-public struct VersionedTextDocumentIdentifier: Codable {
+public struct VersionedTextDocumentIdentifier: Codable, Equatable {
     public let uri: DocumentUri
     public let version: Int?
     
     public init(uri: DocumentUri, version: Int?) {
         self.uri = uri
         self.version = version
+    }
+}
+
+extension VersionedTextDocumentIdentifier: CustomStringConvertible {
+    public var description: String {
+        let vString = version.map { String($0) } ?? "<unknown>"
+
+        return "\(uri.description): Version \(vString)"
     }
 }
 
@@ -151,7 +159,7 @@ public struct MarkupContent: Codable {
 extension MarkupContent: Equatable {
 }
 
-public struct TextEdit: Codable {
+public struct TextEdit: Codable, Equatable {
     public let range: LSPRange
     public let newText: String
     
@@ -161,7 +169,13 @@ public struct TextEdit: Codable {
     }
 }
 
-public struct Command: Codable {
+extension TextEdit: CustomStringConvertible {
+    public var description: String {
+        return "\(range): \"\(newText)\""
+    }
+}
+
+public struct Command: Codable, Equatable {
     public let title: String
     public let command: String
     public let arguments: [JSONValue]?

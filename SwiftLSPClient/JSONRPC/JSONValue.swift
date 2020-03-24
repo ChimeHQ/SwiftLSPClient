@@ -61,3 +61,6 @@ public enum JSONValue: Codable {
         }
     }
 }
+
+extension JSONValue: Equatable {
+}

@@ -34,3 +34,13 @@ extension Position: Codable {
 
 extension Position: Hashable {
 }
+
+extension Position: Comparable {
+    public static func < (lhs: Position, rhs: Position) -> Bool {
+        if lhs.line == rhs.line {
+            return lhs.character < rhs.character
+        }
+
+        return lhs.line < rhs.line
+    }
+}

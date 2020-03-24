@@ -119,7 +119,7 @@ public struct ServerCapabilities: Codable {
     public let documentHighlightProvider: Bool?
     public let documentSymbolProvider: Bool?
     public let workspaceSymbolProvider: Bool?
-    public let codeActionProvider: JSONValue?
+    public let codeActionProvider: ServerCapabilities.CodeActionProvider?
     public let codeLensProvider: JSONValue?
     public let documentFormattingProvider: Bool?
     public let documentRangeFormattingProvider: Bool?

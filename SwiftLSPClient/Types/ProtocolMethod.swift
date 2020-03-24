@@ -33,6 +33,7 @@ public struct ProtocolMethod {
         public static let TypeDefinition = "textDocument/typeDefinition"
         public static let Implementation = "textDocument/implementation"
         public static let DocumentSymbol = "textDocument/documentSymbol"
+        public static let CodeAction = "textDocument/codeAction"
         public static let Formatting = "textDocument/formatting"
         public static let RangeFormatting = "textDocument/rangeFormatting"
         public static let OnTypeFormatting = "textDocument/onTypeFormatting"

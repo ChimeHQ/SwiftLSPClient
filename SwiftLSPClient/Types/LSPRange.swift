@@ -21,6 +21,14 @@ public struct LSPRange {
         self.start = Position(startPair)
         self.end = Position(endPair)
     }
+
+    public func contains(_ position: Position) -> Bool {
+        return position > start && position < end
+    }
+
+    public func intersects(_ other: LSPRange) -> Bool {
+        return contains(other.start) || contains(other.end)
+    }
 }
 
 extension LSPRange: CustomStringConvertible {

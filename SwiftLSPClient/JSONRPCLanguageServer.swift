@@ -241,6 +241,14 @@ extension JSONRPCLanguageServer: LanguageServer {
         }
     }
 
+    public func codeAction(params: CodeActionParams, block: @escaping (LanguageServerResult<CodeActionResponse>) -> Void) {
+        let method = ProtocolMethod.TextDocument.CodeAction
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<CodeActionResponse>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
     public func formatting(params: DocumentFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void) {
         let method = ProtocolMethod.TextDocument.Formatting
 
