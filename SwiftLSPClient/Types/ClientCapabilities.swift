@@ -151,10 +151,18 @@ public struct TextDocumentClientCapabilityHover: Codable {
 }
 
 public struct TextDocumentClientCapabilityPublicDiagnostics: Codable {
-    public let relatedInformation: Bool?
+    public struct TagSupport: Codable, Equatable {
+        let valueSet: [DiagnosticTag]
+    }
 
-    public init(relatedInformation: Bool) {
+    public let relatedInformation: Bool?
+    public let tagSupport: TagSupport?
+    public let versionSupport: Bool?
+
+    public init(relatedInformation: Bool, versionSupport: Bool? = false, supportedTags: [DiagnosticTag]? = nil) {
         self.relatedInformation = relatedInformation
+        self.versionSupport = versionSupport
+        self.tagSupport = supportedTags.map { TagSupport(valueSet: $0) }
     }
 }
 

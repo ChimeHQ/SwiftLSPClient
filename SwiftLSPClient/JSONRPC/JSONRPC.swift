@@ -64,7 +64,7 @@ public enum ProtocolErrorCode: Int, Codable {
 
 // MARK: Requests, Responses, and Errors
 public struct JSONRPCRequest<T>: Codable where T: Codable {
-    public let jsonrpc = "2.0"
+    public var jsonrpc = "2.0"
     public let id: JSONId
     public let method: String
     public let params: T?
@@ -93,13 +93,13 @@ public struct ResponseError: Codable {
 }
 
 public struct JSONRPCResponse: Codable {
-    public let jsonrpc: String
+    public var jsonrpc: String
     public let id: JSONId
     public let error: ResponseError?
 }
 
 public struct JSONRPCResultResponse<T>: Codable where T: Codable {
-    public let jsonrpc: String
+    public var jsonrpc: String
     public let id: JSONId?
     public let result: T?
     public let error: ResponseError?
@@ -127,7 +127,7 @@ public struct JSONRPCResultResponse<T>: Codable where T: Codable {
 }
 
 public struct JSONRPCNotification: Codable {
-    public let jsonrpc = "2.0"
+    public var jsonrpc = "2.0"
     public let method: String
 }
 
@@ -138,7 +138,7 @@ extension JSONRPCNotification: CustomStringConvertible {
 }
 
 public struct JSONRPCNotificationParams<T>: Codable where T: Codable {
-    public let jsonrpc = "2.0"
+    public var jsonrpc = "2.0"
     public let method: String
     public let params: T?
 }

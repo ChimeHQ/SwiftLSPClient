@@ -46,12 +46,25 @@ public enum DiagnosticCode: Codable {
 extension DiagnosticCode: Equatable {
 }
 
+public enum DiagnosticSeverity: Int, Codable, Equatable {
+    case error = 1
+    case warning = 2
+    case information = 3
+    case hint = 4
+}
+
+public enum DiagnosticTag: Int, Codable, Equatable {
+    case unnecessary = 1
+    case deprecated = 2
+}
+
 public struct Diagnostic: Codable {
     public let range: LSPRange
-    public let severity: Int?
+    public let severity: DiagnosticSeverity?
     public let code: DiagnosticCode?
     public let source: String?
     public let message: String
+    public let tags: [DiagnosticTag]?
     public let relatedInformation: [DiagnosticRelatedInformation]?
 }
 
@@ -60,6 +73,7 @@ extension Diagnostic: Equatable {
 
 public struct PublishDiagnosticsParams: Codable {
     public let uri: DocumentUri
+    public let version: Int?
     public let diagnostics: [Diagnostic]
 }
 
