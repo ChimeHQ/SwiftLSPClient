@@ -6,7 +6,7 @@
 //  Copyright © 2018 Chime Systems. All rights reserved.
 //
 
-#if os(macOS) || (os(iOS) && targetEnvironment(macCatalyst))
+#if os(macOS)
 import Foundation
 
 /// Represents a locally-running language server process.
