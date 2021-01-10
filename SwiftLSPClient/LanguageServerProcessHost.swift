@@ -35,7 +35,7 @@ public class LanguageServerProcessHost {
     /// - Parameters:
     ///   - path: The language server's executable path on disk.
     ///   - arguments: Command line arguments passed to the executable when launched.
-    ///   - environment: Environment variables applied to the executable. If nil, the environemnt is inherited from the calling process.
+    ///   - environment: Environment variables applied to the executable. If nil, the environment is inherited from the calling process.
     public init(path: String, arguments: [String], environment: [String : String]? = nil) {
         self.process = Process()
         self.transport = StdioDataTransport()
