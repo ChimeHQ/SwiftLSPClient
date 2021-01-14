@@ -15,7 +15,7 @@ import SwiftLSPClient
 
 let executablePath = "path/to/your/lsp-server-executable"
 let host = LanguageServerProcessHost(path: executablePath, arguments: [],
-    environemnt: [/* the environment your lsp server requires e.g. PATH */])
+    environment: [/* the environment your lsp server requires e.g. PATH */])
 
 host.start { (server) in
     guard let server = server else {
