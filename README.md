@@ -102,6 +102,15 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | textDocument/prepareRename | - |
 | textDocument/foldingRange | ✅ |
 | textDocument/selectionRange | - |
+| textDocument/prepareCallHierarchy | - |
+| textDocument/prepareCallHierarchy | - |
+| callHierarchy/incomingCalls | - |
+| callHierarchy/outgoingCalls | - |
+| textDocument/semanticTokens/full | - |
+| textDocument/semanticTokens/full/delta | - |
+| textDocument/semanticTokens/range | - |
+| textDocument/linkedEditingRange | - |
+| textDocument/moniker | - |
 
 ## Integration
 
@@ -109,7 +118,7 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/ChimeHQ/SwiftLSPClient.git")
+    .package(url: "https://github.com/ChimeHQ/SwiftLSPClient")
 ]
 ```
 
