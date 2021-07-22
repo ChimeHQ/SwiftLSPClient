@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwiftLSPClient
+import JSONRPC
 
 class MockDataTransport: DataTransport {
     var writtenData: [Data]

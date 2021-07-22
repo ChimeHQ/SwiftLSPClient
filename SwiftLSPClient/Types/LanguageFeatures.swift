@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AnyCodable
 
 // MARK: Completion
 public enum CompletionTriggerKind: Int, Codable {
@@ -53,7 +54,7 @@ public struct CompletionItem: Codable {
     public let label: String
     public let kind: CompletionItemKind?
     public let detail: String?
-    public let documentation: JSONValue?
+    public let documentation: AnyCodable?
     public let deprecated: Bool?
     public let preselect: Bool?
     public let sortText: String?
@@ -64,7 +65,7 @@ public struct CompletionItem: Codable {
     public let additionalTextEdits: [TextEdit]?
     public let commitCharacters: [String]?
     public let command: Command?
-    public let data: JSONValue?
+    public let data: AnyCodable?
 }
 
 public struct CompletionList: Codable {

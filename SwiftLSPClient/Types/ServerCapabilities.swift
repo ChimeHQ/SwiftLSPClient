@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AnyCodable
 
 public struct SaveOptions: Codable {
     public let includeText: Bool?
@@ -114,21 +115,21 @@ public struct ServerCapabilities: Codable {
     public let signatureHelpProvider: SignatureHelpOptions?
     public let definitionProvider: Bool?
     public let typeDefinitionProvider: ServerCapabilityTypeDefinitionProvider?
-    public let implementationProvider: JSONValue?
+    public let implementationProvider: AnyCodable?
     public let referencesProvider: Bool?
     public let documentHighlightProvider: Bool?
     public let documentSymbolProvider: Bool?
     public let workspaceSymbolProvider: Bool?
     public let codeActionProvider: ServerCapabilities.CodeActionProvider?
-    public let codeLensProvider: JSONValue?
+    public let codeLensProvider: AnyCodable?
     public let documentFormattingProvider: Bool?
     public let documentRangeFormattingProvider: Bool?
     public let documentOnTypeFormattingProvider: DocumentOnTypeFormattingOptions?
-    public let renameProvider: JSONValue?
-    public let documentLinkProvider: JSONValue?
-    public let colorProvider: JSONValue?
-    public let foldingRangeProvider: JSONValue?
-    public let executeCommandProvider: JSONValue?
-    public let workspace: JSONValue?
-    public let experimental: JSONValue?
+    public let renameProvider: AnyCodable?
+    public let documentLinkProvider: AnyCodable?
+    public let colorProvider: AnyCodable?
+    public let foldingRangeProvider: AnyCodable?
+    public let executeCommandProvider: AnyCodable?
+    public let workspace: AnyCodable?
+    public let experimental: AnyCodable?
 }

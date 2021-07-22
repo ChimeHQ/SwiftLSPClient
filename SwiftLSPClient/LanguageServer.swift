@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AnyCodable
 
 public enum LanguageServerError: LocalizedError {
     case serverUnavailable
@@ -18,7 +19,7 @@ public enum LanguageServerError: LocalizedError {
     case operationTimedOut
     case unimplemented
     
-    case serverError(code: Int, message: String, data: [String : AnyObject]?)
+    case serverError(code: Int, message: String, data: AnyCodable?)
 
     public var errorDescription: String? {
         switch self {
@@ -46,7 +47,7 @@ public enum LanguageServerError: LocalizedError {
 
 public typealias LanguageServerResult<T> = Result<T, LanguageServerError>
 
-public protocol LanguageServer: class {
+public protocol LanguageServer: AnyObject {
     var notificationResponder: NotificationResponder? { get set }
 
     func initialize(params: InitializeParams, block: @escaping (LanguageServerResult<InitializationResponse>) -> Void)
@@ -76,7 +77,7 @@ public protocol LanguageServer: class {
     func foldingRange(params: FoldingRangeParams, block: @escaping (LanguageServerResult<FoldingRangeResponse>) -> Void)
 }
 
-public protocol NotificationResponder: class {
+public protocol NotificationResponder: AnyObject {
     func languageServer(_ server: LanguageServer, logMessage message: LogMessageParams)
     func languageServer(_ server: LanguageServer, showMessage message: ShowMessageParams)
     func languageServer(_ server: LanguageServer, showMessageRequest messageRequest: ShowMessageRequestParams)

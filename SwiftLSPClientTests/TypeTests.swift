@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import JSONRPC
 @testable import SwiftLSPClient
 
 class TypeTests: XCTestCase {
@@ -15,7 +16,7 @@ class TypeTests: XCTestCase {
 {"id":2,"result":[{"name":"something","kind":12,"location":{"uri":"file:///hello.go","range":{"start":{"line":19,"character":5},"end":{"line":19,"character":13}}}}],"jsonrpc":"2.0"}
 """
         let data = json.data(using: .utf8)!
-        let response = try! JSONDecoder().decode(JSONRPCResultResponse<DocumentSymbolResponse>.self, from: data)
+        let response = try! JSONDecoder().decode(JSONRPCResponse<DocumentSymbolResponse>.self, from: data)
 
         let location = Location(uri: "file:///hello.go", range: LSPRange(startPair: (19, 5), endPair: (19, 13)))
         let symbolInfo = SymbolInformation(name: "something", kind: 12, deprecated: nil, location: location, containerName: nil)
@@ -27,7 +28,7 @@ class TypeTests: XCTestCase {
 {"jsonrpc":"2.0","result":[{"title":"Organize Imports","kind":"source.organizeImports","edit":{"documentChanges":[{"textDocument":{"version":0,"uri":"file:///hello.go"},"edits":[{"range":{"start":{"line":7,"character":0},"end":{"line":7,"character":0}},"newText":"\\t\\"os\\"\\n"}]}]}}],"id":2}
 """
         let data = json.data(using: .utf8)!
-        let response = try! JSONDecoder().decode(JSONRPCResultResponse<CodeActionResponse>.self, from: data)
+        let response = try! JSONDecoder().decode(JSONRPCResponse<CodeActionResponse>.self, from: data)
 
         let range = LSPRange(startPair: (7, 0), endPair: (7,0))
         let edit = TextDocumentEdit(textDocument: VersionedTextDocumentIdentifier(uri: "file:///hello.go", version: 0),

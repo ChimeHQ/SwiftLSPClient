@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import JSONRPC
 
 public class JSONRPCLanguageServer {
     private var messageId: Int
@@ -16,53 +17,25 @@ public class JSONRPCLanguageServer {
     public init(dataTransport: DataTransport) {
         self.messageId = 0
 
-        self.protocolTransport = ProtocolTransport(dataTransport: dataTransport)
+        let msgTransport = MessageTransport(dataTransport: dataTransport)
+        self.protocolTransport = ProtocolTransport(messageTransport: msgTransport)
 
-        self.protocolTransport.delegate = self
+        protocolTransport.notificationHandler = { [unowned self] (notification, data, callback) in
+            self.handleNotification(notification, data: data, completionHandler: callback)
+        }
+
+        protocolTransport.responseHandler = { [unowned self] (request, data, callback) in
+            self.handleRequest(request, data: data, completionHandler: callback)
+        }
     }
 }
 
-extension JSONRPCLanguageServer: ProtocolTransportDelegate {
-    public func transportReceived(_ transport: ProtocolTransport, undecodableData data: Data) {
-        if let string = String(data: data, encoding: .utf8) {
-            print("undecodable data received: \(string)")
-        } else {
-            print("undecodable data received: \(data)")
-        }
-    }
-
-    public func transportReceived(_ transport: ProtocolTransport, notificationMethod: String, data: Data) {
-        guard let responder = notificationResponder else {
-            return
-        }
-
-        switch notificationMethod {
-        case ProtocolMethod.Window.LogMessage:
-            decodeNotification(named: notificationMethod, data: data) { (value: LogMessageParams) in
-                responder.languageServer(self, logMessage: value)
-            }
-        case ProtocolMethod.Window.ShowMessage:
-            decodeNotification(named: notificationMethod, data: data) { (value: ShowMessageParams) in
-                responder.languageServer(self, showMessage: value)
-            }
-        case ProtocolMethod.Window.ShowMessageRequest:
-            decodeNotification(named: notificationMethod, data: data) { (value: ShowMessageRequestParams) in
-                responder.languageServer(self, showMessageRequest: value)
-            }
-        case ProtocolMethod.TextDocument.PublishDiagnostics:
-            decodeNotification(named: notificationMethod, data: data) { (value: PublishDiagnosticsParams) in
-                responder.languageServer(self, publishDiagnostics: value)
-            }
-        default:
-            break
-        }
-    }
-
+extension JSONRPCLanguageServer {
     private func decodeNotification<T: Codable>(named name: String, data: Data, onSuccess: (T) -> Void) {
         let responder = notificationResponder
 
         do {
-            let resultType = JSONRPCNotificationParams<T>.self
+            let resultType = JSONRPCNotification<T>.self
             let result = try JSONDecoder().decode(resultType, from: data)
 
             guard let params = result.params else {
@@ -78,6 +51,40 @@ extension JSONRPCLanguageServer: ProtocolTransportDelegate {
             responder?.languageServer(self, failedToDecodeNotification: name, with: newError)
         }
     }
+
+    private func handleNotification(_ notification: AnyJSONRPCNotification, data: Data, completionHandler: @escaping (Error?) -> Void) {
+        guard let responder = notificationResponder else {
+            completionHandler(nil)
+            return
+        }
+
+        let method = notification.method
+
+        switch method {
+        case ProtocolMethod.Window.LogMessage:
+            decodeNotification(named: method, data: data) { (value: LogMessageParams) in
+                responder.languageServer(self, logMessage: value)
+            }
+        case ProtocolMethod.Window.ShowMessage:
+            decodeNotification(named: method, data: data) { (value: ShowMessageParams) in
+                responder.languageServer(self, showMessage: value)
+            }
+        case ProtocolMethod.Window.ShowMessageRequest:
+            decodeNotification(named: method, data: data) { (value: ShowMessageRequestParams) in
+                responder.languageServer(self, showMessageRequest: value)
+            }
+        case ProtocolMethod.TextDocument.PublishDiagnostics:
+            decodeNotification(named: method, data: data) { (value: PublishDiagnosticsParams) in
+                responder.languageServer(self, publishDiagnostics: value)
+            }
+        default:
+            break
+        }
+    }
+
+    private func handleRequest(_ request: AnyJSONRPCRequest, data: Data, completionHandler: @escaping (AnyJSONRPCResponse) -> Void) {
+
+    }
 }
 
 private func relayResult<T>(result: JSONRPCLanguageServer.ProtocolResponse<T>, block: @escaping (LanguageServerResult<T>) -> Void) {
@@ -88,7 +95,9 @@ private func relayResult<T>(result: JSONRPCLanguageServer.ProtocolResponse<T>, b
         if let responseParam = responseMessage.result {
             block(.success(responseParam))
         } else if let errorParam = responseMessage.error {
-            block(.failure(errorParam.languageServerError))
+            let serverError = LanguageServerError.serverError(code: errorParam.code, message: errorParam.message, data: errorParam.data)
+
+            block(.failure(serverError))
         } else {
             block(.failure(.missingExpectedResult))
         }

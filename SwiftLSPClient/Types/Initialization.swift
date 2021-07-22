@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AnyCodable
 
 public enum Tracing: String, Codable {
     case off
@@ -18,12 +19,12 @@ public struct InitializeParams: Codable {
     public let processId: Int
     public let rootPath: String?
     public let rootURI: DocumentUri?
-    public let initializationOptions: JSONValue?
+    public let initializationOptions: AnyCodable?
     public let capabilities: ClientCapabilities
     public let trace: Tracing?
     public let workspaceFolders: [WorkspaceFolder]?
     
-    public init(processId: Int, rootPath: String?, rootURI: DocumentUri?, initializationOptions: JSONValue?, capabilities: ClientCapabilities, trace: Tracing?, workspaceFolders: [WorkspaceFolder]?) {
+    public init(processId: Int, rootPath: String?, rootURI: DocumentUri?, initializationOptions: AnyCodable?, capabilities: ClientCapabilities, trace: Tracing?, workspaceFolders: [WorkspaceFolder]?) {
         self.processId = processId
         self.rootPath = rootPath
         self.rootURI = rootURI

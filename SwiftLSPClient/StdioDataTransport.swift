@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import JSONRPC
 import os.log
 
 public class StdioDataTransport: DataTransport {

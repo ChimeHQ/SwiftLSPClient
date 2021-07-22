@@ -9,9 +9,11 @@ let package = Package(
     products: [
         .library(name: "SwiftLSPClient", targets: ["SwiftLSPClient"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/ChimeHQ/JSONRPC", from: "0.1.3"),
+    ],
     targets: [
-        .target(name: "SwiftLSPClient", dependencies: [], path: "SwiftLSPClient/"),
+        .target(name: "SwiftLSPClient", dependencies: ["JSONRPC"], path: "SwiftLSPClient/"),
         .testTarget(name: "SwiftLSPClientTests", dependencies: ["SwiftLSPClient"], path: "SwiftLSPClientTests/"),
     ]
 )

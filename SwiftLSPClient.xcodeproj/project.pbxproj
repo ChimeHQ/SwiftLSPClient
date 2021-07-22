@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,11 +13,9 @@
 		C91160F02214F86B00B4F3AB /* LocationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160EF2214F86B00B4F3AB /* LocationLink.swift */; };
 		C91AE5B52365E99D00F3B364 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AE5B42365E99D00F3B364 /* Reference.swift */; };
 		C91AE5BC2369D85000F3B364 /* JSONRPCLanguageServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AE5BB2369D85000F3B364 /* JSONRPCLanguageServerTests.swift */; };
-		C91AE5C1236A679D00F3B364 /* JSONRPC+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91AE5C0236A679D00F3B364 /* JSONRPC+Helpers.swift */; };
 		C9233179231DF3CC000207E7 /* MessageActionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9233178231DF3CB000207E7 /* MessageActionItem.swift */; };
 		C923317B231DF43A000207E7 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923317A231DF43A000207E7 /* MessageType.swift */; };
 		C923317D231DF4AA000207E7 /* ShowMessageParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923317C231DF4AA000207E7 /* ShowMessageParams.swift */; };
-		C9361B5E220DD9F600254280 /* MockProtocolTransportMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */; };
 		C9361B60220E58EB00254280 /* DocumentSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B5F220E58EB00254280 /* DocumentSymbol.swift */; };
 		C9361B64220E671400254280 /* TypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9361B63220E671400254280 /* TypeTests.swift */; };
 		C93C7B9C236E6160005DB4C5 /* FoldingRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93C7B9B236E6160005DB4C5 /* FoldingRange.swift */; };
@@ -28,28 +26,23 @@
 		C94941E323272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94941E223272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift */; };
 		C96CB61E220C8C2F00F13A36 /* SymbolKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */; };
 		C96CB620220C917B00F13A36 /* WorkspaceFolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */; };
-		C96CB62A220D11D700F13A36 /* ProtocolTransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */; };
 		C96CB62E220D120900F13A36 /* MockDataTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB62D220D120900F13A36 /* MockDataTransport.swift */; };
 		C96CB630220D168800F13A36 /* TextDocumentIndentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96CB62F220D168800F13A36 /* TextDocumentIndentifier.swift */; };
 		C986779C21B45A3D00C1BE5A /* LanguageServerProcessHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = C986779B21B45A3D00C1BE5A /* LanguageServerProcessHost.swift */; };
 		C986779E21BB53E700C1BE5A /* SignatureHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C986779D21BB53E700C1BE5A /* SignatureHelp.swift */; };
+		C98C6B0A26A72ABA000AF8B8 /* JSONRPC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6B0926A72ABA000AF8B8 /* JSONRPC.xcframework */; };
+		C98C6B0C26A72ABC000AF8B8 /* AnyCodable.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C98C6B0B26A72ABC000AF8B8 /* AnyCodable.xcframework */; };
 		C992998921755D0900C5F8A5 /* SwiftLSPClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C992997F21755D0900C5F8A5 /* SwiftLSPClient.framework */; };
-		C992998E21755D0900C5F8A5 /* MessageTransportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C992998D21755D0900C5F8A5 /* MessageTransportTests.swift */; };
 		C992999021755D0900C5F8A5 /* LanguageServerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = C992998221755D0900C5F8A5 /* LanguageServerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C99299A021755D6900C5F8A5 /* JSONRPCLanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C992999921755D6900C5F8A5 /* JSONRPCLanguageServer.swift */; };
-		C99299A221755D6900C5F8A5 /* DataTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C992999B21755D6900C5F8A5 /* DataTransport.swift */; };
 		C99299A321755D6900C5F8A5 /* StdioDataTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C992999C21755D6900C5F8A5 /* StdioDataTransport.swift */; };
-		C99299A421755D6900C5F8A5 /* ProtocolTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C992999D21755D6900C5F8A5 /* ProtocolTransport.swift */; };
-		C99299A521755D6900C5F8A5 /* MessageTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C992999E21755D6900C5F8A5 /* MessageTransport.swift */; };
 		C99299B321755D8A00C5F8A5 /* ProtocolMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AA21755D8A00C5F8A5 /* ProtocolMethod.swift */; };
 		C99299B421755D8A00C5F8A5 /* TextSynchronization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AB21755D8A00C5F8A5 /* TextSynchronization.swift */; };
 		C99299B521755D8A00C5F8A5 /* Initialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AC21755D8A00C5F8A5 /* Initialization.swift */; };
 		C99299B621755D8A00C5F8A5 /* LanguageFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AD21755D8A00C5F8A5 /* LanguageFeatures.swift */; };
 		C99299B821755D8A00C5F8A5 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299AF21755D8A00C5F8A5 /* Client.swift */; };
-		C99299B921755D8A00C5F8A5 /* JSONRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299B021755D8A00C5F8A5 /* JSONRPC.swift */; };
 		C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99299B121755D8A00C5F8A5 /* Basic.swift */; };
 		C9949CD123807F9300A3C2E5 /* Initialized.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9949CD023807F9300A3C2E5 /* Initialized.swift */; };
-		C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */; };
 		C99DBF3C21FE1D69005AC5C5 /* ServerCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3B21FE1D69005AC5C5 /* ServerCapabilities.swift */; };
 		C99DBF3E21FE1DC2005AC5C5 /* ClientCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3D21FE1DC2005AC5C5 /* ClientCapabilities.swift */; };
 		C99DBF4221FE3D42005AC5C5 /* LogMessageParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DBF3F21FE3D42005AC5C5 /* LogMessageParams.swift */; };
@@ -85,11 +78,9 @@
 		C91160EF2214F86B00B4F3AB /* LocationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLink.swift; sourceTree = "<group>"; };
 		C91AE5B42365E99D00F3B364 /* Reference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reference.swift; sourceTree = "<group>"; };
 		C91AE5BB2369D85000F3B364 /* JSONRPCLanguageServerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRPCLanguageServerTests.swift; sourceTree = "<group>"; };
-		C91AE5C0236A679D00F3B364 /* JSONRPC+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONRPC+Helpers.swift"; sourceTree = "<group>"; };
 		C9233178231DF3CB000207E7 /* MessageActionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageActionItem.swift; sourceTree = "<group>"; };
 		C923317A231DF43A000207E7 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
 		C923317C231DF4AA000207E7 /* ShowMessageParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMessageParams.swift; sourceTree = "<group>"; };
-		C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProtocolTransportMessage.swift; sourceTree = "<group>"; };
 		C9361B5F220E58EB00254280 /* DocumentSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentSymbol.swift; sourceTree = "<group>"; };
 		C9361B63220E671400254280 /* TypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTests.swift; sourceTree = "<group>"; };
 		C93C7B9B236E6160005DB4C5 /* FoldingRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldingRange.swift; sourceTree = "<group>"; };
@@ -100,32 +91,27 @@
 		C94941E223272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextDocumentClientCapabilitiesGenericGoTo.swift; sourceTree = "<group>"; };
 		C96CB61D220C8C2F00F13A36 /* SymbolKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolKind.swift; sourceTree = "<group>"; };
 		C96CB61F220C917B00F13A36 /* WorkspaceFolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceFolder.swift; sourceTree = "<group>"; };
-		C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtocolTransportTests.swift; sourceTree = "<group>"; };
 		C96CB62D220D120900F13A36 /* MockDataTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataTransport.swift; sourceTree = "<group>"; };
 		C96CB62F220D168800F13A36 /* TextDocumentIndentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDocumentIndentifier.swift; sourceTree = "<group>"; };
 		C986779B21B45A3D00C1BE5A /* LanguageServerProcessHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageServerProcessHost.swift; sourceTree = "<group>"; };
 		C986779D21BB53E700C1BE5A /* SignatureHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignatureHelp.swift; sourceTree = "<group>"; };
+		C98C6B0926A72ABA000AF8B8 /* JSONRPC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JSONRPC.xcframework; path = Carthage/Build/JSONRPC.xcframework; sourceTree = "<group>"; };
+		C98C6B0B26A72ABC000AF8B8 /* AnyCodable.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AnyCodable.xcframework; path = Carthage/Build/AnyCodable.xcframework; sourceTree = "<group>"; };
 		C992997F21755D0900C5F8A5 /* SwiftLSPClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftLSPClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C992998221755D0900C5F8A5 /* LanguageServerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageServerProtocol.h; sourceTree = "<group>"; };
 		C992998321755D0900C5F8A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C992998821755D0900C5F8A5 /* SwiftLSPClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftLSPClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C992998D21755D0900C5F8A5 /* MessageTransportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTransportTests.swift; sourceTree = "<group>"; };
 		C992998F21755D0900C5F8A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C992999921755D6900C5F8A5 /* JSONRPCLanguageServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRPCLanguageServer.swift; sourceTree = "<group>"; };
-		C992999B21755D6900C5F8A5 /* DataTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTransport.swift; sourceTree = "<group>"; };
 		C992999C21755D6900C5F8A5 /* StdioDataTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StdioDataTransport.swift; sourceTree = "<group>"; };
-		C992999D21755D6900C5F8A5 /* ProtocolTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtocolTransport.swift; sourceTree = "<group>"; };
-		C992999E21755D6900C5F8A5 /* MessageTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTransport.swift; sourceTree = "<group>"; };
 		C99299AA21755D8A00C5F8A5 /* ProtocolMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtocolMethod.swift; sourceTree = "<group>"; };
 		C99299AB21755D8A00C5F8A5 /* TextSynchronization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextSynchronization.swift; sourceTree = "<group>"; };
 		C99299AC21755D8A00C5F8A5 /* Initialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Initialization.swift; sourceTree = "<group>"; };
 		C99299AD21755D8A00C5F8A5 /* LanguageFeatures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageFeatures.swift; sourceTree = "<group>"; };
 		C99299AF21755D8A00C5F8A5 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		C99299B021755D8A00C5F8A5 /* JSONRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONRPC.swift; sourceTree = "<group>"; };
 		C99299B121755D8A00C5F8A5 /* Basic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basic.swift; sourceTree = "<group>"; };
 		C99299BD21755EF300C5F8A5 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		C9949CD023807F9300A3C2E5 /* Initialized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initialized.swift; sourceTree = "<group>"; };
-		C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
 		C99DBF3B21FE1D69005AC5C5 /* ServerCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCapabilities.swift; sourceTree = "<group>"; };
 		C99DBF3D21FE1DC2005AC5C5 /* ClientCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientCapabilities.swift; sourceTree = "<group>"; };
 		C99DBF3F21FE3D42005AC5C5 /* LogMessageParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogMessageParams.swift; sourceTree = "<group>"; };
@@ -144,6 +130,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C98C6B0A26A72ABA000AF8B8 /* JSONRPC.xcframework in Frameworks */,
+				C98C6B0C26A72ABC000AF8B8 /* AnyCodable.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +182,15 @@
 			path = Client;
 			sourceTree = "<group>";
 		};
+		C98C6B0826A72ABA000AF8B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C98C6B0B26A72ABC000AF8B8 /* AnyCodable.xcframework */,
+				C98C6B0926A72ABA000AF8B8 /* JSONRPC.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C992997521755D0900C5F8A5 = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +203,7 @@
 				C992998C21755D0900C5F8A5 /* SwiftLSPClientTests */,
 				C99299BE21755F3900C5F8A5 /* Configuration */,
 				C992998021755D0900C5F8A5 /* Products */,
+				C98C6B0826A72ABA000AF8B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -221,7 +219,7 @@
 		C992998121755D0900C5F8A5 /* SwiftLSPClient */ = {
 			isa = PBXGroup;
 			children = (
-				C99299BC21755D9E00C5F8A5 /* JSONRPC */,
+				C992999C21755D6900C5F8A5 /* StdioDataTransport.swift */,
 				C992998221755D0900C5F8A5 /* LanguageServerProtocol.h */,
 				C992998321755D0900C5F8A5 /* Info.plist */,
 				C992999921755D6900C5F8A5 /* JSONRPCLanguageServer.swift */,
@@ -235,14 +233,10 @@
 		C992998C21755D0900C5F8A5 /* SwiftLSPClientTests */ = {
 			isa = PBXGroup;
 			children = (
-				C992998D21755D0900C5F8A5 /* MessageTransportTests.swift */,
 				C992998F21755D0900C5F8A5 /* Info.plist */,
-				C96CB629220D11D700F13A36 /* ProtocolTransportTests.swift */,
 				C96CB62D220D120900F13A36 /* MockDataTransport.swift */,
-				C9361B5D220DD9F600254280 /* MockProtocolTransportMessage.swift */,
 				C9361B63220E671400254280 /* TypeTests.swift */,
 				C91AE5BB2369D85000F3B364 /* JSONRPCLanguageServerTests.swift */,
-				C91AE5C0236A679D00F3B364 /* JSONRPC+Helpers.swift */,
 			);
 			path = SwiftLSPClientTests;
 			sourceTree = "<group>";
@@ -276,19 +270,6 @@
 				C94542092226138B000CEFB2 /* Formatting.swift */,
 			);
 			path = Types;
-			sourceTree = "<group>";
-		};
-		C99299BC21755D9E00C5F8A5 /* JSONRPC */ = {
-			isa = PBXGroup;
-			children = (
-				C99299B021755D8A00C5F8A5 /* JSONRPC.swift */,
-				C992999B21755D6900C5F8A5 /* DataTransport.swift */,
-				C992999E21755D6900C5F8A5 /* MessageTransport.swift */,
-				C992999D21755D6900C5F8A5 /* ProtocolTransport.swift */,
-				C992999C21755D6900C5F8A5 /* StdioDataTransport.swift */,
-				C99DBF3921FE1A91005AC5C5 /* JSONValue.swift */,
-			);
-			path = JSONRPC;
 			sourceTree = "<group>";
 		};
 		C99299BE21755F3900C5F8A5 /* Configuration */ = {
@@ -426,7 +407,6 @@
 			files = (
 				C986779C21B45A3D00C1BE5A /* LanguageServerProcessHost.swift in Sources */,
 				C94941E323272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift in Sources */,
-				C99299A421755D6900C5F8A5 /* ProtocolTransport.swift in Sources */,
 				C94941D823272BF200BCFC88 /* Declaration.swift in Sources */,
 				C9F582F6231CADF5007FE72E /* ShowMessageRequest.swift in Sources */,
 				C986779E21BB53E700C1BE5A /* SignatureHelp.swift in Sources */,
@@ -447,7 +427,6 @@
 				C99299B521755D8A00C5F8A5 /* Initialization.swift in Sources */,
 				C93C7B9C236E6160005DB4C5 /* FoldingRange.swift in Sources */,
 				C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */,
-				C99299B921755D8A00C5F8A5 /* JSONRPC.swift in Sources */,
 				C9233179231DF3CC000207E7 /* MessageActionItem.swift in Sources */,
 				C99299B421755D8A00C5F8A5 /* TextSynchronization.swift in Sources */,
 				C9C30E9A242165DC003BE31A /* CodeAction.swift in Sources */,
@@ -457,18 +436,15 @@
 				C99299BA21755D8A00C5F8A5 /* Basic.swift in Sources */,
 				C94941DA23272C0600BCFC88 /* Definition.swift in Sources */,
 				C9361B60220E58EB00254280 /* DocumentSymbol.swift in Sources */,
-				C99299A521755D6900C5F8A5 /* MessageTransport.swift in Sources */,
 				C99DBF3C21FE1D69005AC5C5 /* ServerCapabilities.swift in Sources */,
 				C99299B621755D8A00C5F8A5 /* LanguageFeatures.swift in Sources */,
 				C91160EE2214F7A700B4F3AB /* TypeDefinition.swift in Sources */,
 				C94941DE23272C1B00BCFC88 /* Implementation.swift in Sources */,
 				C96CB630220D168800F13A36 /* TextDocumentIndentifier.swift in Sources */,
 				C99DBF3E21FE1DC2005AC5C5 /* ClientCapabilities.swift in Sources */,
-				C99DBF3A21FE1A91005AC5C5 /* JSONValue.swift in Sources */,
 				C923317B231DF43A000207E7 /* MessageType.swift in Sources */,
 				C9949CD123807F9300A3C2E5 /* Initialized.swift in Sources */,
 				C9D85CC721EF836C00B33336 /* Position.swift in Sources */,
-				C99299A221755D6900C5F8A5 /* DataTransport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,10 +455,6 @@
 				C9361B64220E671400254280 /* TypeTests.swift in Sources */,
 				C96CB62E220D120900F13A36 /* MockDataTransport.swift in Sources */,
 				C91AE5BC2369D85000F3B364 /* JSONRPCLanguageServerTests.swift in Sources */,
-				C992998E21755D0900C5F8A5 /* MessageTransportTests.swift in Sources */,
-				C96CB62A220D11D700F13A36 /* ProtocolTransportTests.swift in Sources */,
-				C9361B5E220DD9F600254280 /* MockProtocolTransportMessage.swift in Sources */,
-				C91AE5C1236A679D00F3B364 /* JSONRPC+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +599,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 15;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -638,6 +611,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chimehq.SwiftLSPClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -652,6 +626,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 15;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -663,6 +638,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chimehq.SwiftLSPClient;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

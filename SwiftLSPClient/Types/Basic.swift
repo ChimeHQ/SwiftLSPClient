@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AnyCodable
 
 public typealias DocumentUri = String
 
@@ -178,5 +179,5 @@ extension TextEdit: CustomStringConvertible {
 public struct Command: Codable, Equatable {
     public let title: String
     public let command: String
-    public let arguments: [JSONValue]?
+    public let arguments: [AnyCodable]?
 }

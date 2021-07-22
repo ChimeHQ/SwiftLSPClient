@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AnyCodable
 
 public struct GenericDynamicRegistration: Codable {
     public let dynamicRegistration: Bool?
@@ -184,8 +185,8 @@ public struct TextDocumentClientCapabilities: Codable {
     public let hover: TextDocumentClientCapabilityHover?
     public let signatureHelp: TextDocumentClientCapabilities.SignatureHelp?
     public let references: GenericDynamicRegistration?
-    public let documentHighlight: JSONValue?
-    public let documentSymbol: JSONValue?
+    public let documentHighlight: AnyCodable?
+    public let documentSymbol: AnyCodable?
     public let formatting: GenericDynamicRegistration?
     public let rangeFormatting: GenericDynamicRegistration?
     public let onTypeFormatting: GenericDynamicRegistration?
@@ -194,10 +195,10 @@ public struct TextDocumentClientCapabilities: Codable {
     public let typeDefinition: TextDocumentClientCapabilitiesGenericGoTo?
     public let implementation: TextDocumentClientCapabilitiesGenericGoTo?
     public let codeAction: CodeActionClientCapabilities?
-    public let codeLens: JSONValue?
-    public let documentLink: JSONValue?
-    public let colorProvider: JSONValue?
-    public let rename: JSONValue?
+    public let codeLens: AnyCodable?
+    public let documentLink: AnyCodable?
+    public let colorProvider: AnyCodable?
+    public let rename: AnyCodable?
     public let publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?
     public let foldingRange: TextDocumentClientCapabilityFoldingRange?
 
@@ -230,9 +231,9 @@ public struct TextDocumentClientCapabilities: Codable {
 public struct ClientCapabilities: Codable {
     public let workspace: WorkspaceClientCapabilities?
     public let textDocument: TextDocumentClientCapabilities?
-    public let experimental: JSONValue?
+    public let experimental: AnyCodable?
 
-    public init(workspace: WorkspaceClientCapabilities?, textDocument: TextDocumentClientCapabilities?, experimental: JSONValue?) {
+    public init(workspace: WorkspaceClientCapabilities?, textDocument: TextDocumentClientCapabilities?, experimental: AnyCodable?) {
         self.workspace = workspace
         self.textDocument = textDocument
         self.experimental = experimental

@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AnyCodable",
+        "repositoryURL": "https://github.com/Flight-School/AnyCodable",
+        "state": {
+          "branch": null,
+          "revision": "69261f239f0fffaf51495dadc4f8483fbfe97025",
+          "version": "0.6.1"
+        }
+      },
+      {
+        "package": "JSONRPC",
+        "repositoryURL": "https://github.com/ChimeHQ/JSONRPC",
+        "state": {
+          "branch": null,
+          "revision": "244ed9be69403fa77e33f0d6e6b878fb9694557c",
+          "version": "0.1.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

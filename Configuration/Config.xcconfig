@@ -1,13 +1,7 @@
-//
-//  Config.xcconfig
-//  SwiftLSPClient
-//
-//  Created by Matt Massicotte on 2018-10-15.
-//  Copyright © 2018 Chime Systems. All rights reserved.
-//
-
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
+
+FRAMEWORK_SEARCH_PATHS = $(PROJECT_DIR)/Carthage/Build
 
 CURRENT_PROJECT_VERSION = 14
 MARKETING_VERSION = 0.8.4
