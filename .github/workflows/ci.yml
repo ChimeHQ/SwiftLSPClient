@@ -10,9 +10,17 @@ on:
 
 jobs:
   test:
-    name: Test
+    name: Test on destination ${{ matrix.destination }}
     runs-on: macOS-latest
+    strategy:
+      matrix:
+        destination: ["platform=macOS"]
+    
     steps:
-      - uses: actions/checkout@v1
-      - name: xcodebuild test
-        run: set -o pipefail && xcodebuild test -scheme SwiftLSPClient -destination "platform=macOS" | xcpretty
+    - uses: actions/checkout@v1
+    - name: install dependencies
+      run: carthage bootstrap --use-xcframeworks
+    - name: xcodebuild ${{ matrix.destination }}
+      run: set -o pipefail && xcodebuild test -scheme SwiftLSPClient -destination "${{ matrix.destination }}" | xcpretty
+    - name: SPM ${{ matrix.destination }}
+      run: swift test
