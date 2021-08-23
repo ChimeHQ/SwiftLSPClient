@@ -124,6 +124,22 @@ extension JSONRPCLanguageServer: LanguageServer {
         }
     }
     
+    public func prepareRename(params: PrepareRenameParams, block: @escaping (LanguageServerResult<PrepareRenameResponse?>) -> Void) {
+        let method = ProtocolMethod.TextDocument.PrepareRename
+        
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<PrepareRenameResponse?>) in
+            relayResult(result: result, block: block)
+        }
+    }
+    
+    public func rename(params: RenameParams, block: @escaping (LanguageServerResult<RenameResponse>) -> Void) {
+        let method = ProtocolMethod.TextDocument.Rename
+        
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<RenameResponse>) in
+            relayResult(result: result, block: block)
+        }
+    }
+    
     public func hover(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<HoverResponse>) -> Void) {
         let method = ProtocolMethod.TextDocument.Hover
         
