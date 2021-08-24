@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52E778EA26D5AE16004D7065 /* Rename.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E778E926D5AE16004D7065 /* Rename.swift */; };
 		C90F9BB421773CB800EC3854 /* LanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F9BB321773CB800EC3854 /* LanguageServer.swift */; };
 		C91160E5221106FF00B4F3AB /* WillSaveTextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160E4221106FF00B4F3AB /* WillSaveTextDocument.swift */; };
 		C91160EE2214F7A700B4F3AB /* TypeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		52E778E926D5AE16004D7065 /* Rename.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rename.swift; sourceTree = "<group>"; };
 		BBEF4C862364516900109F9A /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		BBEF4C872364516900109F9A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		BBEF4C882364516900109F9A /* CODE_OF_CONDUCT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CODE_OF_CONDUCT.md; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				C94941D723272BF200BCFC88 /* Declaration.swift */,
 				C94941D923272C0600BCFC88 /* Definition.swift */,
 				C94941DD23272C1B00BCFC88 /* Implementation.swift */,
+				52E778E926D5AE16004D7065 /* Rename.swift */,
 				C91AE5B42365E99D00F3B364 /* Reference.swift */,
 				C93C7B9B236E6160005DB4C5 /* FoldingRange.swift */,
 				C9B13ED323725679004C6DB7 /* Hover.swift */,
@@ -407,6 +410,7 @@
 			files = (
 				C986779C21B45A3D00C1BE5A /* LanguageServerProcessHost.swift in Sources */,
 				C94941E323272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift in Sources */,
+				52E778EA26D5AE16004D7065 /* Rename.swift in Sources */,
 				C94941D823272BF200BCFC88 /* Declaration.swift in Sources */,
 				C9F582F6231CADF5007FE72E /* ShowMessageRequest.swift in Sources */,
 				C986779E21BB53E700C1BE5A /* SignatureHelp.swift in Sources */,
