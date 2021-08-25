@@ -58,6 +58,7 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
     case cpp = "cpp"
     case objc = "objective-c"
     case objcpp = "objective-cpp"
+    case rust = "rust"
 
     static let fileExtensions = [
         "go": .go,
@@ -71,6 +72,7 @@ public enum LanguageIdentifier: String, Codable, CaseIterable {
         "mm": .objcpp,
         "h": .objcpp,
         "hpp": .objcpp,
+        "rs": .rust,
     ]
 
     public enum LanguageServerParameterError: Error {
