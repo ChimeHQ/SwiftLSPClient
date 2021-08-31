@@ -198,7 +198,7 @@ public struct TextDocumentClientCapabilities: Codable {
     public let codeLens: AnyCodable?
     public let documentLink: AnyCodable?
     public let colorProvider: AnyCodable?
-    public let rename: AnyCodable?
+    public let rename: RenameClientCapabilites?
     public let publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?
     public let foldingRange: TextDocumentClientCapabilityFoldingRange?
 

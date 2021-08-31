@@ -40,6 +40,8 @@ public struct ProtocolMethod {
         public static let PublishDiagnostics = "textDocument/publishDiagnostics"
         public static let References = "textDocument/references"
         public static let FoldingRange = "textDocument/foldingRange"
+        public static let PrepareRename = "textDocument/prepareRename"
+        public static let Rename = "textDocument/rename"
     }
     
     public struct CompletionItem {

@@ -69,7 +69,9 @@ public protocol LanguageServer: AnyObject {
     func implementation(params: TextDocumentPositionParams, block: @escaping (LanguageServerResult<ImplementationResponse>) -> Void)
     func documentSymbol(params: DocumentSymbolParams, block: @escaping (LanguageServerResult<DocumentSymbolResponse>) -> Void)
     func codeAction(params: CodeActionParams, block: @escaping (LanguageServerResult<CodeActionResponse>) -> Void)
-
+    func prepareRename(params: PrepareRenameParams, block: @escaping (LanguageServerResult<PrepareRenameResponse?>) -> Void)
+    func rename(params: RenameParams, block: @escaping (LanguageServerResult<RenameResponse>) -> Void)
+    
     func formatting(params: DocumentFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)
     func rangeFormatting(params: DocumentRangeFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)
     func onTypeFormatting(params: DocumentOnTypeFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)
