@@ -56,10 +56,18 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | -------------------|:---------:|
 | window/showMessage | ✅ |
 | window/showMessageRequest | ✅ |
+| window/showDocument | - |
 | window/logMessage | ✅ |
 | window/workDoneProgress/create | - |
 | window/workDoneProgress/cancel | - |
+| $/cancelRequest | - |
+| $/progress | - |
+| initialize | ✅ |
+| shutdown | - |
+| exit | - |
 | telemetry/event | - |
+| $/logTrace | - |
+| $/setTrace | - |
 | client/registerCapability | - |
 | client/unregisterCapability | - |
 | workspace/workspaceFolders | - |
@@ -70,6 +78,13 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | workspace/symbol | - |
 | workspace/executeCommand | - |
 | workspace/applyEdit | - |
+| workspace/willCreateFiles | - |
+| workspace/didCreateFiles
+| workspace/willRenameFiles
+| workspace/didRenameFiles
+| workspace/willDeleteFiles
+| workspace/didDeleteFiles
+
 | textDocument/didOpen | ✅ |
 | textDocument/didChange | ✅ |
 | textDocument/willSave | ✅ |
@@ -89,8 +104,9 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | textDocument/documentHighlight | - |
 | textDocument/documentSymbol | ✅ |
 | textDocument/codeAction | ✅ |
-| textDocument/codeLens | - |
 | codeLens/resolve | - |
+| textDocument/codeLens | - |
+| workspace/codeLens/refresh | - |
 | textDocument/documentLink | - |
 | documentLink/resolve | - |
 | textDocument/documentColor | - |
@@ -98,8 +114,8 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | textDocument/formatting | ✅ |
 | textDocument/rangeFormatting | ✅ |
 | textDocument/onTypeFormatting | ✅ |
-| textDocument/rename | - |
-| textDocument/prepareRename | - |
+| textDocument/rename | ✅ |
+| textDocument/prepareRename | ✅ |
 | textDocument/foldingRange | ✅ |
 | textDocument/selectionRange | - |
 | textDocument/prepareCallHierarchy | - |
@@ -109,6 +125,7 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | textDocument/semanticTokens/full | - |
 | textDocument/semanticTokens/full/delta | - |
 | textDocument/semanticTokens/range | - |
+| workspace/semanticTokens/refresh | - |
 | textDocument/linkedEditingRange | - |
 | textDocument/moniker | - |
 
