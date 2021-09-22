@@ -8,11 +8,24 @@
 
 import Foundation
 import JSONRPC
+import AnyCodable
+
+extension AnyJSONRPCResponse {
+    public init(error: Error, for request: AnyJSONRPCRequest) {
+        self.init(id: request.id,
+                  errorCode: JSONRPCErrors.internalError,
+                  message: error.localizedDescription)
+    }
+}
 
 public class JSONRPCLanguageServer {
     private var messageId: Int
     let protocolTransport: ProtocolTransport
     public weak var notificationResponder: NotificationResponder?
+    public var configurationHandler: ConfigurationHandler?
+    public var registrationHandler: RegistrationHandler?
+    public var unregistrationHandler: UnregistrationHandler?
+    public var semanticTokenRefreshHandler: SemanticTokenRefreshHandler?
     
     public init(dataTransport: DataTransport) {
         self.messageId = 0
@@ -24,7 +37,7 @@ public class JSONRPCLanguageServer {
             self.handleNotification(notification, data: data, completionHandler: callback)
         }
 
-        protocolTransport.responseHandler = { [unowned self] (request, data, callback) in
+        protocolTransport.requestHandler = { [unowned self] (request, data, callback) in
             self.handleRequest(request, data: data, completionHandler: callback)
         }
     }
@@ -82,8 +95,95 @@ extension JSONRPCLanguageServer {
         }
     }
 
-    private func handleRequest(_ request: AnyJSONRPCRequest, data: Data, completionHandler: @escaping (AnyJSONRPCResponse) -> Void) {
+    private func decodeRequest<T: Codable>(named name: String, data: Data) throws -> T {
+        let resultType = JSONRPCRequest<T>.self
+        let result = try JSONDecoder().decode(resultType, from: data)
 
+        guard let params = result.params else {
+            throw LanguageServerError.missingExpectedParameter
+        }
+
+        return params
+    }
+
+    private func handleResultRequest(_ request: AnyJSONRPCRequest, data: Data, completionHandler: @escaping (Result<AnyCodable?, Error>) -> Void) {
+        let method = request.method
+
+        do {
+            switch method {
+            case ProtocolMethod.Workspace.Configuration:
+                let params: ConfigurationParams = try decodeRequest(named: method, data: data)
+
+                guard let handler = configurationHandler else {
+                    throw LanguageServerError.requestHandlerUnavailable(method)
+                }
+
+                handler(params, { result in
+                    completionHandler(result.map({ resultItems in
+                        return AnyCodable(arrayLiteral: resultItems)
+                    }))
+                })
+            case ProtocolMethod.Client.RegisterCapability:
+                let params: RegistrationParams = try decodeRequest(named: method, data: data)
+
+                guard let handler = registrationHandler else {
+                    throw LanguageServerError.requestHandlerUnavailable(method)
+                }
+
+                handler(params, { result in
+                    if let error = result {
+                        completionHandler(.failure(error))
+                    } else {
+                        completionHandler(.success(nil))
+                    }
+                })
+            case ProtocolMethod.Client.UnregisterCapability:
+                let params: UnregistrationParams = try decodeRequest(named: method, data: data)
+
+                guard let handler = unregistrationHandler else {
+                    throw LanguageServerError.requestHandlerUnavailable(method)
+                }
+
+                handler(params, { result in
+                    if let error = result {
+                        completionHandler(.failure(error))
+                    } else {
+                        completionHandler(.success(nil))
+                    }
+                })
+            case ProtocolMethod.Workspace.SemanticTokens.Refresh:
+                guard let handler = semanticTokenRefreshHandler else {
+                    throw LanguageServerError.requestHandlerUnavailable(method)
+                }
+
+                handler({ result in
+                    if let error = result {
+                        completionHandler(.failure(error))
+                    } else {
+                        completionHandler(.success(nil))
+                    }
+                })
+            default:
+                throw LanguageServerError.unimplemented
+            }
+        } catch {
+            completionHandler(.failure(error))
+        }
+    }
+
+    private func handleRequest(_ request: AnyJSONRPCRequest, data: Data, completionHandler: @escaping (AnyJSONRPCResponse) -> Void) {
+        handleResultRequest(request, data: data) { result in
+            switch result {
+            case .failure(let error):
+                let response = AnyJSONRPCResponse(error: error, for: request)
+
+                completionHandler(response)
+            case .success(let response):
+                let response = AnyJSONRPCResponse(id: request.id, result: response)
+
+                completionHandler(response)
+            }
+        }
     }
 }
 
@@ -311,6 +411,49 @@ extension JSONRPCLanguageServer: LanguageServer {
 
         protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<FoldingRangeResponse>) in
             relayResult(result: result, block: block)
+        }
+    }
+
+    public func semanticTokensFull(params: SemanticTokensParams, block: @escaping (LanguageServerResult<SemanticTokens>) -> Void) {
+        let method = ProtocolMethod.TextDocument.SemanticTokens.Full
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<SemanticTokens>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
+    public func semanticTokensFullDelta(params: SemanticTokensDeltaParams, block: @escaping (LanguageServerResult<SemanticTokensDeltaResponse>) -> Void) {
+        let method = ProtocolMethod.TextDocument.SemanticTokens.FullDelta
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<SemanticTokensDeltaResponse>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
+    public func semanticTokensRange(params: SemanticTokensRangeParams, block: @escaping (LanguageServerResult<SemanticTokens>) -> Void) {
+        let method = ProtocolMethod.TextDocument.SemanticTokens.Range
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<SemanticTokens>) in
+            relayResult(result: result, block: block)
+        }
+    }
+
+    public func fullSemanticTokens(params: SemanticTokensParams, block: @escaping (LanguageServerError?) -> Void) {
+        let method = ProtocolMethod.TextDocument.SemanticTokens.Full
+
+        protocolTransport.sendRequest(params, method: method) { (result: ProtocolResponse<AnyCodable>) in
+            relayResult(result: result, block: { (a) in
+                print(a)
+
+                switch a {
+                case .failure(let error):
+                    block(error)
+                case .success(let value):
+                    print(value)
+
+                    block(nil)
+                }
+            })
         }
     }
 }

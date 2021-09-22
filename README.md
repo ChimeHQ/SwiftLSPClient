@@ -1,12 +1,10 @@
 [![Github CI](https://github.com/ChimeHQ/SwiftLSPClient/workflows/CI/badge.svg)](https://github.com/ChimeHQ/SwiftLSPClient/actions)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CocoaPods](https://img.shields.io/cocoapods/v/SwiftLSPClient.svg)](https://cocoapods.org/)
 
 # SwiftLSPClient
 
 This is a Swift library for interacting with [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations.
 
-An LSP server provides rich information about source code. An LSP client consumes this information. This library is all about the client side.
+An LSP server provides rich information about source code. An LSP client consumes this information. This library is all about the client side. It is low-level, and provides only the core abstractions around the types and messages passed between a client and server.
 
 ## Example
 
@@ -68,23 +66,22 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | telemetry/event | - |
 | $/logTrace | - |
 | $/setTrace | - |
-| client/registerCapability | - |
-| client/unregisterCapability | - |
+| client/registerCapability | ✅ |
+| client/unregisterCapability | ✅ |
 | workspace/workspaceFolders | - |
 | workspace/didChangeWorkspaceFolders | - |
 | workspace/didChangeConfiguration | - |
-| workspace/configuration | - |
+| workspace/configuration | ✅ |
 | workspace/didChangeWatchedFiles | - |
 | workspace/symbol | - |
 | workspace/executeCommand | - |
 | workspace/applyEdit | - |
 | workspace/willCreateFiles | - |
-| workspace/didCreateFiles
-| workspace/willRenameFiles
-| workspace/didRenameFiles
-| workspace/willDeleteFiles
-| workspace/didDeleteFiles
-
+| workspace/didCreateFiles | - |
+| workspace/willRenameFiles | - |
+| workspace/didRenameFiles | - |
+| workspace/willDeleteFiles | - |
+| workspace/didDeleteFiles | - |
 | textDocument/didOpen | ✅ |
 | textDocument/didChange | ✅ |
 | textDocument/willSave | ✅ |
@@ -122,10 +119,10 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 | textDocument/prepareCallHierarchy | - |
 | callHierarchy/incomingCalls | - |
 | callHierarchy/outgoingCalls | - |
-| textDocument/semanticTokens/full | - |
-| textDocument/semanticTokens/full/delta | - |
-| textDocument/semanticTokens/range | - |
-| workspace/semanticTokens/refresh | - |
+| textDocument/semanticTokens/full | ✅ |
+| textDocument/semanticTokens/full/delta | ✅ |
+| textDocument/semanticTokens/range | ✅ |
+| workspace/semanticTokens/refresh | ✅ |
 | textDocument/linkedEditingRange | - |
 | textDocument/moniker | - |
 
@@ -137,18 +134,6 @@ The LSP [specification](https://microsoft.github.io/language-server-protocol/spe
 dependencies: [
     .package(url: "https://github.com/ChimeHQ/SwiftLSPClient")
 ]
-```
-
-### Carthage
-
-```
-github "ChimeHQ/SwiftLSPClient"
-```
-
-### CocoaPods
-
-```
-pod 'SwiftLSPClient'
 ```
 
 ### Suggestions or Feedback

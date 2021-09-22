@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		52E778EA26D5AE16004D7065 /* Rename.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E778E926D5AE16004D7065 /* Rename.swift */; };
 		C90F9BB421773CB800EC3854 /* LanguageServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90F9BB321773CB800EC3854 /* LanguageServer.swift */; };
+		C91132CF26FBA1C500034BE8 /* SemanticTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91132CE26FBA1C500034BE8 /* SemanticTokens.swift */; };
+		C91132D626FCE7FA00034BE8 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91132D526FCE7FA00034BE8 /* Configuration.swift */; };
+		C91132D826FD58FF00034BE8 /* RegisterCapability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91132D726FD58FF00034BE8 /* RegisterCapability.swift */; };
 		C91160E5221106FF00B4F3AB /* WillSaveTextDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160E4221106FF00B4F3AB /* WillSaveTextDocument.swift */; };
 		C91160EE2214F7A700B4F3AB /* TypeDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */; };
 		C91160F02214F86B00B4F3AB /* LocationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91160EF2214F86B00B4F3AB /* LocationLink.swift */; };
@@ -75,6 +78,9 @@
 		BBEF4C892364516900109F9A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BBEF4C8A2364516A00109F9A /* SwiftLSPClient.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftLSPClient.podspec; sourceTree = "<group>"; };
 		C90F9BB321773CB800EC3854 /* LanguageServer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageServer.swift; sourceTree = "<group>"; };
+		C91132CE26FBA1C500034BE8 /* SemanticTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemanticTokens.swift; sourceTree = "<group>"; };
+		C91132D526FCE7FA00034BE8 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		C91132D726FD58FF00034BE8 /* RegisterCapability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCapability.swift; sourceTree = "<group>"; };
 		C91160E4221106FF00B4F3AB /* WillSaveTextDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WillSaveTextDocument.swift; sourceTree = "<group>"; };
 		C91160ED2214F7A700B4F3AB /* TypeDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeDefinition.swift; sourceTree = "<group>"; };
 		C91160EF2214F86B00B4F3AB /* LocationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLink.swift; sourceTree = "<group>"; };
@@ -173,6 +179,7 @@
 				C9B13ED323725679004C6DB7 /* Hover.swift */,
 				C986779D21BB53E700C1BE5A /* SignatureHelp.swift */,
 				C9C30E99242165DC003BE31A /* CodeAction.swift */,
+				C91132CE26FBA1C500034BE8 /* SemanticTokens.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -181,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				C94941E223272EB100BCFC88 /* TextDocumentClientCapabilitiesGenericGoTo.swift */,
+				C91132D726FD58FF00034BE8 /* RegisterCapability.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -295,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				C9C30E9C2421AD72003BE31A /* WorkspaceEdit.swift */,
+				C91132D526FCE7FA00034BE8 /* Configuration.swift */,
 			);
 			path = Workspace;
 			sourceTree = "<group>";
@@ -417,6 +426,8 @@
 				C99299A021755D6900C5F8A5 /* JSONRPCLanguageServer.swift in Sources */,
 				C91160E5221106FF00B4F3AB /* WillSaveTextDocument.swift in Sources */,
 				C99DBF4321FE3D42005AC5C5 /* Diagnostics.swift in Sources */,
+				C91132D626FCE7FA00034BE8 /* Configuration.swift in Sources */,
+				C91132CF26FBA1C500034BE8 /* SemanticTokens.swift in Sources */,
 				C945420A2226138B000CEFB2 /* Formatting.swift in Sources */,
 				C923317D231DF4AA000207E7 /* ShowMessageParams.swift in Sources */,
 				C9C30E9D2421AD72003BE31A /* WorkspaceEdit.swift in Sources */,
@@ -428,6 +439,7 @@
 				C99DBF4221FE3D42005AC5C5 /* LogMessageParams.swift in Sources */,
 				C90F9BB421773CB800EC3854 /* LanguageServer.swift in Sources */,
 				C9B13ED423725679004C6DB7 /* Hover.swift in Sources */,
+				C91132D826FD58FF00034BE8 /* RegisterCapability.swift in Sources */,
 				C99299B521755D8A00C5F8A5 /* Initialization.swift in Sources */,
 				C93C7B9C236E6160005DB4C5 /* FoldingRange.swift in Sources */,
 				C9D85CC921EF837F00B33336 /* LSPRange.swift in Sources */,

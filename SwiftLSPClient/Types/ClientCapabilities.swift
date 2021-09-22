@@ -65,17 +65,30 @@ public struct WorkspaceClientCapabilitySymbol: Codable {
     }
 }
 
+public typealias DidChangeConfigurationClientCapabilities = GenericDynamicRegistration
+
+public typealias DidChangeWatchedFilesClientCapabilities = GenericDynamicRegistration
+
 public struct WorkspaceClientCapabilities: Codable {
     public let applyEdit: Bool?
     public let workspaceEdit: WorkspaceClientCapabilityEdit?
-    public let didChangeConfiguration: GenericDynamicRegistration?
+    public let didChangeConfiguration: DidChangeConfigurationClientCapabilities?
     public let didChangeWatchedFiles: GenericDynamicRegistration?
     public let symbol: WorkspaceClientCapabilitySymbol?
     public let executeCommand: GenericDynamicRegistration?
     public let workspaceFolders: Bool?
     public let configuration: Bool?
+    public let semanticTokens: SemanticTokensWorkspaceClientCapabilities?
 
-    public init(applyEdit: Bool, workspaceEdit: WorkspaceClientCapabilityEdit?, didChangeConfiguration: GenericDynamicRegistration?, didChangeWatchedFiles: GenericDynamicRegistration?, symbol: WorkspaceClientCapabilitySymbol?, executeCommand: GenericDynamicRegistration?, workspaceFolders: Bool?, configuration: Bool?) {
+    public init(applyEdit: Bool,
+                workspaceEdit: WorkspaceClientCapabilityEdit?,
+                didChangeConfiguration: DidChangeConfigurationClientCapabilities?,
+                didChangeWatchedFiles: GenericDynamicRegistration?,
+                symbol: WorkspaceClientCapabilitySymbol?,
+                executeCommand: GenericDynamicRegistration?,
+                workspaceFolders: Bool?,
+                configuration: Bool?,
+                semanticTokens: SemanticTokensWorkspaceClientCapabilities?) {
         self.applyEdit = applyEdit
         self.workspaceEdit = workspaceEdit
         self.didChangeConfiguration = didChangeConfiguration
@@ -84,6 +97,7 @@ public struct WorkspaceClientCapabilities: Codable {
         self.executeCommand = executeCommand
         self.workspaceFolders = workspaceFolders
         self.configuration = configuration
+        self.semanticTokens = semanticTokens
     }
 }
 
@@ -201,9 +215,24 @@ public struct TextDocumentClientCapabilities: Codable {
     public let rename: RenameClientCapabilites?
     public let publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?
     public let foldingRange: TextDocumentClientCapabilityFoldingRange?
+    public let semanticTokens: SemanticTokensClientCapabilities?
 
-    public init(synchronization: TextDocumentClientCapabilitySynchronization?, completion: TextDocumentClientCapabilityCompletion?, hover: TextDocumentClientCapabilityHover?, signatureHelp: TextDocumentClientCapabilities.SignatureHelp? = nil, references: GenericDynamicRegistration? = nil, formatting: GenericDynamicRegistration?, rangeFormatting: GenericDynamicRegistration?, onTypeFormatting: GenericDynamicRegistration?, declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil, definition: TextDocumentClientCapabilitiesGenericGoTo? = nil, typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil, implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil, codeAction: CodeActionClientCapabilities? = nil, publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?,
-                foldingRange: TextDocumentClientCapabilityFoldingRange? = nil) {
+    public init(synchronization: TextDocumentClientCapabilitySynchronization?,
+                completion: TextDocumentClientCapabilityCompletion?,
+                hover: TextDocumentClientCapabilityHover?,
+                signatureHelp: TextDocumentClientCapabilities.SignatureHelp? = nil,
+                references: GenericDynamicRegistration? = nil,
+                formatting: GenericDynamicRegistration?,
+                rangeFormatting: GenericDynamicRegistration?,
+                onTypeFormatting: GenericDynamicRegistration?,
+                declaration: TextDocumentClientCapabilitiesGenericGoTo? = nil,
+                definition: TextDocumentClientCapabilitiesGenericGoTo? = nil,
+                typeDefinition: TextDocumentClientCapabilitiesGenericGoTo? = nil,
+                implemenation: TextDocumentClientCapabilitiesGenericGoTo? = nil,
+                codeAction: CodeActionClientCapabilities? = nil,
+                publishDiagnostics: TextDocumentClientCapabilityPublicDiagnostics?,
+                foldingRange: TextDocumentClientCapabilityFoldingRange? = nil,
+                semanticTokens: SemanticTokensClientCapabilities? = nil) {
         self.synchronization = synchronization
         self.completion = completion
         self.hover = hover
@@ -225,6 +254,7 @@ public struct TextDocumentClientCapabilities: Codable {
         self.rename = nil
         self.publishDiagnostics = publishDiagnostics
         self.foldingRange = nil
+        self.semanticTokens = semanticTokens
     }
 }
 

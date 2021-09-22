@@ -108,7 +108,50 @@ public struct DocumentOnTypeFormattingOptions: Codable {
     public let moreTriggerCharacter: [String]?
 }
 
+public enum FileOperationPatternKind: String, Codable {
+    case file = "file"
+    case folder = "folder"
+}
+
+public struct FileOperationPatternOptions: Codable {
+    public var ignoreCase: Bool?
+}
+
+public struct FileOperationPattern: Codable {
+    public var glob: String
+    public var matches: FileOperationPatternKind
+    public var options: FileOperationPatternOptions
+}
+
+public struct FileOperationFilter: Codable {
+    public var scheme: String?
+    public var pattern: FileOperationPattern
+}
+
+public struct FileOperationRegistrationOptions: Codable {
+    public var filters: [FileOperationFilter]
+}
+
+public struct WorkspaceFoldersServerCapabilities: Codable {
+    public var supported: Bool?
+    public var changeNotifications: TwoTypeOption<String, Bool>?
+}
+
 public struct ServerCapabilities: Codable {
+    public struct Workspace: Codable {
+        public struct FileOperations: Codable {
+            public var didCreate: FileOperationRegistrationOptions?
+            public var willCreate: FileOperationRegistrationOptions?
+            public var didRename: FileOperationRegistrationOptions?
+            public var willRename: FileOperationRegistrationOptions?
+            public var didDelete: FileOperationRegistrationOptions?
+            public var willDelete: FileOperationRegistrationOptions?
+        }
+
+        public var workspaceFolders: WorkspaceFoldersServerCapabilities?
+        public var fileOperations: FileOperations?
+    }
+
     public let textDocumentSync: ServerCapabilitiesTextDocumentSync
     public let hoverProvider: Bool?
     public let completionProvider: CompletionOptions?
@@ -126,10 +169,11 @@ public struct ServerCapabilities: Codable {
     public let documentRangeFormattingProvider: Bool?
     public let documentOnTypeFormattingProvider: DocumentOnTypeFormattingOptions?
     public let renameProvider: AnyCodable?
+    public let semanticTokensProvider: SemanticTokensProvider?
     public let documentLinkProvider: AnyCodable?
     public let colorProvider: AnyCodable?
     public let foldingRangeProvider: AnyCodable?
     public let executeCommandProvider: AnyCodable?
-    public let workspace: AnyCodable?
+    public let workspace: Workspace?
     public let experimental: AnyCodable?
 }

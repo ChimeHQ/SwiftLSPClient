@@ -42,6 +42,12 @@ public struct ProtocolMethod {
         public static let FoldingRange = "textDocument/foldingRange"
         public static let PrepareRename = "textDocument/prepareRename"
         public static let Rename = "textDocument/rename"
+
+        public enum SemanticTokens {
+            public static let Full = "textDocument/semanticTokens/full"
+            public static let FullDelta = "textDocument/semanticTokens/full/delta"
+            public static let Range = "textDocument/semanticTokens/range"
+        }
     }
     
     public struct CompletionItem {
@@ -50,5 +56,15 @@ public struct ProtocolMethod {
 
     public struct Workspace {
         public static let WorkspaceFolders = "workspace/workspaceFolders"
+        public static let Configuration = "workspace/configuration"
+
+        public enum SemanticTokens {
+            public static let Refresh = "workspace/semanticTokens/refresh"
+        }
+    }
+
+    public enum Client {
+        public static let RegisterCapability = "client/registerCapability"
+        public static let UnregisterCapability = "client/unregisterCapability"
     }
 }

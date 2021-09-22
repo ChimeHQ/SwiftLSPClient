@@ -1,2 +1,2 @@
-github "ChimeHQ/JSONRPC" "6eb859dd6a3b7dc4fed4a73f9ff9d72e0b5053a9"
-github "Flight-School/AnyCodable" "0.6.1"
+git "file:///Users/matt/Chime/Code/JSONRPC" "ecf1aaabaddf94f59e070e4ca5f2682d77435916"
+github "Flight-School/AnyCodable" "0.6.2"

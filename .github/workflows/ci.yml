@@ -18,9 +18,5 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: install dependencies
-      run: carthage bootstrap --use-xcframeworks
-    - name: xcodebuild ${{ matrix.destination }}
-      run: set -o pipefail && xcodebuild test -scheme SwiftLSPClient -destination "${{ matrix.destination }}" | xcpretty
-    - name: SPM ${{ matrix.destination }}
+    - name: test ${{ matrix.destination }}
       run: swift test

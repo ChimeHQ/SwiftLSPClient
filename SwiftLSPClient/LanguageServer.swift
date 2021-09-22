@@ -1,13 +1,4 @@
-//
-//  LanguageServer.swift
-//  SwiftLSPClient
-//
-//  Created by Matt Massicotte on 2018-10-13.
-//  Copyright © 2018 Chime Systems. All rights reserved.
-//
-
 import Foundation
-import AnyCodable
 
 public enum LanguageServerError: LocalizedError {
     case serverUnavailable
@@ -16,10 +7,12 @@ public enum LanguageServerError: LocalizedError {
     case unableToEncodeRequest
     case unableToDecodeResponse(Error)
     case missingExpectedResult
+    case missingExpectedParameter
+    case requestHandlerUnavailable(String)
     case operationTimedOut
     case unimplemented
     
-    case serverError(code: Int, message: String, data: AnyCodable?)
+    case serverError(code: Int, message: String, data: Codable?)
 
     public var errorDescription: String? {
         switch self {
@@ -41,14 +34,27 @@ public enum LanguageServerError: LocalizedError {
             return "Unimplemented"
         case .serverError(code: let code, message: let message, data: let userInfo):
             return "Server error \(code), '\(message)', \(String(describing: userInfo))"
+        case .missingExpectedParameter:
+            return "Missing expected parameter"
+        case .requestHandlerUnavailable(let method):
+            return "Request handler unavailable \"\(method)\""
         }
     }
 }
 
 public typealias LanguageServerResult<T> = Result<T, LanguageServerError>
 
+public typealias ConfigurationHandler = (ConfigurationParams, @escaping (Result<[Encodable], Error>) -> Void) -> Void
+public typealias RegistrationHandler = (RegistrationParams, @escaping (LanguageServerError?) -> Void) -> Void
+public typealias UnregistrationHandler = (UnregistrationParams, @escaping (LanguageServerError?) -> Void) -> Void
+public typealias SemanticTokenRefreshHandler = (@escaping (LanguageServerError?) -> Void) -> Void
+
 public protocol LanguageServer: AnyObject {
     var notificationResponder: NotificationResponder? { get set }
+    var configurationHandler: ConfigurationHandler? { get set }
+    var registrationHandler: RegistrationHandler? { get set }
+    var unregistrationHandler: UnregistrationHandler? { get set }
+    var semanticTokenRefreshHandler: SemanticTokenRefreshHandler? { get set }
 
     func initialize(params: InitializeParams, block: @escaping (LanguageServerResult<InitializationResponse>) -> Void)
     func initialized(params: InitializedParams, block: @escaping (LanguageServerError?) -> Void)
@@ -77,6 +83,10 @@ public protocol LanguageServer: AnyObject {
     func onTypeFormatting(params: DocumentOnTypeFormattingParams, block: @escaping (LanguageServerResult<FormattingResult>) -> Void)
     func references(params: ReferenceParams, block: @escaping (LanguageServerResult<ReferenceResponse?>) -> Void)
     func foldingRange(params: FoldingRangeParams, block: @escaping (LanguageServerResult<FoldingRangeResponse>) -> Void)
+
+    func semanticTokensFull(params: SemanticTokensParams, block: @escaping (LanguageServerResult<SemanticTokens>) -> Void)
+    func semanticTokensFullDelta(params: SemanticTokensDeltaParams, block: @escaping (LanguageServerResult<SemanticTokensDeltaResponse>) -> Void)
+    func semanticTokensRange(params: SemanticTokensRangeParams, block: @escaping (LanguageServerResult<SemanticTokens>) -> Void)
 }
 
 public protocol NotificationResponder: AnyObject {
