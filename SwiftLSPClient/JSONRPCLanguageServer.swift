@@ -115,7 +115,7 @@ extension JSONRPCLanguageServer {
                 let params: ConfigurationParams = try decodeRequest(named: method, data: data)
 
                 guard let handler = configurationHandler else {
-                    throw LanguageServerError.requestHandlerUnavailable(method)
+                    throw LanguageServerError.handlerUnavailable(method)
                 }
 
                 handler(params, { result in
@@ -127,7 +127,7 @@ extension JSONRPCLanguageServer {
                 let params: RegistrationParams = try decodeRequest(named: method, data: data)
 
                 guard let handler = registrationHandler else {
-                    throw LanguageServerError.requestHandlerUnavailable(method)
+                    throw LanguageServerError.handlerUnavailable(method)
                 }
 
                 handler(params, { result in
@@ -141,7 +141,7 @@ extension JSONRPCLanguageServer {
                 let params: UnregistrationParams = try decodeRequest(named: method, data: data)
 
                 guard let handler = unregistrationHandler else {
-                    throw LanguageServerError.requestHandlerUnavailable(method)
+                    throw LanguageServerError.handlerUnavailable(method)
                 }
 
                 handler(params, { result in
@@ -153,7 +153,7 @@ extension JSONRPCLanguageServer {
                 })
             case ProtocolMethod.Workspace.SemanticTokens.Refresh:
                 guard let handler = semanticTokenRefreshHandler else {
-                    throw LanguageServerError.requestHandlerUnavailable(method)
+                    throw LanguageServerError.handlerUnavailable(method)
                 }
 
                 handler({ result in

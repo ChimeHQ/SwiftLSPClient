@@ -1,4 +1,5 @@
 import Foundation
+import JSONRPC
 
 public enum LanguageServerError: LocalizedError {
     case serverUnavailable
@@ -6,13 +7,21 @@ public enum LanguageServerError: LocalizedError {
     case invalidDocumentURI(URL)
     case unableToEncodeRequest
     case unableToDecodeResponse(Error)
+    case unableToDecodeRequest(Error)
     case missingExpectedResult
     case missingExpectedParameter
-    case requestHandlerUnavailable(String)
+    case handlerUnavailable(String)
     case operationTimedOut
     case unimplemented
-    
+    case unhandledMethod(String)
     case serverError(code: Int, message: String, data: Codable?)
+    case clientError(Error)
+
+    public init(serverError error: AnyJSONRPCResponseError) {
+        self = .serverError(code: error.code,
+                            message: error.message,
+                            data: error.data)
+    }
 
     public var errorDescription: String? {
         switch self {
@@ -36,8 +45,14 @@ public enum LanguageServerError: LocalizedError {
             return "Server error \(code), '\(message)', \(String(describing: userInfo))"
         case .missingExpectedParameter:
             return "Missing expected parameter"
-        case .requestHandlerUnavailable(let method):
-            return "Request handler unavailable \"\(method)\""
+        case .handlerUnavailable(let method):
+            return "Handler unavailable \"\(method)\""
+        case .unableToDecodeRequest(let e):
+            return "Unable to decode request: \(e.localizedDescription)"
+        case .unhandledMethod(let name):
+            return "Unhandled method: \(name)"
+        case .clientError(let e):
+            return "Client error: (\(e.localizedDescription))"
         }
     }
 }
