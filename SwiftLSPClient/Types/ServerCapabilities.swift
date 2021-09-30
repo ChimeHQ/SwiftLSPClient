@@ -152,28 +152,28 @@ public struct ServerCapabilities: Codable {
         public var fileOperations: FileOperations?
     }
 
-    public let textDocumentSync: ServerCapabilitiesTextDocumentSync
-    public let hoverProvider: Bool?
-    public let completionProvider: CompletionOptions?
-    public let signatureHelpProvider: SignatureHelpOptions?
-    public let definitionProvider: Bool?
-    public let typeDefinitionProvider: ServerCapabilityTypeDefinitionProvider?
-    public let implementationProvider: AnyCodable?
-    public let referencesProvider: Bool?
-    public let documentHighlightProvider: Bool?
-    public let documentSymbolProvider: Bool?
-    public let workspaceSymbolProvider: Bool?
-    public let codeActionProvider: ServerCapabilities.CodeActionProvider?
-    public let codeLensProvider: AnyCodable?
-    public let documentFormattingProvider: Bool?
-    public let documentRangeFormattingProvider: Bool?
-    public let documentOnTypeFormattingProvider: DocumentOnTypeFormattingOptions?
-    public let renameProvider: AnyCodable?
-    public let semanticTokensProvider: SemanticTokensProvider?
-    public let documentLinkProvider: AnyCodable?
-    public let colorProvider: AnyCodable?
-    public let foldingRangeProvider: AnyCodable?
-    public let executeCommandProvider: AnyCodable?
-    public let workspace: Workspace?
-    public let experimental: AnyCodable?
+    public var textDocumentSync: ServerCapabilitiesTextDocumentSync
+    public var hoverProvider: Bool?
+    public var completionProvider: CompletionOptions?
+    public var signatureHelpProvider: SignatureHelpOptions?
+    public var definitionProvider: Bool?
+    public var typeDefinitionProvider: ServerCapabilityTypeDefinitionProvider?
+    public var implementationProvider: AnyCodable?
+    public var referencesProvider: Bool?
+    public var documentHighlightProvider: Bool?
+    public var documentSymbolProvider: Bool?
+    public var workspaceSymbolProvider: Bool?
+    public var codeActionProvider: ServerCapabilities.CodeActionProvider?
+    public var codeLensProvider: AnyCodable?
+    public var documentFormattingProvider: Bool?
+    public var documentRangeFormattingProvider: Bool?
+    public var documentOnTypeFormattingProvider: DocumentOnTypeFormattingOptions?
+    public var renameProvider: AnyCodable?
+    public var semanticTokensProvider: SemanticTokensProvider?
+    public var documentLinkProvider: AnyCodable?
+    public var colorProvider: AnyCodable?
+    public var foldingRangeProvider: AnyCodable?
+    public var executeCommandProvider: AnyCodable?
+    public var workspace: Workspace?
+    public var experimental: AnyCodable?
 }
