@@ -42,3 +42,7 @@ extension LSPRange: Codable {
 
 extension LSPRange: Hashable {
 }
+
+public extension LSPRange {
+    static let zero = LSPRange(start: .zero, end: .zero)
+}

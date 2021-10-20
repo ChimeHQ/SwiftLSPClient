@@ -44,3 +44,7 @@ extension Position: Comparable {
         return lhs.line < rhs.line
     }
 }
+
+public extension Position {
+    static let zero = Position(line: 0, character: 0)
+}
