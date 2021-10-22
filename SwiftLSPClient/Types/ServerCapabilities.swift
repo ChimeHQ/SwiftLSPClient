@@ -14,20 +14,20 @@ public struct SaveOptions: Codable {
 }
 
 public struct TextDocumentSyncOptions: Codable {
-    public let openClose: Bool?
-    public let change: TextDocumentSyncKind?
-    public let willSave: Bool?
-    public let willSaveWaitUntil: Bool?
-    public let save: TwoTypeOption<Bool, SaveOptions>?
+    public var openClose: Bool?
+    public var change: TextDocumentSyncKind?
+    public var willSave: Bool?
+    public var willSaveWaitUntil: Bool?
+    public var save: TwoTypeOption<Bool, SaveOptions>?
 
-    public var includeText: Bool {
+    public var effectiveSave: SaveOptions? {
         switch save {
         case nil:
-            return false
-        case .optionA:
-            return false
+            return nil
+        case .optionA(let value):
+            return value ? SaveOptions(includeText: false) : nil
         case .optionB(let options):
-            return options.includeText ?? false
+            return options
         }
     }
 }
