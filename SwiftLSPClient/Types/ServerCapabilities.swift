@@ -18,10 +18,17 @@ public struct TextDocumentSyncOptions: Codable {
     public let change: TextDocumentSyncKind?
     public let willSave: Bool?
     public let willSaveWaitUntil: Bool?
-    public let save: SaveOptions?
+    public let save: TwoTypeOption<Bool, SaveOptions>?
 
-    public var effectiveSave: SaveOptions {
-        return save ?? SaveOptions(includeText: false)
+    public var includeText: Bool {
+        switch save {
+        case nil:
+            return false
+        case .optionA:
+            return false
+        case .optionB(let options):
+            return options.includeText ?? false
+        }
     }
 }
 
