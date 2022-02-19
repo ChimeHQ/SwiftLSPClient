@@ -2,15 +2,13 @@
 
 # SwiftLSPClient
 
-This is a Swift library for interacting with [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations.
-
-An LSP server provides rich information about source code. An LSP client consumes this information. This library is all about the client side. It is low-level, and provides only the core abstractions around the types and messages passed between a client and server.
-
 ⚠️ Heads up!
 
-SwiftLSPClient is being replaced. It's being split into two seperate parts. Protocol-level support lives in [LanguageServerProtocol](https://github.com/ChimeHQ/LanguageServerProtocol). Higher-level client abstractions live in [LanguageClient](https://github.com/ChimeHQ/LanguageClient), which is probably what you want to look at.
+SwiftLSPClient has been replaced. It was split into two seperate parts. Protocol-level support lives in [LanguageServerProtocol](https://github.com/ChimeHQ/LanguageServerProtocol). Higher-level client abstractions live in [LanguageClient](https://github.com/ChimeHQ/LanguageClient), which is probably what you want.
 
-Because of the enormous number of types in the LSP spec, actually finishing the full replacement is going to take a little while.
+This is a (now deprecated) Swift library for interacting with [Language Server Protocol](https://microsoft.github.io/language-server-protocol/) implementations.
+
+An LSP server provides rich information about source code. An LSP client consumes this information. This library is all about the client side. It is low-level, and provides only the core abstractions around the types and messages passed between a client and server.
 
 ## Example
 
