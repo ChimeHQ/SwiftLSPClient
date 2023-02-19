@@ -10,10 +10,11 @@ let package = Package(
         .library(name: "SwiftLSPClient", targets: ["SwiftLSPClient"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/Flight-School/AnyCodable", from: "0.6.0"),
         .package(url: "https://github.com/ChimeHQ/JSONRPC", from: "0.2.1"),
     ],
     targets: [
-        .target(name: "SwiftLSPClient", dependencies: ["JSONRPC"], path: "SwiftLSPClient/"),
+        .target(name: "SwiftLSPClient", dependencies: ["JSONRPC", "AnyCodable"], path: "SwiftLSPClient/"),
         .testTarget(name: "SwiftLSPClientTests", dependencies: ["SwiftLSPClient"], path: "SwiftLSPClientTests/"),
     ]
 )
